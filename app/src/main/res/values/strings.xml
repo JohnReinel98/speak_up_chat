@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">Speak Up</string>
+
+    <!-- all -->
+    <string name="all_app_version">Sample UI v%1$s / SDK v%2$s</string>
+
+    <string name="all_create">Create</string>
+    <string name="all_invite">Invite</string>
+
+    <string name="all_group_channels">Channels</string>
+    <string name="all_open_channels">Open Channels</string>
+
+    <!-- main -->
+    <string name="main_drawer_open">Open navigation drawer</string>
+    <string name="main_drawer_close">Close navigation drawer</string>
+    <string name="select_channel_type">Home</string>
+    <string name="settings">Settings</string>
+    <string name="blocked_members_list">Blocked members</string>
+
+    <!-- login -->
+    <string name="login_user_id">User ID</string>
+    <string name="login_user_nickname">Nickname</string>
+    <string name="login_connect">Login</string>
+    <string name="login_disconnect">Logout</string>
+
+    <!-- Open Channel List -->
+    <string name="open_channel_list_participant_count">%1$d participants</string>
+
+    <string name="create_open_channel">Create Open Channel</string>
+    <string name="participant_list">Participants</string>
+
+    <!-- Group Channel List -->
+    <string name="group_channel_list_file_message_text">%1$s has uploaded a file.</string>
+
+    <string name="create_group_channel">Create Channel</string>
+    <string name="member_list">Members</string>
+    <string name="invite_member">Invite members</string>
+
+    <string name="member_info"></string>
+
+    <!-- Content descriptions -->
+    <string name="open_channel_chat_content_desc_profile">Profile image</string>
+
+    <!-- Menu actions -->
+    <string name="action_create_channel">Create channel</string>
+
+    <string name="download">Download</string>
+    <string name="cancel">Cancel</string>
+    <string name="upload">Upload</string>
+    <string name="resend_message">Resend</string>
+    <string name="delete_message">Delete</string>
+
+    <!-- Message Status -->
+    <string name="message_sending">Sending</string>
+    <string name="message_failed">Failed</string>
+
+
+    <string name="usern">Enter Username</string>
+    <string name="passw">Enter Password</string>
+    <string name="firstopt">Not at all</string>
+    <string name="secondopt">Several Days</string>
+    <string name="thirdopt">More than half a days</string>
+    <string name="fourthopt">Nearly Everyday</string>
+    <string name="regisUs">Register</string>
+    <string name="nav_chat">Chat</string>
+    <string name="nav_alarm">Alarm</string>
+    <string name="nav_depBar">Depression Bar</string>
+    <string name="nav_medSched">Medical Schedule</string>
+    <string name="nav_medAlarm">Medicine Schedule</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string-array name="dailyQuotes">
+        <item>“Believe in yourself! Have faith in your abilities! Without a humble but reasonable confidence in your own powers you cannot be successful or happy.” \n —Norman Vincent Peale</item>
+        <item>“If you can dream it, you can do it.” \n —Walt Disney</item>
+        <item>“Where there is a will, there is a way. If there is a chance in a million that you can do something, anything, to keep what you want from ending, do it. Pry the door open or, if need be, wedge your foot in that door and keep it open.” \n —Pauline Kael</item>
+        <item>“Do not wait; the time will never be ‘just right.’ Start where you stand, and work with whatever tools you may have at your command, and better tools will be found as you go along.” \n —George Herbert</item>
+        <item>“Press forward. Do not stop, do not linger in your journey, but strive for the mark set before you.” \n —George Whitefield</item>
+        <item>“The future belongs to those who believe in the beauty of their dreams.” \n —Eleanor Roosevelt</item>
+        <item>“Aim for the moon. If you miss, you may hit a star.” \n —W. Clement Stone</item>
+        <item>“Don’t watch the clock; do what it does. Keep going.” \n —Sam Levenson</item>
+        <item>“There will be obstacles. There will be doubters. There will be mistakes. But with hard work, there are no limits.” \n —Michael Phelps</item>
+        <item>“Keep your eyes on the stars, and your feet on the ground.” \n —Theodore Roosevelt</item>
+    </string-array>
+
+</resources>
