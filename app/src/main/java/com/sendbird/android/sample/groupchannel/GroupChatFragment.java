@@ -38,6 +38,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sendbird.android.AdminMessage;
 import com.sendbird.android.BaseChannel;
 import com.sendbird.android.BaseMessage;
@@ -96,6 +102,7 @@ public class GroupChatFragment extends Fragment {
     private ImageButton mUploadFileButton;
     private View mCurrentEventLayout;
     private TextView mCurrentEventText;
+    private FirebaseAuth firebaseAuth;
 
     private GroupChannel mChannel;
     private String mChannelUrl;
@@ -141,6 +148,7 @@ public class GroupChatFragment extends Fragment {
 
         // Load messages from cache.
         mChatAdapter.load(mChannelUrl);
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     @Nullable
@@ -200,6 +208,7 @@ public class GroupChatFragment extends Fragment {
                     if(userInput.equalsIgnoreCase("-end")){
                         Toast.makeText(getContext(),"You left the channel",Toast.LENGTH_LONG).show();
                         showRatingBar();
+                        setJoined("false");
                         mChannel.leave(new GroupChannel.GroupChannelLeaveHandler() {
                             @Override
                             public void onResult(SendBirdException e) {
@@ -922,6 +931,23 @@ public class GroupChatFragment extends Fragment {
                         mChatAdapter.markAllMessagesAsRead();
                     }
                 });
+            }
+        });
+    }
+
+    private void setJoined(final String toggle){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        final DatabaseReference refServer = database.getReference(id).child("joined");
+        refServer.keepSynced(true);
+        refServer.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                refServer.setValue(toggle);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

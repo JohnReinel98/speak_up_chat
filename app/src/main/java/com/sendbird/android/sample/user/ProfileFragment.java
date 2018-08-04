@@ -59,10 +59,7 @@ public class ProfileFragment extends Fragment {
         btnUpdate = v.findViewById(R.id.btnUpdate);
         imgProfilePic = v.findViewById(R.id.imgProfilePic);
 
-
-
-
-                                        loadUserInfo();
+        loadUserInfo();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         Glide.with(this)
                         .load(user.getPhotoUrl().toString())

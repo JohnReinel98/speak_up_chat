@@ -10,7 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.sendbird.android.GroupChannel;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.sample.R;
@@ -37,21 +45,24 @@ public class CreateGroupChannelActivity extends AppCompatActivity
 
     private List<String> mSelectedIds;
     private boolean mIsDistinct = true;
-
     private int mCurrentState;
 
     private Toolbar mToolbar;
+    private String server,userFname;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_create_group_channel);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         mSelectedIds = new ArrayList<>();
-        mSelectedIds.add("Caluag");
-        mSelectedIds.add("John Reinel");
-        createGroupChannel(mSelectedIds, true);
+
+        getFirstname();
+        serverJoiner();
+
         if (savedInstanceState == null) {
             Fragment fragment = SelectUserFragment.newInstance();
             FragmentManager manager = getSupportFragmentManager();
@@ -170,6 +181,65 @@ public class CreateGroupChannelActivity extends AppCompatActivity
                 intent.putExtra(EXTRA_NEW_CHANNEL_URL, groupChannel.getUrl());
                 setResult(RESULT_OK, intent);
                 finish();
+            }
+        });
+    }
+
+    private void setJoined(final String toggle){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        final DatabaseReference refServer = database.getReference(id).child("joined");
+        refServer.keepSynced(true);
+        refServer.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                refServer.setValue(toggle);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getFirstname(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refProv = database.getReference(id).child("fname");
+        refProv.keepSynced(true);
+        refProv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userFname = dataSnapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void serverJoiner(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference refServer = database.getReference();
+        Query searchQuery = refServer.orderByChild("server").equalTo("depression");
+        //refServer.keepSynced(true);
+        searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot answerSnapshot: dataSnapshot.getChildren()) {
+                    if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false")) {
+                        setJoined("true");
+                        mSelectedIds.add(answerSnapshot.child("fname").getValue().toString());
+                        mSelectedIds.add(userFname);
+                        createGroupChannel(mSelectedIds, true);
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

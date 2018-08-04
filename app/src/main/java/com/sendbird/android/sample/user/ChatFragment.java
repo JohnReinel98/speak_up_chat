@@ -17,6 +17,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.sendbird.android.SendBird;
 import com.sendbird.android.SendBirdException;
@@ -29,17 +30,22 @@ import com.sendbird.android.sample.utils.PreferenceUtils;
 import com.sendbird.android.sample.utils.PushUtils;
 import com.sendbird.android.sample.utils.SharedPrefManager;
 
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Scanner;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ChatFragment extends Fragment {
-    Button btnDepression, btnHappy;
+    Button btnDepression, btnHappy, btnTest;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+    private DatabaseReference databaseReference;
     private static final String APP_ID_DEPRESSION = "C05228E5-306E-4E8E-9F4B-83B743B5C961";
     private static final String APP_ID_HAPPY = "B951ECFF-5070-46EC-AEBD-7BD387483E4F";
-    String userID, nickName;
+    String userID, nickName, server;
     public ChatFragment() {
         // Required empty public constructor
     }
@@ -52,12 +58,15 @@ public class ChatFragment extends Fragment {
         progressDialog = new ProgressDialog(getContext());
         btnDepression = rootView.findViewById(R.id.btnDepression);
         btnHappy = rootView.findViewById(R.id.btnHappy);
+        btnTest = rootView.findViewById(R.id.btnTestserver);
         getFirstname();
+        getServer();
 
         btnDepression.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SendBird.init(APP_ID_DEPRESSION, getContext());
+                setServer();
                 connectToSendBird();
             }
         });
@@ -66,7 +75,17 @@ public class ChatFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 SendBird.init(APP_ID_HAPPY, getContext());
+                //setServer();
                 connectToSendBird();
+            }
+        });
+
+        btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ///serverChecker();
+                //serverChecker();
+
             }
         });
         return rootView;
@@ -134,6 +153,41 @@ public class ChatFragment extends Fragment {
                 }
 
                 PreferenceUtils.setNickname(userNickname);
+            }
+        });
+    }
+
+    private String getServer(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refServer = database.getReference(id).child("server");
+        refServer.keepSynced(true);
+        refServer.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                server = dataSnapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return server;
+    }
+
+    private void setServer(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        final DatabaseReference refServer = database.getReference(id).child("server");
+        refServer.keepSynced(true);
+        refServer.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                refServer.setValue("depression");
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

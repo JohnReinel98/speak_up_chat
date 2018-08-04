@@ -18,6 +18,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.sendbird.android.BaseChannel;
 import com.sendbird.android.BaseMessage;
 import com.sendbird.android.GroupChannel;
@@ -45,6 +53,8 @@ public class GroupChannelListFragment extends Fragment {
     private static final String CONNECTION_HANDLER_ID = "CONNECTION_HANDLER_GROUP_CHANNEL_LIST";
     private static final String CHANNEL_HANDLER_ID = "CHANNEL_HANDLER_GROUP_CHANNEL_LIST";
 
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
     private GroupChannelListAdapter mChannelListAdapter;
@@ -76,6 +86,7 @@ public class GroupChannelListFragment extends Fragment {
         mSwipeRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_layout_group_channel_list);
         btnDisconnect = rootView.findViewById(R.id.btnDisconnect);
 
+        firebaseAuth = FirebaseAuth.getInstance();
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -89,6 +100,8 @@ public class GroupChannelListFragment extends Fragment {
             public void onClick(View v) {
                 disconnect();
                 SendBird.init("", getContext());
+                setServer();
+                setJoined("false");
                 startActivity(new Intent(getActivity(), UserLogin.class));
                 getActivity().finish();
             }
@@ -97,6 +110,7 @@ public class GroupChannelListFragment extends Fragment {
         mCreateChannelFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //serverJoiner();
                 Intent intent = new Intent(getContext(), CreateGroupChannelActivity.class);
                 startActivityForResult(intent, INTENT_REQUEST_NEW_GROUP_CHANNEL);
             }
@@ -228,6 +242,7 @@ public class GroupChannelListFragment extends Fragment {
                                     .setPositiveButton("Leave", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
+                                            setJoined("false");
                                             leaveChannel(channel);
                                         }
                                     })
@@ -388,6 +403,80 @@ public class GroupChannelListFragment extends Fragment {
                         getActivity().finish();
                     }
                 });
+            }
+        });
+    }
+
+    private void setServer(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        final DatabaseReference refServer = database.getReference(id).child("server");
+        refServer.keepSynced(true);
+        refServer.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                refServer.setValue("");
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void setServerDepression(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        final DatabaseReference refServer = database.getReference(id).child("server");
+        refServer.keepSynced(true);
+        refServer.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                refServer.setValue("depression");
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void setJoined(final String toggle){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        final DatabaseReference refServer = database.getReference(id).child("joined");
+        refServer.keepSynced(true);
+        refServer.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                refServer.setValue(toggle);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void serverJoiner(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference refServer = database.getReference();
+        Query searchQuery = refServer.orderByChild("server").equalTo("depression");
+        //refServer.keepSynced(true);
+        searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot answerSnapshot: dataSnapshot.getChildren()) {
+                    if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false")) {
+                        setJoined("true");
+                        Toast.makeText(getContext(), answerSnapshot.child("fname").getValue().toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

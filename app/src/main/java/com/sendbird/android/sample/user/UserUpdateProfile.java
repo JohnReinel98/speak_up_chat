@@ -471,9 +471,9 @@ public class UserUpdateProfile extends AppCompatActivity {
 
     private void updateUser(String lname, String fname, String mname, String bday, String gender, String street, String city, String prov){
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(id);
-        User user = new User(lname, fname, mname, bday, gender, street, city, prov);
+        User user = new User(lname, fname, mname, bday, gender, street, city, prov, "", "");
         databaseReference.setValue(user);
-        Toast.makeText(this,"User update successfull",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"User update successful",Toast.LENGTH_SHORT).show();
         //startActivity(new Intent(this, ProfileActivity.class));
     }
 

@@ -144,6 +144,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         final String city = txtCity.getEditText().getText().toString().trim();
         final String province = txtProv.getEditText().getText().toString().trim();
         final String birthday = txtBirthday.getEditText().getText().toString().trim();
+        final String server = "", joined = "false";
 
         if (TextUtils.isEmpty(lname)) {
             txtLname.setError("Please enter first name");
@@ -216,7 +217,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                         currentUser.updateProfile(profileChangeRequest).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                User user = new User(fname,lname,mname,birthday,gender,street,city,province);
+                                User user = new User(fname,lname,mname,birthday,gender,street,city,province,server,joined);
                                 FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                 databaseReference.child(currentUser.getUid()).setValue(user);
                                 SharedPrefManager.getInstance(getApplicationContext()).userId(fname);

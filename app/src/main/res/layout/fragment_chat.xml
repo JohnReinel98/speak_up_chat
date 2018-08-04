@@ -25,9 +25,18 @@
             android:id="@+id/btnHappy"
             android:layout_height="50dp"
             android:layout_width="200dp"
-            android:text="Happy Channel">
+            android:text="Cheerful Channel">
 
         </Button>
+
+        <Button
+            android:id="@+id/btnTestserver"
+            android:layout_height="50dp"
+            android:layout_width="200dp"
+            android:text="Test">
+
+        </Button>
+
     </LinearLayout>
 
 </FrameLayout>
