@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SendBird-Android.iml" filepath="$PROJECT_DIR$/SendBird-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/speak_up_chat.iml" filepath="$PROJECT_DIR$/speak_up_chat.iml" />
     </modules>
   </component>
 </project>

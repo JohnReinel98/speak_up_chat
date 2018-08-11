@@ -55,22 +55,22 @@
     <color name="screen9">#FF9800</color>
     <color name="screen10">#5D4037</color>
 
-    <color name="dotDarkScreent1">#000</color>
-    <color name="dotDarkScreent2">#6A1B9A</color>
-    <color name="dotDarkScreent3">#00695C</color>
-    <color name="dotDarkScreent4">#FF6C00</color>
-    <color name="dotDarkScreent5">#3E2723</color>
-    <color name="dotDarkScreent6">#000</color>
-    <color name="dotDarkScreent7">#000</color>
-    <color name="dotDarkScreent8">#000</color>
-    <color name="dotDarkScreent9">#000</color>
-    <color name="dotDarkScreent10">#000</color>
+    <color name="dotDarkScreent1">#ccc</color>
+    <color name="dotDarkScreent2">#ccc</color>
+    <color name="dotDarkScreent3">#ccc</color>
+    <color name="dotDarkScreent4">#ccc</color>
+    <color name="dotDarkScreent5">#ccc</color>
+    <color name="dotDarkScreent6">#ccc</color>
+    <color name="dotDarkScreent7">#ccc</color>
+    <color name="dotDarkScreent8">#ccc</color>
+    <color name="dotDarkScreent9">#ccc</color>
+    <color name="dotDarkScreent10">#ccc</color>
 
     <color name="dotLightScreen1">#fff</color>
-    <color name="dotLightScreen2">#E1BEE7</color>
-    <color name="dotLightScreen3">#B0CBC4</color>
-    <color name="dotLightScreen4">#FFE0B2</color>
-    <color name="dotLightScreen5">#A1887F</color>
+    <color name="dotLightScreen2">#fff</color>
+    <color name="dotLightScreen3">#fff</color>
+    <color name="dotLightScreen4">#fff</color>
+    <color name="dotLightScreen5">#fff</color>
     <color name="dotLightScreen6">#fff</color>
     <color name="dotLightScreen7">#fff</color>
     <color name="dotLightScreen8">#fff</color>

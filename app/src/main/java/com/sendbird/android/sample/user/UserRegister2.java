@@ -217,7 +217,8 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                         currentUser.updateProfile(profileChangeRequest).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                User user = new User(fname,lname,mname,birthday,gender,street,city,province,server,joined);
+                                int depTest = 0;
+                                User user = new User(fname,lname,mname,birthday,gender,street,city,province,depTest,server,joined);
                                 FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                 databaseReference.child(currentUser.getUid()).setValue(user);
                                 SharedPrefManager.getInstance(getApplicationContext()).userId(fname);

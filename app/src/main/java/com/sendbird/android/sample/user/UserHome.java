@@ -18,18 +18,24 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.sendbird.android.sample.R;
 import com.sendbird.android.sample.main.ChooseActivity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.sendbird.android.sample.user.UserQuestion.SHARED_PREFS;
 
 public class UserHome extends AppCompatActivity {
     private BottomNavigationView mMainNav;
@@ -43,9 +49,13 @@ public class UserHome extends AppCompatActivity {
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
     private NavigationView navView;
+    private int totalAns, result;
+    private DatabaseReference mDatabase;
+    private String id;
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +68,40 @@ public class UserHome extends AppCompatActivity {
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         navView = findViewById(R.id.navView);
         firebaseAuth = FirebaseAuth.getInstance();
+//        Answers answers = new Answers();
+//        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        id = firebaseAuth.getCurrentUser().getUid();
+        //Toast.makeText(this,id.toString(),Toast.LENGTH_LONG).show();
+
+
+
+
+        SharedPreferences sharedPreferences = getSharedPreferences("PREFS", 0);
+        int answ1 = sharedPreferences.getInt("ans1",0);
+        int answ2 = sharedPreferences.getInt("ans2",0);
+        int answ3 = sharedPreferences.getInt("ans3",0);
+        int answ4 = sharedPreferences.getInt("ans4",0);
+        int answ5 = sharedPreferences.getInt("ans5",0);
+        int answ6 = sharedPreferences.getInt("ans6",0);
+        int answ7 = sharedPreferences.getInt("ans7",0);
+        int answ8 = sharedPreferences.getInt("ans8",0);
+        int answ9 = sharedPreferences.getInt("ans9",0);
+        int answ10 = sharedPreferences.getInt("ans10",0);
+
+
+        totalAns = answ1 + answ2 + answ3 + answ4 + answ5 + answ6 + answ7 + answ8 + answ9 + answ10;
+        result = totalAns / 10;
+
+        String res = String.valueOf(result);
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference depResult = database.getReference(id).child("depTest");
+        depResult.setValue(res);
+        depResult.keepSynced(true);
+        //Toast.makeText(this,result,Toast.LENGTH_SHORT).show();
+
+
+
 
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
@@ -80,7 +124,7 @@ public class UserHome extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         Glide.with(this)
                         .load(user.getPhotoUrl().toString())
-                        .into(imgProfile);
+                        .into((CircleImageView) v.findViewById(R.id.imgPic));
         String name = user.getDisplayName();
         txtFullname.setText(name);
 
