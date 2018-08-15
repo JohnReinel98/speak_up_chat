@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +41,7 @@ import com.sendbird.android.sample.main.MainActivity;
 import com.sendbird.android.sample.user.UserLogin;
 import com.sendbird.android.sample.utils.PreferenceUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -53,6 +55,7 @@ public class GroupChannelListFragment extends Fragment {
     private static final String CONNECTION_HANDLER_ID = "CONNECTION_HANDLER_GROUP_CHANNEL_LIST";
     private static final String CHANNEL_HANDLER_ID = "CHANNEL_HANDLER_GROUP_CHANNEL_LIST";
 
+    private List<GroupChannel> mChannelList;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private RecyclerView mRecyclerView;
@@ -61,6 +64,7 @@ public class GroupChannelListFragment extends Fragment {
     private FloatingActionButton mCreateChannelFab, btnDisconnect;
     private GroupChannelListQuery mChannelListQuery;
     private SwipeRefreshLayout mSwipeRefresh;
+    TextView emptyview;
 
     public static GroupChannelListFragment newInstance() {
         GroupChannelListFragment fragment = new GroupChannelListFragment();
@@ -84,6 +88,7 @@ public class GroupChannelListFragment extends Fragment {
         mCreateChannelFab = (FloatingActionButton) rootView.findViewById(R.id.fab_group_channel_list);
         btnDisconnect = (FloatingActionButton) rootView.findViewById(R.id.btnDisconnect);
         mSwipeRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_layout_group_channel_list);
+        emptyview = (TextView) rootView.findViewById(R.id.empty_view);
 
         firebaseAuth = FirebaseAuth.getInstance();
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -118,8 +123,15 @@ public class GroupChannelListFragment extends Fragment {
         mChannelListAdapter = new GroupChannelListAdapter(getActivity());
         mChannelListAdapter.load();
 
-        setUpRecyclerView();
-        setUpChannelListAdapter();
+        if(mChannelListAdapter.getItemCount() == 0){
+            mRecyclerView.setVisibility(View.GONE);
+            emptyview.setVisibility(View.VISIBLE);
+        }else{
+            mRecyclerView.setVisibility(View.VISIBLE);
+            emptyview.setVisibility(View.GONE);
+            setUpRecyclerView();
+            setUpChannelListAdapter();
+        }
 
         return rootView;
     }
