@@ -23,8 +23,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -43,7 +46,8 @@ import java.util.Calendar;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserRegister2 extends AppCompatActivity implements View.OnClickListener{
-    private static final int PICK_IMAGE_REQUEST = 234;
+    //private static final int PICK_IMAGE_REQUEST = 234;
+    private static final int CHOOSE_IMAGE = 101;
     private Button btnLogout, btnChoose, btnUpload;
     private TextView useremail, btnSave;
     private FirebaseAuth firebaseAuth;
@@ -61,6 +65,8 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
     private int year_x,month_x,day_x;
     private String[] monthStr = {"January","February","March","April","May","June","July","August","September","October","November","December"};
     private static final int DIALOG_ID = 0;
+    private Uri uriprofileImage;
+    private String profileImageUrl;
 
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
@@ -109,31 +115,6 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
 
         btnSave.setOnClickListener(this);
         btnChoose.setOnClickListener(this);
-
-
-
-//        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//                myCalendar.set(Calendar.YEAR, year);
-//                myCalendar.set(Calendar.MONTH, dayOfMonth);
-//                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-//                String myFormat = "MMMM/dd/yyyy"; //In which you need put here
-//                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-//                txtBirthday.getEditText().setText(sdf.format(myCalendar.getTime()));
-//            }
-//        };
-//
-//        txtBirthday.getEditText().setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                new DatePickerDialog(RegistrationActivity2.this, date, myCalendar
-//                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-//                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-//            }
-//        });
-
-
     }
 
     private void saveUserInfo(){
@@ -187,7 +168,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
             txtBirthday.requestFocus();
             return;
         }
-        if(filepath==null){
+        if(uriprofileImage==null){
             //imgProfilePic.setImageURI();
             Toast.makeText(UserRegister2.this,"Please enter an image",Toast.LENGTH_SHORT).show();
             return;
@@ -195,7 +176,8 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         progressDialog.setTitle("Uploading Information...");
         progressDialog.show();
         progressDialog.setCancelable(false);
-        StorageReference riversRef = storageReference.child("images/"+System.currentTimeMillis()+".jpg");
+        uploadImage();
+        /*StorageReference riversRef = storageReference.child("images/"+System.currentTimeMillis()+".jpg");
         riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -203,13 +185,15 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        riversRef.putFile(filepath)
+        riversRef.putFile(uriprofileImage)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressDialog.dismiss();
-                        profileImgUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+                        //profileImgUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+                        //uploadImage();
                         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+
                         UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(lname+", "+fname+" "+mname+".")
                                 .setPhotoUri(Uri.parse(profileImgUrl))
@@ -250,7 +234,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                         double progress = (100.0 * taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
                         progressDialog.setMessage(((int) progress) + "% Uploaded");
                     }
-                });
+                });*/
 
 
 
@@ -302,7 +286,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void showFileChooser(){
+    /*private void showFileChooser(){
         Intent i = new Intent();
         //you can only select image
         i.setType("image/*");
@@ -336,6 +320,96 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(this, ""+ e, Toast.LENGTH_SHORT).show();
             }
         }
+    }*/
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CHOOSE_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null){
+            uriprofileImage = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uriprofileImage);
+                imgView.setImageBitmap(bitmap);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void uploadImage() {
+        final String fname = txtFname.getEditText().getText().toString().trim();
+        final String lname = txtLname.getEditText().getText().toString().trim();
+        final String mname = txtMI.getEditText().getText().toString().trim();
+        final String street = txtStreet.getEditText().getText().toString().trim();
+        final String city = txtCity.getEditText().getText().toString().trim();
+        final String province = txtProv.getEditText().getText().toString().trim();
+        final String birthday = txtBirthday.getEditText().getText().toString().trim();
+        final String server = "", joined = "false";
+
+        final StorageReference profileImage = FirebaseStorage.getInstance().getReference("profilePics/"+System.currentTimeMillis()+".jpg");
+        if(uriprofileImage != null){
+            profileImage.putFile(uriprofileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    profileImage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            final Uri downloadUrl = uri;
+                            profileImageUrl = downloadUrl.toString();
+                            FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+
+                            UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(lname+", "+fname+" "+mname+".")
+                                    .setPhotoUri(downloadUrl)
+                                    .build();
+                            currentUser.updateProfile(profileChangeRequest).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    int depTest = 0;
+                                    User user = new User(fname,lname,mname,birthday,gender,street,city,province,depTest,server,joined);
+                                    FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+                                    databaseReference.child(currentUser.getUid()).setValue(user);
+                                    SharedPrefManager.getInstance(getApplicationContext()).userId(fname);
+                                    SharedPrefManager.getInstance(getApplicationContext()).userNickname(fname);
+                                    Toast.makeText(UserRegister2.this,"Information Saved",Toast.LENGTH_SHORT).show();
+                                    finish();
+                                    startActivity(new Intent(UserRegister2.this, UserQuestion.class));
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(UserRegister2.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    });
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    progressDialog.dismiss();
+                    Toast.makeText(UserRegister2.this,exception.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            })
+            .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                    double progress = (100.0 * taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
+                    progressDialog.setMessage(((int) progress) + "% Uploaded");
+                }
+            });
+        }
+    }
+
+    private void imageChooser (){
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(i,"Select Profile Image"),CHOOSE_IMAGE);
     }
 
     @Override
@@ -352,7 +426,8 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
 
         if(v == btnChoose){
             //img chooser
-            showFileChooser();
+            //showFileChooser();
+            imageChooser();
         }
     }
 }

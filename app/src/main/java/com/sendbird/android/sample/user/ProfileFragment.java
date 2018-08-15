@@ -28,6 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
     private TextView txtFullname, txtGender, txtStreet, txtCity, txtProvince, txtBirthday, btnUpdate;
     private DatabaseReference firebaseDatabaseGender;
     private CircleImageView imgProfilePic;
@@ -56,18 +57,14 @@ public class ProfileFragment extends Fragment {
         txtCity = v.findViewById(R.id.txtCity);
         txtProvince = v.findViewById(R.id.txtProv);
         txtBirthday = v.findViewById(R.id.txtBirthday);
-
         btnUpdate = v.findViewById(R.id.btnUpdate);
         imgProfilePic = v.findViewById(R.id.imgProfilePic);
 
-        loadUserInfo();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        Glide.with(this)
-                        .load(user.getPhotoUrl().toString())
-                        .into(imgProfilePic);
-        String name = user.getDisplayName();
-        txtFullname.setText(name);
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        id = firebaseAuth.getCurrentUser().getUid();
 
+        loadUserInfo();
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,9 +78,10 @@ public class ProfileFragment extends Fragment {
     public void loadUserInfo(){
         progressDialog.setMessage("Loading user info...");
         progressDialog.show();
-        firebaseAuth = FirebaseAuth.getInstance();
-        id = firebaseAuth.getCurrentUser().getUid();
-        //Toast.makeText(this,id.toString(),Toast.LENGTH_LONG).show();
+
+        Glide.with(this).load(user.getPhotoUrl().toString()).into(imgProfilePic);
+        String name = user.getDisplayName();
+        txtFullname.setText(name);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference refGender = database.getReference(id).child("gender");
