@@ -58,10 +58,9 @@ public class GroupChannelListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
     private GroupChannelListAdapter mChannelListAdapter;
-    private FloatingActionButton mCreateChannelFab;
+    private FloatingActionButton mCreateChannelFab, btnDisconnect;
     private GroupChannelListQuery mChannelListQuery;
     private SwipeRefreshLayout mSwipeRefresh;
-    private Button btnDisconnect;
 
     public static GroupChannelListFragment newInstance() {
         GroupChannelListFragment fragment = new GroupChannelListFragment();
@@ -83,8 +82,8 @@ public class GroupChannelListFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_group_channel_list);
         mCreateChannelFab = (FloatingActionButton) rootView.findViewById(R.id.fab_group_channel_list);
+        btnDisconnect = (FloatingActionButton) rootView.findViewById(R.id.btnDisconnect);
         mSwipeRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_layout_group_channel_list);
-        btnDisconnect = rootView.findViewById(R.id.btnDisconnect);
 
         firebaseAuth = FirebaseAuth.getInstance();
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

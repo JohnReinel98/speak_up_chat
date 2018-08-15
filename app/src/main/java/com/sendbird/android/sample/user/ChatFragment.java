@@ -4,6 +4,7 @@ package com.sendbird.android.sample.user;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,7 @@ import java.util.Scanner;
  * A simple {@link Fragment} subclass.
  */
 public class ChatFragment extends Fragment {
-    Button btnDepression, btnHappy, btnTest;
+    Button btnDepression, btnHappy;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private DatabaseReference databaseReference;
@@ -58,16 +59,24 @@ public class ChatFragment extends Fragment {
         progressDialog = new ProgressDialog(getContext());
         btnDepression = rootView.findViewById(R.id.btnDepression);
         btnHappy = rootView.findViewById(R.id.btnHappy);
-        btnTest = rootView.findViewById(R.id.btnTestserver);
         getFirstname();
         getServer();
 
         btnDepression.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Loading Server...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
                 SendBird.init(APP_ID_DEPRESSION, getContext());
                 setServer();
-                connectToSendBird();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        connectToSendBird();
+                        //progressDialog.dismiss();
+                    }
+                }, 10000);
             }
         });
 
@@ -80,14 +89,6 @@ public class ChatFragment extends Fragment {
             }
         });
 
-        btnTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ///serverChecker();
-                //serverChecker();
-
-            }
-        });
         return rootView;
     }
 
@@ -121,6 +122,7 @@ public class ChatFragment extends Fragment {
                 updateCurrentUserInfo(nickName);
                 updateCurrentUserPushToken();
 
+                progressDialog.dismiss();
                 // Proceed to MainActivity
                 Intent intent = new Intent(getActivity(), GroupChannelActivity.class);
                 startActivity(intent);

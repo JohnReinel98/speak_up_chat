@@ -21,12 +21,13 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <Button
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnDisconnect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
-        android:text="Disconnect"/>
+        app:useCompatPadding="true"
+        app:srcCompat="@drawable/ic_exit" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_group_channel_list"

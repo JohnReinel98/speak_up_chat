@@ -9,7 +9,7 @@
     <color name="textColorLight">#6f7c92</color>
 
     <!-- Login -->
-    <color name="colorButton">#774df2</color>
+    <color name="colorButton">#008A83</color>
 
     <!-- Open Chat -->
     <color name="openChatText">#47505d</color>
@@ -17,7 +17,7 @@
     <color name="openChatNicknameMe">#00BCD4</color>
 
     <!-- Group Chat -->
-    <color name="groupChatBubbleMe">#774df2</color>
+    <color name="groupChatBubbleMe">#008A83</color>
     <color name="groupChatTextMe">#ffffff</color>
     <color name="groupChatBubbleOther">#eef1f6</color>
     <color name="groupChatTextOther">#000000</color>
@@ -32,7 +32,7 @@
     <color name="groupChatDateBackground">#C0C0C0</color>
 
     <!-- Group Channel List -->
-    <color name="groupChannelUnreadCountBackground">#7d62df</color>
+    <color name="groupChannelUnreadCountBackground">#008A83</color>
     <color name="groupChannelUnreadCountText">#ffffff</color>
 
     <!-- Selector -->
@@ -40,7 +40,7 @@
     <color name="btn_create_disabled">#c1acff</color>
     <color name="btn_edit">#ffffff</color>
     <color name="btn_edit_disabled">#c1acff</color>
-    <color name="btn_send">#774df2</color>
+    <color name="btn_send">#008A83</color>
     <color name="btn_send_disabled">#8e8e8e</color>
 
 

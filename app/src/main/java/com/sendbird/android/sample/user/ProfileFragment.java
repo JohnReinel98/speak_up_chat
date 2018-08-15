@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.client.Firebase;
@@ -91,8 +92,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String user = dataSnapshot.getValue(String.class);
-                //txtGender.setText(user.getGender());
-                System.out.println(user);
                 txtGender.setText(user.toString());
             }
 

@@ -117,7 +117,6 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             progressDialog.dismiss();
-                            Toast.makeText(UserRegister.this,"Registration Succesfull",Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(UserRegister.this, UserRegister2.class);
                             finish();
                             startActivity(i);

@@ -20,10 +20,6 @@ public class GroupChannelActivity extends AppCompatActivity{
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_group_channel);
         setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_left_white_24_dp);
-        }
 
         if (savedInstanceState == null) {
             // Load list of Group Channels

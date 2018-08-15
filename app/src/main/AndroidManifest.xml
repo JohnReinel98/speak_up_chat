@@ -41,10 +41,12 @@
             android:label="@string/invite_member" />
         <activity
             android:name=".groupchannel.MemberListActivity"
-            android:label="@string/member_list" />
+            android:label="@string/member_list"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".groupchannel.MemberInfoActivity"
-            android:label="@string/member_info" />
+            android:label="@string/member_info"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".groupchannel.CreateGroupChannelActivity"
             android:label="@string/create_group_channel"

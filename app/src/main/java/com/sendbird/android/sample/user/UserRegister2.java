@@ -189,7 +189,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         }
         if(filepath==null){
             //imgProfilePic.setImageURI();
-            Toast.makeText(UserRegister2.this,"Please enter profile image",Toast.LENGTH_SHORT).show();
+            Toast.makeText(UserRegister2.this,"Please enter an image",Toast.LENGTH_SHORT).show();
             return;
         }
         progressDialog.setTitle("Uploading Information...");
@@ -327,7 +327,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
             mEditor.commit();
             //load the keyUri stored data
             //String filepathUri = mPreferences.getString("keyUri", "default");
-            Toast.makeText(this, ""+ filepath,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, ""+ filepath,Toast.LENGTH_SHORT).show();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
                 imgView.setImageBitmap(bitmap);
