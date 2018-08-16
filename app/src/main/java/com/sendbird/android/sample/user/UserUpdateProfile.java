@@ -29,14 +29,17 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sendbird.android.sample.R;
+import com.sendbird.android.sample.utils.SharedPrefManager;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -44,7 +47,8 @@ import java.util.Calendar;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserUpdateProfile extends AppCompatActivity {
-    private static final int PICK_IMAGE_REQUEST = 234;
+    //private static final int PICK_IMAGE_REQUEST = 234;
+    private static final int CHOOSE_IMAGE = 101;
     private Button btnLogout, btnBack, btnChoose, btnUpload;
     private TextView useremail, btnUpdate;
     private FirebaseAuth firebaseAuth;
@@ -67,12 +71,16 @@ public class UserUpdateProfile extends AppCompatActivity {
     private String sharedUri;
     private Uri uriHolder;
     private int depTestVar;
+    private Uri uriprofileImage;
+    private String profileImageUrl, joined, server;
 
     private DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_update_profile);
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         final Calendar cal = Calendar.getInstance();
         year_x = cal.get(Calendar.YEAR);
@@ -80,6 +88,8 @@ public class UserUpdateProfile extends AppCompatActivity {
         day_x = cal.get(Calendar.DAY_OF_MONTH);
 
         showDialogOnClick();
+        getJoined();
+        getServer();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -111,7 +121,7 @@ public class UserUpdateProfile extends AppCompatActivity {
 
         String sharedUri = mPreferences.getString("keyUri","");
         uriHolder = Uri.parse(sharedUri);
-        Toast.makeText(this,sharedUri,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,sharedUri,Toast.LENGTH_SHORT).show();
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,14 +192,13 @@ public class UserUpdateProfile extends AppCompatActivity {
                     txtBirthday.requestFocus();
                     return;
                 }
-                if(filepath==null){
-                    //imgProfilePic.setImageURI();
-                    Toast.makeText(UserUpdateProfile.this,"Please enter profile image",Toast.LENGTH_SHORT).show();
-                    return;
+                if(uriprofileImage == null){
+                    updateUserProfile();
+                }else{
+                    uploadImage();
                 }
 
-
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 progressDialog.setTitle("Updating Information...");
                 progressDialog.show();
                 progressDialog.setCancelable(false);
@@ -239,7 +248,7 @@ public class UserUpdateProfile extends AppCompatActivity {
                                 double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
                                 progressDialog.setMessage(((int) progress) + "% Updated");
                             }
-                        });
+                        });*/
             }
         });
     }
@@ -465,33 +474,173 @@ public class UserUpdateProfile extends AppCompatActivity {
         }
         });
 
-        User user = new User(lname, fname, mname, bday, gender, street, city, prov, depTestVar ,"", "");
+        User user = new User(lname, fname, mname, bday, gender, street, city, prov, depTestVar ,"", "false");
         databaseReference.setValue(user);
         Toast.makeText(this,"User update successful",Toast.LENGTH_SHORT).show();
         //startActivity(new Intent(this, ProfileActivity.class));
     }
 
+    private void updateUserProfile(){
+        final String lname = txtLname.getEditText().getText().toString().trim();
+        final String fname = txtFname.getEditText().getText().toString().trim();
+        final String mname = txtMI.getEditText().getText().toString().trim();
+        final String bday = txtBirthday.getEditText().getText().toString().trim();
+        final String street = txtStreet.getEditText().getText().toString().trim();
+        final String city = txtCity.getEditText().getText().toString().trim();
+        final String prov = txtProv.getEditText().getText().toString().trim();
+
+        progressDialog.setTitle("Updating Information...");
+        progressDialog.setMessage("Saving User Data...");
+        progressDialog.show();
+        progressDialog.setCancelable(false);
+
+        final FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                .setDisplayName(lname + ", " + fname + " " + mname + ".")
+                .build();
+        currentUser.updateProfile(profileChangeRequest).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                int depTest = 0;
+                User user = new User(fname, lname, mname, bday, selectedGen, street, city, prov, depTest, server, joined);
+                databaseReference.child(currentUser.getUid()).setValue(user);
+                progressDialog.dismiss();
+                finish();
+                //startActivity(new Intent(UserUpdateProfile.this, UserProfile.class));
+                startActivity(new Intent(UserUpdateProfile.this, UserHome.class));
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressDialog.dismiss();
+                Toast.makeText(UserUpdateProfile.this,e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void uploadImage() {
+        final String lname = txtLname.getEditText().getText().toString().trim();
+        final String fname = txtFname.getEditText().getText().toString().trim();
+        final String mname = txtMI.getEditText().getText().toString().trim();
+        final String bday = txtBirthday.getEditText().getText().toString().trim();
+        final String street = txtStreet.getEditText().getText().toString().trim();
+        final String city = txtCity.getEditText().getText().toString().trim();
+        final String prov = txtProv.getEditText().getText().toString().trim();
+
+        progressDialog.setTitle("Updating Information...");
+        progressDialog.show();
+        progressDialog.setCancelable(false);
+        final StorageReference profileImage = FirebaseStorage.getInstance().getReference("profilePics/"+System.currentTimeMillis()+".jpg");
+        if(uriprofileImage != null){
+            profileImage.putFile(uriprofileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    profileImage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            final Uri downloadUrl = uri;
+                            profileImageUrl = downloadUrl.toString();
+                            FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+
+                            UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(lname+", "+fname+" "+mname+".")
+                                    .setPhotoUri(downloadUrl)
+                                    .build();
+                            currentUser.updateProfile(profileChangeRequest).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    int depTest = 0;
+                                    User user = new User(fname,lname,mname,bday,selectedGen,street,city,prov,depTest,server,joined);
+                                    FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+                                    databaseReference.child(currentUser.getUid()).setValue(user);
+                                    progressDialog.dismiss();
+                                    finish();
+                                    //startActivity(new Intent(UserUpdateProfile.this, UserProfile.class));
+                                    startActivity(new Intent(UserUpdateProfile.this, UserHome.class));
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(UserUpdateProfile.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    });
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    progressDialog.dismiss();
+                    Toast.makeText(UserUpdateProfile.this,exception.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            })
+            .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                    double progress = (100.0 * taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
+                    progressDialog.setMessage(((int) progress) + "% Updated");
+                }
+            });
+        }
+    }
 
     private void showFileChooser(){
         Intent i = new Intent();
         //you can only select image
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(i, "Select an Image"), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(i, "Select an Image"), CHOOSE_IMAGE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==PICK_IMAGE_REQUEST && resultCode==RESULT_OK && data != null && data.getData() != null){
-            filepath = data.getData();
+        if(requestCode == CHOOSE_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null){
+            uriprofileImage = data.getData();
+
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uriprofileImage);
                 imgProfilePic.setImageBitmap(bitmap);
+
             } catch (IOException e) {
                 e.printStackTrace();
-                Toast.makeText(this, ""+ e, Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private void getServer(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refServer = database.getReference(id).child("server");
+        refServer.keepSynced(true);
+        refServer.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                server = dataSnapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getJoined(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refServer = database.getReference(id).child("joined");
+        refServer.keepSynced(true);
+        refServer.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                joined = dataSnapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

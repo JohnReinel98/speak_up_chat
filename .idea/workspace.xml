@@ -10,9 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a0c3f73-1093-49d2-be74-e889f34e5f9a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/main/SplashActivity.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/splash_logo.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
@@ -21,13 +18,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserLogin.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserLogin.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserRegister2.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserRegister2.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,11 +42,80 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="fragment_profile.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+      <file leaf-file-name="ProfileFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/ProfileFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="14" column="9" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+            <state relative-caret-position="186">
+              <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserRegister2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserRegister2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1206">
+              <caret line="258" column="70" lean-forward="false" selection-start-line="258" selection-start-column="70" selection-end-line="258" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserUpdateProfile.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="552" column="91" lean-forward="false" selection-start-line="552" selection-start-column="91" selection-end-line="552" selection-end-column="91" />
+              <folding>
+                <element signature="e#5231#11683#0" expanded="true" />
+                <element signature="e#11682#11683#0" expanded="true" />
+                <element signature="e#21317#21915#0" expanded="true" />
+                <element signature="e#21914#21915#0" expanded="true" />
+                <element signature="e#21938#22205#0" expanded="true" />
+                <element signature="e#22204#22205#0" expanded="true" />
+                <element signature="e#23197#25560#0" expanded="true" />
+                <element signature="e#23423#25525#0" expanded="true" />
+                <element signature="e#24163#25065#0" expanded="true" />
+                <element signature="e#25064#25065#0" expanded="true" />
+                <element signature="e#25088#25475#0" expanded="true" />
+                <element signature="e#25474#25475#0" expanded="true" />
+                <element signature="e#25524#25525#0" expanded="true" />
+                <element signature="e#25559#25560#0" expanded="true" />
+                <element signature="e#25583#25890#0" expanded="true" />
+                <element signature="e#25889#25890#0" expanded="true" />
+                <element signature="e#25927#26311#0" expanded="true" />
+                <element signature="e#26310#26311#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GroupChannelActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChannelActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="38" column="61" lean-forward="false" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CreateGroupChannelActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/CreateGroupChannelActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2295">
+              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_user_update_profile.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_update_profile.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -63,21 +124,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfileFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/ProfileFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="activity_splash.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+            <state relative-caret-position="119">
+              <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -101,14 +152,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="background.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/background.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SplashActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SplashActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/main/SplashActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="373">
@@ -132,21 +176,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserLogin.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserLogin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="25" column="38" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="38" />
-              <folding>
-                <element signature="e#3323#3864#0" expanded="true" />
-                <element signature="e#3863#3864#0" expanded="true" />
-                <element signature="e#3887#4121#0" expanded="true" />
-                <element signature="e#4120#4121#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -158,6 +187,10 @@
       <find>&quot;keyUri&quot;</find>
       <find>image</find>
       <find>Splash</find>
+      <find>updateUser</find>
+      <find>uploadimage</find>
+      <find>databaseReference</find>
+      <find>genderCli</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2214,8 +2247,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserRegister2.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserLogin.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/main/SplashActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java" />
       </list>
     </option>
   </component>
@@ -2250,6 +2284,42 @@
             <path>
               <item name="speak_up_chat" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="speak_up_chat" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="speak_up_chat" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="sample" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="speak_up_chat" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="sample" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="groupchannel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="speak_up_chat" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="sample" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="speak_up_chat" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="speak_up_chat" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
           </expand>
           <select />
@@ -2466,7 +2536,7 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2546,6 +2616,7 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
@@ -2556,6 +2627,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2566,6 +2638,64 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="412" column="0" lean-forward="false" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
+          <folding>
+            <element signature="e#7261#8731#0" expanded="false" />
+            <element signature="e#8326#8665#0" expanded="false" />
+            <element signature="e#8664#8665#0" expanded="false" />
+            <element signature="e#8730#8731#0" expanded="false" />
+            <element signature="e#8780#8928#0" expanded="false" />
+            <element signature="e#8927#8928#0" expanded="false" />
+            <element signature="e#9791#10647#0" expanded="false" />
+            <element signature="e#10291#10569#0" expanded="false" />
+            <element signature="e#10568#10569#0" expanded="false" />
+            <element signature="e#10646#10647#0" expanded="false" />
+            <element signature="e#10696#11429#0" expanded="false" />
+            <element signature="e#11073#11351#0" expanded="false" />
+            <element signature="e#11350#11351#0" expanded="false" />
+            <element signature="e#11428#11429#0" expanded="false" />
+            <element signature="e#11599#11782#0" expanded="false" />
+            <element signature="e#11781#11782#0" expanded="false" />
+            <element signature="e#15842#16215#0" expanded="false" />
+            <element signature="e#16214#16215#0" expanded="false" />
+            <element signature="e#18753#19105#0" expanded="false" />
+            <element signature="e#19104#19105#0" expanded="false" />
+            <element signature="e#20283#20765#0" expanded="false" />
+            <element signature="e#20486#20718#0" expanded="false" />
+            <element signature="e#20717#20718#0" expanded="false" />
+            <element signature="e#20764#20765#0" expanded="false" />
+            <element signature="e#20969#21374#0" expanded="false" />
+            <element signature="e#21373#21374#0" expanded="false" />
+            <element signature="e#21569#21592#0" expanded="false" />
+            <element signature="e#21594#22414#0" expanded="false" />
+            <element signature="e#22413#22414#0" expanded="false" />
+            <element signature="e#22451#22474#0" expanded="false" />
+            <element signature="e#22476#22831#0" expanded="false" />
+            <element signature="e#22830#22831#0" expanded="false" />
+            <element signature="e#25645#25989#0" expanded="false" />
+            <element signature="e#25988#25989#0" expanded="false" />
+            <element signature="e#27497#27514#0" expanded="false" />
+            <element signature="e#27516#27932#0" expanded="false" />
+            <element signature="e#27931#27932#0" expanded="false" />
+            <element signature="e#27973#27988#0" expanded="false" />
+            <element signature="e#28459#30231#0" expanded="false" />
+            <element signature="e#28695#29575#0" expanded="false" />
+            <element signature="e#29574#29575#0" expanded="false" />
+            <element signature="e#30230#30231#0" expanded="false" />
+            <element signature="e#30543#31295#0" expanded="false" />
+            <element signature="e#31294#31295#0" expanded="false" />
+            <element signature="e#34784#35521#0" expanded="false" />
+            <element signature="e#35237#35495#0" expanded="false" />
+            <element signature="e#35494#35495#0" expanded="false" />
+            <element signature="e#35520#35521#0" expanded="false" />
+            <element signature="e#35809#36516#0" expanded="false" />
+            <element signature="e#36232#36490#0" expanded="false" />
+            <element signature="e#36489#36490#0" expanded="false" />
+            <element signature="e#36515#36516#0" expanded="false" />
+            <element signature="e#37605#37832#0" expanded="false" />
+            <element signature="e#37831#37832#0" expanded="false" />
+            <element signature="e#37874#38117#0" expanded="false" />
+            <element signature="e#38116#38117#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2573,6 +2703,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1836">
           <caret line="141" column="11" lean-forward="true" selection-start-line="141" selection-start-column="11" selection-end-line="141" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2580,6 +2711,7 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
@@ -2590,6 +2722,7 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="383">
           <caret line="99" column="46" lean-forward="false" selection-start-line="99" selection-start-column="46" selection-end-line="99" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
@@ -2600,6 +2733,7 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
@@ -2610,6 +2744,7 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
@@ -2620,6 +2755,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
           <caret line="57" column="50" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2645,6 +2781,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="23" column="46" lean-forward="false" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2663,27 +2800,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="74" column="41" lean-forward="false" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/ChatFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="109" column="29" lean-forward="false" selection-start-line="109" selection-start-column="29" selection-end-line="109" selection-end-column="29" />
-          <folding>
-            <element signature="e#2457#3110#0" expanded="false" />
-            <element signature="e#3109#3110#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/UserListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-562">
           <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2691,6 +2819,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="55" column="5" lean-forward="false" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2698,13 +2827,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="75" column="41" lean-forward="false" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChannelActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2734,6 +2857,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="135" column="24" lean-forward="false" selection-start-line="135" selection-start-column="24" selection-end-line="135" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2764,44 +2888,17 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserRegister2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="123" column="36" lean-forward="false" selection-start-line="123" selection-start-column="36" selection-end-line="123" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/ProfileFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserLogin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="25" column="38" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="38" />
           <folding>
-            <element signature="e#3323#3864#0" expanded="true" />
-            <element signature="e#3863#3864#0" expanded="true" />
-            <element signature="e#3887#4121#0" expanded="true" />
-            <element signature="e#4120#4121#0" expanded="true" />
+            <element signature="e#3323#3864#0" expanded="false" />
+            <element signature="e#3863#3864#0" expanded="false" />
+            <element signature="e#3887#4121#0" expanded="false" />
+            <element signature="e#4120#4121#0" expanded="false" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
@@ -2833,6 +2930,95 @@
             <element signature="imports" expanded="true" />
             <element signature="e#757#1331#0" expanded="true" />
             <element signature="e#1330#1331#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_update_profile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/ChatFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1750">
+          <caret line="177" column="5" lean-forward="true" selection-start-line="161" selection-start-column="4" selection-end-line="177" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChannelActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="38" column="61" lean-forward="false" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/CreateGroupChannelActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2295">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserRegister2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1206">
+          <caret line="258" column="70" lean-forward="false" selection-start-line="258" selection-start-column="70" selection-end-line="258" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/ProfileFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="552" column="91" lean-forward="false" selection-start-line="552" selection-start-column="91" selection-end-line="552" selection-end-column="91" />
+          <folding>
+            <element signature="e#5231#11683#0" expanded="true" />
+            <element signature="e#11682#11683#0" expanded="true" />
+            <element signature="e#21317#21915#0" expanded="true" />
+            <element signature="e#21914#21915#0" expanded="true" />
+            <element signature="e#21938#22205#0" expanded="true" />
+            <element signature="e#22204#22205#0" expanded="true" />
+            <element signature="e#23197#25560#0" expanded="true" />
+            <element signature="e#23423#25525#0" expanded="true" />
+            <element signature="e#24163#25065#0" expanded="true" />
+            <element signature="e#25064#25065#0" expanded="true" />
+            <element signature="e#25088#25475#0" expanded="true" />
+            <element signature="e#25474#25475#0" expanded="true" />
+            <element signature="e#25524#25525#0" expanded="true" />
+            <element signature="e#25559#25560#0" expanded="true" />
+            <element signature="e#25583#25890#0" expanded="true" />
+            <element signature="e#25889#25890#0" expanded="true" />
+            <element signature="e#25927#26311#0" expanded="true" />
+            <element signature="e#26310#26311#0" expanded="true" />
           </folding>
         </state>
       </provider>
