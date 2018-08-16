@@ -133,43 +133,36 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
             return;
         }
         if (TextUtils.isEmpty(fname)) {
-            //Toast.makeText(UpdateActivity.this,"Please enter first name",Toast.LENGTH_SHORT).show();
             txtFname.setError("Please enter last name");
             txtFname.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(mname)) {
-            //Toast.makeText(UpdateActivity.this,"Please enter middle initial",Toast.LENGTH_SHORT).show();
             txtMI.setError("Please enter middle initial");
             txtMI.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(street)) {
-            //Toast.makeText(UpdateActivity.this,"Please enter street",Toast.LENGTH_SHORT).show();
             txtStreet.setError("Please enter street address");
             txtStreet.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(city)) {
-            //Toast.makeText(UpdateActivity.this,"Please enter city",Toast.LENGTH_SHORT).show();
             txtStreet.setError("Please enter city address");
             txtCity.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(province)) {
-            //Toast.makeText(UpdateActivity.this,"Please enter province",Toast.LENGTH_SHORT).show();
             txtProv.setError("Please enter province address");
             txtProv.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(birthday)) {
-            //Toast.makeText(UpdateActivity.this,"Please enter birthdate",Toast.LENGTH_SHORT).show();
             txtBirthday.setError("Please enter birthday");
             txtBirthday.requestFocus();
             return;
         }
         if(uriprofileImage==null){
-            //imgProfilePic.setImageURI();
             Toast.makeText(UserRegister2.this,"Please enter an image",Toast.LENGTH_SHORT).show();
             return;
         }
@@ -177,67 +170,6 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         progressDialog.show();
         progressDialog.setCancelable(false);
         uploadImage();
-        /*StorageReference riversRef = storageReference.child("images/"+System.currentTimeMillis()+".jpg");
-        riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-
-            }
-        });
-
-        riversRef.putFile(uriprofileImage)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        progressDialog.dismiss();
-                        //profileImgUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-                        //uploadImage();
-                        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-
-                        UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
-                                .setDisplayName(lname+", "+fname+" "+mname+".")
-                                .setPhotoUri(Uri.parse(profileImgUrl))
-                                .build();
-                        currentUser.updateProfile(profileChangeRequest).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                int depTest = 0;
-                                User user = new User(fname,lname,mname,birthday,gender,street,city,province,depTest,server,joined);
-                                FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-                                databaseReference.child(currentUser.getUid()).setValue(user);
-                                SharedPrefManager.getInstance(getApplicationContext()).userId(fname);
-                                SharedPrefManager.getInstance(getApplicationContext()).userNickname(fname);
-                                Toast.makeText(UserRegister2.this,"Information Saved",Toast.LENGTH_SHORT).show();
-                                finish();
-                                startActivity(new Intent(UserRegister2.this, UserQuestion.class));
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                progressDialog.dismiss();
-                                Toast.makeText(UserRegister2.this,e.getMessage(),Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        progressDialog.dismiss();
-                        Toast.makeText(UserRegister2.this,exception.getMessage(),Toast.LENGTH_LONG).show();
-                    }
-                })
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        double progress = (100.0 * taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
-                        progressDialog.setMessage(((int) progress) + "% Uploaded");
-                    }
-                });*/
-
-
-
     }
 
     public void showDialogOnClick(){
@@ -285,42 +217,6 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
-
-    /*private void showFileChooser(){
-        Intent i = new Intent();
-        //you can only select image
-        i.setType("image/*");
-        i.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(i, "Select an Image"), PICK_IMAGE_REQUEST);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        //declaring database
-        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //mPreferences = getSharedPreferences("fileUri", Context.MODE_PRIVATE);
-        //to store
-        mEditor = mPreferences.edit();
-
-        if(requestCode==PICK_IMAGE_REQUEST && resultCode==RESULT_OK && data != null && data.getData() != null){
-            filepath = data.getData();
-            //saving to sharedprefs
-            mEditor.putString("keyUri", String.valueOf(filepath));
-            mEditor.commit();
-            //load the keyUri stored data
-            //String filepathUri = mPreferences.getString("keyUri", "default");
-            //Toast.makeText(this, ""+ filepath,Toast.LENGTH_SHORT).show();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
-                imgView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(this, ""+ e, Toast.LENGTH_SHORT).show();
-            }
-        }
-    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -409,7 +305,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         Intent i = new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(i,"Select Profile Image"),CHOOSE_IMAGE);
+        startActivityForResult(Intent.createChooser(i,"Select an Image"),CHOOSE_IMAGE);
     }
 
     @Override
@@ -425,8 +321,6 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         }
 
         if(v == btnChoose){
-            //img chooser
-            //showFileChooser();
             imageChooser();
         }
     }
