@@ -52,7 +52,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         });
     }
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
         //check the user if already login
@@ -61,7 +61,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
             finish();
             startActivity(new Intent(UserLogin.this, UserHome.class));
         }
-    }
+    }*/
 
     public void goRegister(View v){
         Intent i = new Intent(this, UserRegister.class);

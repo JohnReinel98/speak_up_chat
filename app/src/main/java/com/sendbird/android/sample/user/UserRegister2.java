@@ -48,30 +48,22 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UserRegister2 extends AppCompatActivity implements View.OnClickListener{
     //private static final int PICK_IMAGE_REQUEST = 234;
     private static final int CHOOSE_IMAGE = 101;
-    private Button btnLogout, btnChoose, btnUpload;
+    private Button btnLogout, btnChoose;
     private TextView useremail, btnSave;
     private FirebaseAuth firebaseAuth;
     private TextInputLayout txtusern, txtpassw, txtFname, txtLname, txtMI, txtemail, txtScrtAns, txtStreet, txtCity, txtProv, txtBirthday;
-    private Spinner spnScrtQues;
     private RadioButton rbtnMale, rbtnFemale;
     private ProgressDialog progressDialog;
     private String gender;
-    private ImageView imgView2;
     private CircleImageView imgView;
-    private Uri filepath;
     private StorageReference storageReference;
-    String profileImgUrl;
-    String isUserDetailed;
     private int year_x,month_x,day_x;
     private String[] monthStr = {"January","February","March","April","May","June","July","August","September","October","November","December"};
     private static final int DIALOG_ID = 0;
     private Uri uriprofileImage;
     private String profileImageUrl;
-
-    private SharedPreferences mPreferences;
-    private SharedPreferences.Editor mEditor;
-
     private DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -269,7 +261,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     SharedPrefManager.getInstance(getApplicationContext()).userId(fname);
                                     SharedPrefManager.getInstance(getApplicationContext()).userNickname(fname);
-                                    Toast.makeText(UserRegister2.this,"Information Saved",Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(UserRegister2.this,"Information Saved",Toast.LENGTH_SHORT).show();
                                     finish();
                                     startActivity(new Intent(UserRegister2.this, UserQuestion.class));
                                 }

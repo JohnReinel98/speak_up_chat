@@ -42,15 +42,15 @@
         <activity
             android:name=".groupchannel.MemberListActivity"
             android:label="@string/member_list"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".groupchannel.MemberInfoActivity"
             android:label="@string/member_info"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".groupchannel.CreateGroupChannelActivity"
             android:label="@string/create_group_channel"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".openchannel.ParticipantListActivity"
             android:label="@string/participant_list" />
@@ -59,8 +59,8 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".groupchannel.GroupChannelActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
 
         <service android:name=".fcm.MyFirebaseMessagingService">
             <intent-filter>
@@ -73,13 +73,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".main.ChooseActivity"></activity>
+        <activity android:name=".main.ChooseActivity" />
         <activity android:name=".user.UserLogin">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".user.UserHome" />
         <activity android:name=".user.UserQuestion" />
@@ -104,7 +99,14 @@
             android:label="Account Recovery"
             android:parentActivityName=".user.UserLogin" />
         <activity android:name=".user.UsersList" />
-        <activity android:name=".user.Test">
+        <activity android:name=".user.Test"></activity>
+        <activity android:name=".main.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
