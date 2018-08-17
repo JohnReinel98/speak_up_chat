@@ -9,8 +9,8 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/imgPic"
             android:src="@mipmap/ic_launcher_round" />
 
