@@ -99,8 +99,6 @@ public class UserUpdateProfile extends AppCompatActivity {
         btnChoose = findViewById(R.id.btnChoose);
         imgProfilePic = findViewById(R.id.imgView);
 
-
-
         txtLname = findViewById(R.id.txtLname);
         txtFname = findViewById(R.id.txtFname);
         txtMI = findViewById(R.id.txtMI);
@@ -121,7 +119,6 @@ public class UserUpdateProfile extends AppCompatActivity {
 
         String sharedUri = mPreferences.getString("keyUri","");
         uriHolder = Uri.parse(sharedUri);
-        //Toast.makeText(this,sharedUri,Toast.LENGTH_SHORT).show();
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +135,7 @@ public class UserUpdateProfile extends AppCompatActivity {
             selectedGen = "Male";
         }
 
-        //loadUserInfo();
+        loadUserInfo();
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,37 +154,31 @@ public class UserUpdateProfile extends AppCompatActivity {
                     return;
                 }
                 if (TextUtils.isEmpty(fname)) {
-                    //Toast.makeText(UpdateActivity.this,"Please enter first name",Toast.LENGTH_SHORT).show();
                     txtFname.setError("Please enter last name");
                     txtFname.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(mname)) {
-                    //Toast.makeText(UpdateActivity.this,"Please enter middle initial",Toast.LENGTH_SHORT).show();
                     txtMI.setError("Please enter middle name");
                     txtMI.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(street)) {
-                    //Toast.makeText(UpdateActivity.this,"Please enter street",Toast.LENGTH_SHORT).show();
                     txtStreet.setError("Please enter street address");
                     txtStreet.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(city)) {
-                    //Toast.makeText(UpdateActivity.this,"Please enter city",Toast.LENGTH_SHORT).show();
                     txtStreet.setError("Please enter city address");
                     txtCity.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(prov)) {
-                    //Toast.makeText(UpdateActivity.this,"Please enter province",Toast.LENGTH_SHORT).show();
                     txtProv.setError("Please enter province address");
                     txtProv.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(bday)) {
-                    //Toast.makeText(UpdateActivity.this,"Please enter birthdate",Toast.LENGTH_SHORT).show();
                     txtBirthday.setError("Please enter birthday");
                     txtBirthday.requestFocus();
                     return;
@@ -197,58 +188,6 @@ public class UserUpdateProfile extends AppCompatActivity {
                 }else{
                     uploadImage();
                 }
-
-                /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                progressDialog.setTitle("Updating Information...");
-                progressDialog.show();
-                progressDialog.setCancelable(false);
-                StorageReference riversRef = storageReference.child("images/" + System.currentTimeMillis() + ".jpg");
-
-                riversRef.putFile(filepath)
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                progressDialog.dismiss();
-                                profileImgUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-
-                                FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-                                UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
-                                        .setDisplayName(lname + ", " + fname + " " + mname + ".")
-                                        .setPhotoUri(Uri.parse(profileImgUrl))
-                                        .build();
-                                currentUser.updateProfile(profileChangeRequest).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        updateUser(lname, fname, mname, bday, selectedGen, street, city, prov);
-                                        progressDialog.dismiss();
-                                        finish();
-                                        //startActivity(new Intent(UserUpdateProfile.this, UserProfile.class));
-                                        startActivity(new Intent(UserUpdateProfile.this, UserHome.class));
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        progressDialog.dismiss();
-                                        Toast.makeText(UserUpdateProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-                                progressDialog.dismiss();
-                                Toast.makeText(UserUpdateProfile.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                                progressDialog.setMessage(((int) progress) + "% Updated");
-                            }
-                        });*/
             }
         });
     }
@@ -299,185 +238,160 @@ public class UserUpdateProfile extends AppCompatActivity {
         }
     }
 
-//    private void loadUserInfo() {
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        System.out.println(user);
-//        Glide.with(this)
-//                .load(user.getPhotoUrl().toString())
-//                .into(imgProfilePic);
-//        String name = user.getDisplayName();
-//
-//
-//        firebaseAuth = FirebaseAuth.getInstance();
-//        id = firebaseAuth.getCurrentUser().getUid();
-//
-//        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-//
-//        DatabaseReference refProf = database.getReference(id).child("profielImgUrl");
-//
-//        refProf.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-//            @Override
-//            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-//                String updateUser = dataSnapshot.getValue(String.class);
-//                profileImgUrl = updateUser;
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        DatabaseReference refFname = database.getReference(id).child("fname");
-//
-//        refFname.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-//            @Override
-//            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-//                String updateUser = dataSnapshot.getValue(String.class);
-//                txtFname.getEditText().setText(updateUser);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        DatabaseReference refLname = database.getReference(id).child("lname");
-//
-//        refLname.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-//            @Override
-//            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-//                String updateUser = dataSnapshot.getValue(String.class);
-//                txtLname.getEditText().setText(updateUser);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        DatabaseReference refMname = database.getReference(id).child("mname");
-//
-//        refMname.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-//            @Override
-//            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-//                String updateUser = dataSnapshot.getValue(String.class);
-//                txtMI.getEditText().setText(updateUser);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        DatabaseReference refBday = database.getReference(id).child("birthday");
-//
-//        refBday.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-//            @Override
-//            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-//                String updateUser = dataSnapshot.getValue(String.class);
-//                txtBirthday.getEditText().setText(updateUser);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        DatabaseReference refGender = database.getReference(id).child("gender");
-//
-//        refGender.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-//            @Override
-//            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-//                String updateUser = dataSnapshot.getValue(String.class);
-//                if(updateUser.equals("Male")){
-//                    selectedGen = "Male";
-//                    rbtnMale.setChecked(true);
-//                }else{
-//                    rbtnFemale.setChecked(true);
-//                    selectedGen = "Female";
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        DatabaseReference refStreet = database.getReference(id).child("street");
-//
-//        refStreet.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-//            @Override
-//            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-//                String updateUser = dataSnapshot.getValue(String.class);
-//                txtStreet.getEditText().setText(updateUser);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        DatabaseReference refCity = database.getReference(id).child("city");
-//
-//        refCity.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-//            @Override
-//            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-//                String updateUser = dataSnapshot.getValue(String.class);
-//                txtCity.getEditText().setText(updateUser);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        DatabaseReference refProv = database.getReference(id).child("province");
-//
-//        refProv.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-//            @Override
-//            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-//                String updateUser = dataSnapshot.getValue(String.class);
-//                txtProv.getEditText().setText(updateUser);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
+    private void loadUserInfo() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        System.out.println(user);
+        Glide.with(this)
+                .load(user.getPhotoUrl().toString())
+                .into(imgProfilePic);
+        String name = user.getDisplayName();
 
 
-
-    private void updateUser(String lname, String fname, String mname, String bday, String gender, String street, String city, String prov){
+        firebaseAuth = FirebaseAuth.getInstance();
+        id = firebaseAuth.getCurrentUser().getUid();
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference refDepTest = database.getReference(id).child("province");
-        refDepTest.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-        @Override
-        public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-            int depTest = dataSnapshot.getValue(int.class);
-            depTestVar = depTest;
-        }
 
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
+        DatabaseReference refProf = database.getReference(id).child("profielImgUrl");
 
-        }
+        refProf.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                String updateUser = dataSnapshot.getValue(String.class);
+                profileImgUrl = updateUser;
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
         });
 
-        User user = new User(lname, fname, mname, bday, gender, street, city, prov, depTestVar ,"", "false");
-        databaseReference.setValue(user);
-        Toast.makeText(this,"User update successful",Toast.LENGTH_SHORT).show();
-        //startActivity(new Intent(this, ProfileActivity.class));
+        DatabaseReference refFname = database.getReference(id).child("fname");
+
+        refFname.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                String updateUser = dataSnapshot.getValue(String.class);
+                txtFname.getEditText().setText(updateUser);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        DatabaseReference refLname = database.getReference(id).child("lname");
+
+        refLname.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                String updateUser = dataSnapshot.getValue(String.class);
+                txtLname.getEditText().setText(updateUser);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        DatabaseReference refMname = database.getReference(id).child("mname");
+
+        refMname.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                String updateUser = dataSnapshot.getValue(String.class);
+                txtMI.getEditText().setText(updateUser);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        DatabaseReference refBday = database.getReference(id).child("birthday");
+
+        refBday.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                String updateUser = dataSnapshot.getValue(String.class);
+                txtBirthday.getEditText().setText(updateUser);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        DatabaseReference refGender = database.getReference(id).child("gender");
+
+        refGender.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                String updateUser = dataSnapshot.getValue(String.class);
+                if(updateUser.equals("Male")){
+                    selectedGen = "Male";
+                    rbtnMale.setChecked(true);
+                }else{
+                    rbtnFemale.setChecked(true);
+                    selectedGen = "Female";
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        DatabaseReference refStreet = database.getReference(id).child("street");
+
+        refStreet.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                String updateUser = dataSnapshot.getValue(String.class);
+                txtStreet.getEditText().setText(updateUser);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        DatabaseReference refCity = database.getReference(id).child("city");
+
+        refCity.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                String updateUser = dataSnapshot.getValue(String.class);
+                txtCity.getEditText().setText(updateUser);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        DatabaseReference refProv = database.getReference(id).child("province");
+
+        refProv.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                String updateUser = dataSnapshot.getValue(String.class);
+                txtProv.getEditText().setText(updateUser);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void updateUserProfile(){
