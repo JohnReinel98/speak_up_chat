@@ -3,6 +3,7 @@ package com.sendbird.android.sample.groupchannel;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -38,6 +39,7 @@ import com.sendbird.android.sample.main.ChooseActivity;
 import com.sendbird.android.sample.main.ConnectionManager;
 import com.sendbird.android.sample.main.LoginActivity;
 import com.sendbird.android.sample.main.MainActivity;
+import com.sendbird.android.sample.user.UserHome;
 import com.sendbird.android.sample.user.UserLogin;
 import com.sendbird.android.sample.utils.PreferenceUtils;
 
@@ -106,7 +108,7 @@ public class GroupChannelListFragment extends Fragment {
                 SendBird.init("", getContext());
                 setServer();
                 setJoined("false");
-                startActivity(new Intent(getActivity(), UserLogin.class));
+                startActivity(new Intent(getActivity(), UserHome.class));
                 getActivity().finish();
             }
         });

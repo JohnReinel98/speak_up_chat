@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.system.ErrnoException;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -26,12 +27,6 @@ import com.sendbird.android.sample.utils.PreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * An Activity to create a new Group Channel.
- * First displays a selectable list of users,
- * then shows an option to create a Distinct channel.
- */
 
 public class CreateGroupChannelActivity extends AppCompatActivity
         implements SelectUserFragment.UsersSelectedListener, SelectDistinctFragment.DistinctSelectedListener {
@@ -125,8 +120,6 @@ public class CreateGroupChannelActivity extends AppCompatActivity
             mCurrentState = STATE_SELECT_USERS;
             mCreateButton.setVisibility(View.VISIBLE);
             mNextButton.setVisibility(View.GONE);
-//            mCreateButton.setVisibility(View.GONE);
-//            mNextButton.setVisibility(View.VISIBLE);
         } else if (state == STATE_SELECT_DISTINCT){
             mCurrentState = STATE_SELECT_DISTINCT;
             mCreateButton.setVisibility(View.VISIBLE);
@@ -144,10 +137,8 @@ public class CreateGroupChannelActivity extends AppCompatActivity
 
         if (mSelectedIds.size() > 0) {
             mCreateButton.setEnabled(true);
-//            mNextButton.setEnabled(true);
         } else {
             mCreateButton.setEnabled(false);
-//            mNextButton.setEnabled(false);
         }
     }
 
@@ -156,18 +147,6 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         mIsDistinct = distinct;
     }
 
-    /**
-     * Creates a new Group Channel.
-     *
-     * Note that if you have not included empty channels in your GroupChannelListQuery,
-     * the channel will not be shown in the user's channel list until at least one message
-     * has been sent inside.
-     *
-     * @param userIds   The users to be members of the new channel.
-     * @param distinct  Whether the channel is unique for the selected members.
-     *                  If you attempt to create another Distinct channel with the same members,
-     *                  the existing channel instance will be returned.
-     */
     private void createGroupChannel(List<String> userIds, boolean distinct) {
         GroupChannel.createChannelWithUserIds(userIds, distinct, new GroupChannel.GroupChannelCreateHandler() {
             @Override
@@ -223,25 +202,30 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference refServer = database.getReference();
         Query searchQuery = refServer.orderByChild("server").equalTo("depression");
-        //refServer.keepSynced(true);
         searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot answerSnapshot: dataSnapshot.getChildren()) {
-                    if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false")) {
+                    if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") && !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname)){
                         setJoined("true");
                         mSelectedIds.add(answerSnapshot.child("fname").getValue().toString());
                         mSelectedIds.add(userFname);
                         createGroupChannel(mSelectedIds, true);
                         break;
                     }
+                    else if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("true") && !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname)){
+                        Toast.makeText(getApplicationContext(), "No Available Users, Please Try Again Later.", Toast.LENGTH_LONG).show();
+                        finish();
+                        break;
+                    }
                 }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Toast.makeText(getApplicationContext(), databaseError.toString(), Toast.LENGTH_LONG).show();
             }
         });
+
     }
 
 

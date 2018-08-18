@@ -62,6 +62,7 @@ public class ChatFragment extends Fragment {
         getFirstname();
         getServer();
 
+
         btnDepression.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +103,6 @@ public class ChatFragment extends Fragment {
 
                 if (e != null) {
                     // Error!
-
                     // Show login failure snackbar
                     PreferenceUtils.setConnected(false);
                     return;

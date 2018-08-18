@@ -950,23 +950,26 @@ public class GroupChatFragment extends Fragment {
     private void showRatingBar(){
         SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE);
         final RatingBar ratingBar = new RatingBar(getActivity());
+        ratingBar.setNumStars(5);
         sweetAlertDialog.setTitleText("Please rate this conversation.");
         sweetAlertDialog.setCustomView(ratingBar);
+        sweetAlertDialog.setCancelable(false);
 
-        sweetAlertDialog.setConfirmText("Proceed")
+        sweetAlertDialog.setConfirmText("Rate")
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
                         sDialog.dismiss();
+                        Toast.makeText(getContext(), String.valueOf(ratingBar.getNumStars()), Toast.LENGTH_LONG).show();
 
                     }
                 })
-                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                /*.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         sweetAlertDialog.cancel();
                     }
-                })
+                })*/
                 .show();
     }
 }
