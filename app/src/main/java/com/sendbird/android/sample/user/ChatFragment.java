@@ -44,8 +44,8 @@ public class ChatFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private DatabaseReference databaseReference;
-    private static final String APP_ID_DEPRESSION = "C05228E5-306E-4E8E-9F4B-83B743B5C961";
-    private static final String APP_ID_HAPPY = "B951ECFF-5070-46EC-AEBD-7BD387483E4F";
+    private static final String APP_ID_DEPRESSION = "3A395F38-31AD-4A58-8471-AAA7A74973CC";
+    private static final String APP_ID_HAPPY = "6FFE1200-A62B-442C-BA17-BC7B1E9DC4DA";
     String userID, nickName, server;
     public ChatFragment() {
         // Required empty public constructor
@@ -70,13 +70,7 @@ public class ChatFragment extends Fragment {
                 progressDialog.show();
                 SendBird.init(APP_ID_DEPRESSION, getContext());
                 setServer();
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        connectToSendBird();
-                        //progressDialog.dismiss();
-                    }
-                }, 10000);
+                connectToSendBird();
             }
         });
 

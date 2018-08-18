@@ -120,19 +120,20 @@ public class GroupChannelListFragment extends Fragment {
             }
         });
 
+        mChannelList = new ArrayList<GroupChannel>();
         mChannelListAdapter = new GroupChannelListAdapter(getActivity());
         mChannelListAdapter.load();
 
-        if(mChannelListAdapter.getItemCount() == 0){
+        /*if(mChannelList.isEmpty()){
             mRecyclerView.setVisibility(View.GONE);
             emptyview.setVisibility(View.VISIBLE);
         }else{
             mRecyclerView.setVisibility(View.VISIBLE);
             emptyview.setVisibility(View.GONE);
-            setUpRecyclerView();
-            setUpChannelListAdapter();
-        }
+        }*/
 
+        setUpRecyclerView();
+        setUpChannelListAdapter();
         return rootView;
     }
 
