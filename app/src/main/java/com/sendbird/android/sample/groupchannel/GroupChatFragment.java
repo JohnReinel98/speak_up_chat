@@ -132,6 +132,9 @@ public class GroupChatFragment extends Fragment {
 
         mIMM = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         mFileProgressHandlerMap = new HashMap<>();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        getJoined();
 
         if (savedInstanceState != null) {
             // Get channel URL from saved state.
@@ -148,7 +151,6 @@ public class GroupChatFragment extends Fragment {
 
         // Load messages from cache.
         mChatAdapter.load(mChannelUrl);
-        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     @Nullable
@@ -209,9 +211,9 @@ public class GroupChatFragment extends Fragment {
                         mMessageEditText.setText("");
                     }
                     if(userInput.equalsIgnoreCase("-end")){
-                        Toast.makeText(getContext(),"You left the channel",Toast.LENGTH_LONG).show();
-                        showRatingBar();
-                        setJoined("false");
+                        //Toast.makeText(getContext(),"You left the channel",Toast.LENGTH_LONG).show();
+                        showRating();
+                        /*setJoined("false");
                         mChannel.leave(new GroupChannel.GroupChannelLeaveHandler() {
                             @Override
                             public void onResult(SendBirdException e) {
@@ -220,7 +222,7 @@ public class GroupChatFragment extends Fragment {
 
                                 }
                             }
-                        });
+                        });*/
                     }
                 }
             }
@@ -967,6 +969,29 @@ public class GroupChatFragment extends Fragment {
         });
     }
 
+    private void showRating() {
+        AlertDialog.Builder bob1 = new AlertDialog.Builder(getActivity());
+        bob1.setTitle("Rate Chat-mate");
+        final RatingBar ratingBar = new RatingBar(getActivity());
+        ratingBar.setNumStars(5);
+        ratingBar.setMax(5);
+        ratingBar.setMinimumWidth(50);
+        bob1.setCancelable(false);
+        bob1.setView(ratingBar);
+
+        bob1.setPositiveButton("Rate", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Toast.makeText(getContext(), String.valueOf(ratingBar.getRating()), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        AlertDialog mydialog = bob1.create();
+        mydialog.show();
+    }
+
     private void showRatingBar(){
         SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE);
         final RatingBar ratingBar = new RatingBar(getActivity());
@@ -980,7 +1005,7 @@ public class GroupChatFragment extends Fragment {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
                         sDialog.dismiss();
-                        Toast.makeText(getContext(), String.valueOf(ratingBar.getNumStars()), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), String.valueOf(ratingBar.getRating()), Toast.LENGTH_LONG).show();
 
                     }
                 })

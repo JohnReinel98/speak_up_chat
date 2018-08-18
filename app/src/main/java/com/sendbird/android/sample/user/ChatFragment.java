@@ -47,6 +47,7 @@ public class ChatFragment extends Fragment {
     private static final String APP_ID_DEPRESSION = "3A395F38-31AD-4A58-8471-AAA7A74973CC";
     private static final String APP_ID_HAPPY = "6FFE1200-A62B-442C-BA17-BC7B1E9DC4DA";
     String userID, nickName, server;
+
     public ChatFragment() {
         // Required empty public constructor
     }
@@ -59,9 +60,9 @@ public class ChatFragment extends Fragment {
         progressDialog = new ProgressDialog(getContext());
         btnDepression = rootView.findViewById(R.id.btnDepression);
         btnHappy = rootView.findViewById(R.id.btnHappy);
+
         getFirstname();
         getServer();
-
 
         btnDepression.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +71,7 @@ public class ChatFragment extends Fragment {
                 progressDialog.setCancelable(false);
                 progressDialog.show();
                 SendBird.init(APP_ID_DEPRESSION, getContext());
-                setServer();
+                setServer("depression");
                 connectToSendBird();
             }
         });
@@ -78,8 +79,11 @@ public class ChatFragment extends Fragment {
         btnHappy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Loading Server...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
                 SendBird.init(APP_ID_HAPPY, getContext());
-                //setServer();
+                setServer("cheerful");
                 connectToSendBird();
             }
         });
@@ -116,7 +120,6 @@ public class ChatFragment extends Fragment {
                 updateCurrentUserInfo(nickName);
                 updateCurrentUserPushToken();
 
-                progressDialog.dismiss();
                 // Proceed to MainActivity
                 Intent intent = new Intent(getActivity(), GroupChannelActivity.class);
                 startActivity(intent);
@@ -171,7 +174,7 @@ public class ChatFragment extends Fragment {
         return server;
     }
 
-    private void setServer(){
+    private void setServer(final String server){
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         String id = firebaseAuth.getCurrentUser().getUid();
         final DatabaseReference refServer = database.getReference(id).child("server");
@@ -179,7 +182,7 @@ public class ChatFragment extends Fragment {
         refServer.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                refServer.setValue("depression");
+                refServer.setValue(server);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

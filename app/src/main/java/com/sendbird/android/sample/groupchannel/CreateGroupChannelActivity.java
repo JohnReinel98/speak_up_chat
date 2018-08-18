@@ -210,11 +210,7 @@ public class CreateGroupChannelActivity extends AppCompatActivity
                         mSelectedIds.add(answerSnapshot.child("fname").getValue().toString());
                         mSelectedIds.add(userFname);
                         createGroupChannel(mSelectedIds, true);
-                        //break;
-                    }/*else{
-                        Toast.makeText(getApplicationContext(), "No Available Users, Please Try Again Later.", Toast.LENGTH_LONG).show();
-                        break;
-                    }*/
+                    }
                 }
             }
             @Override
