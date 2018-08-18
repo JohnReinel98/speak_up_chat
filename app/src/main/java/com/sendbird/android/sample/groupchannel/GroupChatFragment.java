@@ -105,7 +105,7 @@ public class GroupChatFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
 
     private GroupChannel mChannel;
-    private String mChannelUrl;
+    private String mChannelUrl, joined;
     private PreviousMessageListQuery mPrevMessageListQuery;
 
     private boolean mIsTyping;
@@ -202,6 +202,9 @@ public class GroupChatFragment extends Fragment {
                 } else {
                     String userInput = mMessageEditText.getText().toString();
                     if (userInput.length() > 0) {
+                        if(joined.equalsIgnoreCase("false")){
+                            setJoined("true");
+                        }
                         sendUserMessage(userInput);
                         mMessageEditText.setText("");
                     }
@@ -926,6 +929,23 @@ public class GroupChatFragment extends Fragment {
                         mChatAdapter.markAllMessagesAsRead();
                     }
                 });
+            }
+        });
+    }
+
+    private void getJoined(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refProv = database.getReference(id).child("joined");
+        refProv.keepSynced(true);
+        refProv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                joined = dataSnapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }
