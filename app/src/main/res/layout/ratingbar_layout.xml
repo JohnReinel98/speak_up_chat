@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <RatingBar
+        android:id="@+id/rtbChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:max="5"
+        android:maxHeight="50dp"
+        android:minHeight="28dp"
+        android:numStars="5"
+        android:rating="0.0"
+        android:stepSize="1.0" />
+
+</LinearLayout>

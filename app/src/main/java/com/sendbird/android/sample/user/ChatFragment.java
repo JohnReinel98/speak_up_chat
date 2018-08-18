@@ -124,6 +124,7 @@ public class ChatFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), GroupChannelActivity.class);
                 startActivity(intent);
                 getActivity().finish();
+                progressDialog.dismiss();
             }
         });
     }

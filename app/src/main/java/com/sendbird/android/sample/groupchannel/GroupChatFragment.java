@@ -73,6 +73,8 @@ import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+
 
 public class GroupChatFragment extends Fragment {
 
@@ -112,6 +114,7 @@ public class GroupChatFragment extends Fragment {
 
     private int mCurrentState = STATE_NORMAL;
     private BaseMessage mEditingMessage = null;
+    private RatingBar chatRate;
 
     /**
      * To create an instance of this fragment, a Channel URL should be required.
@@ -971,50 +974,23 @@ public class GroupChatFragment extends Fragment {
 
     private void showRating() {
         AlertDialog.Builder bob1 = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.ratingbar_layout, null);
+        chatRate = layout.findViewById(R.id.rtbChat);
         bob1.setTitle("Rate Chat-mate");
-        final RatingBar ratingBar = new RatingBar(getActivity());
-        ratingBar.setNumStars(5);
-        ratingBar.setMax(5);
-        ratingBar.setMinimumWidth(50);
         bob1.setCancelable(false);
-        bob1.setView(ratingBar);
+        bob1.setView(layout);
 
         bob1.setPositiveButton("Rate", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                Toast.makeText(getContext(), String.valueOf(ratingBar.getRating()), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), String.valueOf(chatRate.getRating()), Toast.LENGTH_LONG).show();
             }
         });
 
         AlertDialog mydialog = bob1.create();
         mydialog.show();
-    }
-
-    private void showRatingBar(){
-        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE);
-        final RatingBar ratingBar = new RatingBar(getActivity());
-        ratingBar.setNumStars(5);
-        sweetAlertDialog.setTitleText("Please rate this conversation.");
-        sweetAlertDialog.setCustomView(ratingBar);
-        sweetAlertDialog.setCancelable(false);
-
-        sweetAlertDialog.setConfirmText("Rate")
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        sDialog.dismiss();
-                        Toast.makeText(getContext(), String.valueOf(ratingBar.getRating()), Toast.LENGTH_LONG).show();
-
-                    }
-                })
-                /*.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                        sweetAlertDialog.cancel();
-                    }
-                })*/
-                .show();
     }
 }
