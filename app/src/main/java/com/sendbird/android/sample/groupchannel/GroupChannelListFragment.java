@@ -67,6 +67,7 @@ public class GroupChannelListFragment extends Fragment {
     private GroupChannelListQuery mChannelListQuery;
     private SwipeRefreshLayout mSwipeRefresh;
     TextView emptyview;
+    private String server,userFname;
 
     public static GroupChannelListFragment newInstance() {
         GroupChannelListFragment fragment = new GroupChannelListFragment();
@@ -80,6 +81,8 @@ public class GroupChannelListFragment extends Fragment {
         Log.d("LIFECYCLE", "GroupChannelListFragment onCreateView()");
 
         View rootView = inflater.inflate(R.layout.fragment_group_channel_list, container, false);
+        firebaseAuth = FirebaseAuth.getInstance();
+        getFirstname();
 
         setRetainInstance(true);
 
@@ -92,7 +95,7 @@ public class GroupChannelListFragment extends Fragment {
         mSwipeRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_layout_group_channel_list);
         emptyview = (TextView) rootView.findViewById(R.id.empty_view);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -117,8 +120,9 @@ public class GroupChannelListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //serverJoiner();
-                Intent intent = new Intent(getContext(), CreateGroupChannelActivity.class);
-                startActivityForResult(intent, INTENT_REQUEST_NEW_GROUP_CHANNEL);
+                /*Intent intent = new Intent(getContext(), CreateGroupChannelActivity.class);
+                startActivityForResult(intent, INTENT_REQUEST_NEW_GROUP_CHANNEL);*/
+                serverChecker();
             }
         });
 
@@ -139,6 +143,43 @@ public class GroupChannelListFragment extends Fragment {
         return rootView;
     }
 
+    private void getFirstname(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refProv = database.getReference(id).child("fname");
+        refProv.keepSynced(true);
+        refProv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userFname = dataSnapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void serverChecker(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference refServer = database.getReference();
+        Query searchQuery = refServer.orderByChild("server").equalTo("depression");
+        searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot answerSnapshot: dataSnapshot.getChildren()) {
+                    if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") && !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname)){
+                        Intent intent = new Intent(getContext(), CreateGroupChannelActivity.class);
+                        startActivityForResult(intent, INTENT_REQUEST_NEW_GROUP_CHANNEL);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+    }
 
     @Override
     public void onResume() {

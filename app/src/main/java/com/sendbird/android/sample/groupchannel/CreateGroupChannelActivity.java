@@ -86,7 +86,6 @@ public class CreateGroupChannelActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 if (mCurrentState == STATE_SELECT_USERS) {
-//                if (mCurrentState == STATE_SELECT_DISTINCT) {
                     mIsDistinct = PreferenceUtils.getGroupChannelDistinct();
                     createGroupChannel(mSelectedIds, mIsDistinct);
                 }
@@ -211,13 +210,11 @@ public class CreateGroupChannelActivity extends AppCompatActivity
                         mSelectedIds.add(answerSnapshot.child("fname").getValue().toString());
                         mSelectedIds.add(userFname);
                         createGroupChannel(mSelectedIds, true);
-                        break;
-                    }
-                    else if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("true") && !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname)){
+                        //break;
+                    }/*else{
                         Toast.makeText(getApplicationContext(), "No Available Users, Please Try Again Later.", Toast.LENGTH_LONG).show();
-                        finish();
                         break;
-                    }
+                    }*/
                 }
             }
             @Override
