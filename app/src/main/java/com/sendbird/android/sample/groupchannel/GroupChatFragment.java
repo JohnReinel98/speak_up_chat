@@ -116,6 +116,7 @@ public class GroupChatFragment extends Fragment {
     private BaseMessage mEditingMessage = null;
     private RatingBar chatRate;
     private float rating_total;
+    private int rooms_total;
 
     /**
      * To create an instance of this fragment, a Channel URL should be required.
@@ -139,6 +140,7 @@ public class GroupChatFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
 
         getJoined();
+        getRooms();
         getRating();
 
         if (savedInstanceState != null) {
@@ -216,7 +218,8 @@ public class GroupChatFragment extends Fragment {
                         mMessageEditText.setText("");
                     }
                     if(userInput.equalsIgnoreCase("-end")){
-                        //Toast.makeText(getContext(),"You left the channel",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),"You left the channel",Toast.LENGTH_LONG).show();
+                        setRooms(1);
                         showRating();
                         /*setJoined("false");
                         mChannel.leave(new GroupChannel.GroupChannelLeaveHandler() {
@@ -966,6 +969,41 @@ public class GroupChatFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 refServer.setValue(toggle);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getRooms(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refProv = database.getReference(id).child("rooms_total");
+        refProv.keepSynced(true);
+        refProv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                rooms_total = Integer.parseInt(dataSnapshot.getValue(String.class));
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void setRooms(final int rooms){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        final DatabaseReference refRoom = database.getReference(id).child("rooms_total");
+        refRoom.keepSynced(true);
+        final int rooms_final = rooms + rooms_total;
+        refRoom.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                refRoom.setValue(String.valueOf(rooms_final));
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

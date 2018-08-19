@@ -11,7 +11,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a0c3f73-1093-49d2-be74-e889f34e5f9a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/User.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/User.java" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChatFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChatFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,7 +50,7 @@
       <file leaf-file-name="ChatFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/ChatFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
+            <state relative-caret-position="758">
               <caret line="192" column="5" lean-forward="false" selection-start-line="177" selection-start-column="4" selection-end-line="192" selection-end-column="5" />
               <folding>
                 <element signature="e#6522#6523#0" expanded="true" />
@@ -53,70 +63,81 @@
       <file leaf-file-name="GroupChatFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChatFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="237" column="41" lean-forward="true" selection-start-line="237" selection-start-column="41" selection-end-line="237" selection-end-column="41" />
+            <state relative-caret-position="277">
+              <caret line="1029" column="5" lean-forward="false" selection-start-line="1014" selection-start-column="4" selection-end-line="1029" selection-end-column="5" />
               <folding>
-                <element signature="e#7440#9048#0" expanded="true" />
-                <element signature="e#9047#9048#0" expanded="true" />
-                <element signature="e#9244#9245#0" expanded="true" />
-                <element signature="e#10108#10964#0" expanded="true" />
-                <element signature="e#10608#10886#0" expanded="true" />
-                <element signature="e#10885#10886#0" expanded="true" />
-                <element signature="e#10963#10964#0" expanded="true" />
-                <element signature="e#11013#11746#0" expanded="true" />
-                <element signature="e#11390#11668#0" expanded="true" />
-                <element signature="e#11667#11668#0" expanded="true" />
-                <element signature="e#11745#11746#0" expanded="true" />
-                <element signature="e#11916#12099#0" expanded="true" />
-                <element signature="e#12098#12099#0" expanded="true" />
-                <element signature="e#16159#16532#0" expanded="true" />
-                <element signature="e#16531#16532#0" expanded="true" />
-                <element signature="e#19070#19422#0" expanded="true" />
-                <element signature="e#19421#19422#0" expanded="true" />
-                <element signature="e#20600#21082#0" expanded="true" />
-                <element signature="e#20803#21035#0" expanded="true" />
-                <element signature="e#21034#21035#0" expanded="true" />
-                <element signature="e#21081#21082#0" expanded="true" />
-                <element signature="e#21286#21691#0" expanded="true" />
-                <element signature="e#21690#21691#0" expanded="true" />
-                <element signature="e#21886#21909#0" expanded="true" />
-                <element signature="e#21911#22731#0" expanded="true" />
-                <element signature="e#22730#22731#0" expanded="true" />
-                <element signature="e#22768#22791#0" expanded="true" />
-                <element signature="e#22793#23148#0" expanded="true" />
-                <element signature="e#23147#23148#0" expanded="true" />
-                <element signature="e#25962#26306#0" expanded="true" />
-                <element signature="e#26305#26306#0" expanded="true" />
-                <element signature="e#27814#27831#0" expanded="true" />
-                <element signature="e#27833#28249#0" expanded="true" />
-                <element signature="e#28248#28249#0" expanded="true" />
-                <element signature="e#28290#28305#0" expanded="true" />
-                <element signature="e#28776#30548#0" expanded="true" />
-                <element signature="e#29012#29892#0" expanded="true" />
-                <element signature="e#29891#29892#0" expanded="true" />
-                <element signature="e#30547#30548#0" expanded="true" />
-                <element signature="e#30860#31612#0" expanded="true" />
-                <element signature="e#31611#31612#0" expanded="true" />
-                <element signature="e#35101#35838#0" expanded="true" />
-                <element signature="e#35554#35812#0" expanded="true" />
-                <element signature="e#35811#35812#0" expanded="true" />
-                <element signature="e#35837#35838#0" expanded="true" />
-                <element signature="e#36126#36833#0" expanded="true" />
-                <element signature="e#36549#36807#0" expanded="true" />
-                <element signature="e#36806#36807#0" expanded="true" />
-                <element signature="e#36832#36833#0" expanded="true" />
-                <element signature="e#40006#40244#0" expanded="true" />
-                <element signature="e#40243#40244#0" expanded="true" />
+                <element signature="e#7489#9132#0" expanded="true" />
+                <element signature="e#9131#9132#0" expanded="true" />
+                <element signature="e#9181#9329#0" expanded="true" />
+                <element signature="e#9328#9329#0" expanded="true" />
+                <element signature="e#10192#11048#0" expanded="true" />
+                <element signature="e#10692#10970#0" expanded="true" />
+                <element signature="e#10969#10970#0" expanded="true" />
+                <element signature="e#11047#11048#0" expanded="true" />
+                <element signature="e#11097#11830#0" expanded="true" />
+                <element signature="e#11474#11752#0" expanded="true" />
+                <element signature="e#11751#11752#0" expanded="true" />
+                <element signature="e#11829#11830#0" expanded="true" />
+                <element signature="e#12000#12183#0" expanded="true" />
+                <element signature="e#12182#12183#0" expanded="true" />
+                <element signature="e#16243#16616#0" expanded="true" />
+                <element signature="e#16615#16616#0" expanded="true" />
+                <element signature="e#19154#19506#0" expanded="true" />
+                <element signature="e#19505#19506#0" expanded="true" />
+                <element signature="e#20684#21166#0" expanded="true" />
+                <element signature="e#20887#21119#0" expanded="true" />
+                <element signature="e#21118#21119#0" expanded="true" />
+                <element signature="e#21165#21166#0" expanded="true" />
+                <element signature="e#21370#21775#0" expanded="true" />
+                <element signature="e#21774#21775#0" expanded="true" />
+                <element signature="e#21970#21993#0" expanded="true" />
+                <element signature="e#21995#22815#0" expanded="true" />
+                <element signature="e#22814#22815#0" expanded="true" />
+                <element signature="e#22852#22875#0" expanded="true" />
+                <element signature="e#22877#23232#0" expanded="true" />
+                <element signature="e#23231#23232#0" expanded="true" />
+                <element signature="e#26046#26390#0" expanded="true" />
+                <element signature="e#26389#26390#0" expanded="true" />
+                <element signature="e#27898#27915#0" expanded="true" />
+                <element signature="e#27917#28333#0" expanded="true" />
+                <element signature="e#28332#28333#0" expanded="true" />
+                <element signature="e#28374#28389#0" expanded="true" />
+                <element signature="e#28860#30632#0" expanded="true" />
+                <element signature="e#29096#29976#0" expanded="true" />
+                <element signature="e#29975#29976#0" expanded="true" />
+                <element signature="e#30631#30632#0" expanded="true" />
+                <element signature="e#30944#31696#0" expanded="true" />
+                <element signature="e#31695#31696#0" expanded="true" />
+                <element signature="e#35185#35922#0" expanded="true" />
+                <element signature="e#35638#35896#0" expanded="true" />
+                <element signature="e#35895#35896#0" expanded="true" />
+                <element signature="e#35921#35922#0" expanded="true" />
+                <element signature="e#36210#36917#0" expanded="true" />
+                <element signature="e#36633#36891#0" expanded="true" />
+                <element signature="e#36890#36891#0" expanded="true" />
+                <element signature="e#36916#36917#0" expanded="true" />
+                <element signature="e#41463#41701#0" expanded="true" />
+                <element signature="e#41700#41701#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserRegister2.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserUpdateProfile.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="422" column="77" lean-forward="true" selection-start-line="422" selection-start-column="77" selection-end-line="422" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserRegister2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserRegister2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="258" column="133" lean-forward="true" selection-start-line="258" selection-start-column="133" selection-end-line="258" selection-end-column="133" />
+            <state relative-caret-position="466">
+              <caret line="259" column="93" lean-forward="false" selection-start-line="259" selection-start-column="93" selection-end-line="259" selection-end-column="93" />
               <folding />
             </state>
           </provider>
@@ -148,7 +169,7 @@
       <file leaf-file-name="CreateGroupChannelActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/CreateGroupChannelActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3315">
+            <state relative-caret-position="2230">
               <caret line="225" column="0" lean-forward="false" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
               <folding />
             </state>
@@ -158,8 +179,8 @@
       <file leaf-file-name="GroupChannelListFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChannelListFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1666">
-              <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="514" column="0" lean-forward="false" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -197,6 +218,8 @@
       <find>showrating</find>
       <find>dismiss</find>
       <find>showratingbar</find>
+      <find>-end</find>
+      <find>getRooms</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2245,30 +2268,31 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_depression.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_group_channel_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/ProfileFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserRegister2.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserLogin.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/main/SplashActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChannelActivity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_chat.xml" />
         <option value="$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fbutton-1.0.5.aar/002cb37b042dcfc1e6d375c3ef394ed7/res/values/values.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChannelListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/CreateGroupChannelActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ratingbar_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/ChatFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChatFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/User.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserRegister2.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChannelListFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChatFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="676" />
-    <option name="width" value="697" />
-    <option name="height" value="745" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -2310,7 +2334,7 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="sample" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="groupchannel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="speak_up_chat" type="1abcf292:AndroidViewProjectNode" />
@@ -2587,7 +2611,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="676" y="0" width="697" height="745" extended-state="0" />
+    <frame x="-8" y="-8" width="1386" height="788" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2600,13 +2624,13 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48122868" sideWeight="0.49394855" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48122868" sideWeight="0.49394855" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277311" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.64992154" sideWeight="0.493578" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20504202" sideWeight="0.4924357" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20349762" sideWeight="0.4924357" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2832,14 +2856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4743">
-          <caret line="327" column="11" lean-forward="false" selection-start-line="327" selection-start-column="11" selection-end-line="327" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/navigation_menu.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3011,22 +3027,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChannelListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/CreateGroupChannelActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3315">
-          <caret line="225" column="0" lean-forward="false" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ratingbar_layout.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3035,77 +3035,6 @@
         <state relative-caret-position="153">
           <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/ChatFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="192" column="5" lean-forward="false" selection-start-line="177" selection-start-column="4" selection-end-line="192" selection-end-column="5" />
-          <folding>
-            <element signature="e#6522#6523#0" expanded="true" />
-            <element signature="e#6580#6581#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChatFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="237" column="41" lean-forward="true" selection-start-line="237" selection-start-column="41" selection-end-line="237" selection-end-column="41" />
-          <folding>
-            <element signature="e#7440#9048#0" expanded="true" />
-            <element signature="e#9047#9048#0" expanded="true" />
-            <element signature="e#9244#9245#0" expanded="true" />
-            <element signature="e#10108#10964#0" expanded="true" />
-            <element signature="e#10608#10886#0" expanded="true" />
-            <element signature="e#10885#10886#0" expanded="true" />
-            <element signature="e#10963#10964#0" expanded="true" />
-            <element signature="e#11013#11746#0" expanded="true" />
-            <element signature="e#11390#11668#0" expanded="true" />
-            <element signature="e#11667#11668#0" expanded="true" />
-            <element signature="e#11745#11746#0" expanded="true" />
-            <element signature="e#11916#12099#0" expanded="true" />
-            <element signature="e#12098#12099#0" expanded="true" />
-            <element signature="e#16159#16532#0" expanded="true" />
-            <element signature="e#16531#16532#0" expanded="true" />
-            <element signature="e#19070#19422#0" expanded="true" />
-            <element signature="e#19421#19422#0" expanded="true" />
-            <element signature="e#20600#21082#0" expanded="true" />
-            <element signature="e#20803#21035#0" expanded="true" />
-            <element signature="e#21034#21035#0" expanded="true" />
-            <element signature="e#21081#21082#0" expanded="true" />
-            <element signature="e#21286#21691#0" expanded="true" />
-            <element signature="e#21690#21691#0" expanded="true" />
-            <element signature="e#21886#21909#0" expanded="true" />
-            <element signature="e#21911#22731#0" expanded="true" />
-            <element signature="e#22730#22731#0" expanded="true" />
-            <element signature="e#22768#22791#0" expanded="true" />
-            <element signature="e#22793#23148#0" expanded="true" />
-            <element signature="e#23147#23148#0" expanded="true" />
-            <element signature="e#25962#26306#0" expanded="true" />
-            <element signature="e#26305#26306#0" expanded="true" />
-            <element signature="e#27814#27831#0" expanded="true" />
-            <element signature="e#27833#28249#0" expanded="true" />
-            <element signature="e#28248#28249#0" expanded="true" />
-            <element signature="e#28290#28305#0" expanded="true" />
-            <element signature="e#28776#30548#0" expanded="true" />
-            <element signature="e#29012#29892#0" expanded="true" />
-            <element signature="e#29891#29892#0" expanded="true" />
-            <element signature="e#30547#30548#0" expanded="true" />
-            <element signature="e#30860#31612#0" expanded="true" />
-            <element signature="e#31611#31612#0" expanded="true" />
-            <element signature="e#35101#35838#0" expanded="true" />
-            <element signature="e#35554#35812#0" expanded="true" />
-            <element signature="e#35811#35812#0" expanded="true" />
-            <element signature="e#35837#35838#0" expanded="true" />
-            <element signature="e#36126#36833#0" expanded="true" />
-            <element signature="e#36549#36807#0" expanded="true" />
-            <element signature="e#36806#36807#0" expanded="true" />
-            <element signature="e#36832#36833#0" expanded="true" />
-            <element signature="e#40006#40244#0" expanded="true" />
-            <element signature="e#40243#40244#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3119,8 +3048,104 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserRegister2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="258" column="133" lean-forward="true" selection-start-line="258" selection-start-column="133" selection-end-line="258" selection-end-column="133" />
+        <state relative-caret-position="466">
+          <caret line="259" column="93" lean-forward="false" selection-start-line="259" selection-start-column="93" selection-end-line="259" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChannelListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="514" column="0" lean-forward="false" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/CreateGroupChannelActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2230">
+          <caret line="225" column="0" lean-forward="false" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/ChatFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="758">
+          <caret line="192" column="5" lean-forward="false" selection-start-line="177" selection-start-column="4" selection-end-line="192" selection-end-column="5" />
+          <folding>
+            <element signature="e#6522#6523#0" expanded="true" />
+            <element signature="e#6580#6581#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/groupchannel/GroupChatFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="1029" column="5" lean-forward="false" selection-start-line="1014" selection-start-column="4" selection-end-line="1029" selection-end-column="5" />
+          <folding>
+            <element signature="e#7489#9132#0" expanded="true" />
+            <element signature="e#9131#9132#0" expanded="true" />
+            <element signature="e#9181#9329#0" expanded="true" />
+            <element signature="e#9328#9329#0" expanded="true" />
+            <element signature="e#10192#11048#0" expanded="true" />
+            <element signature="e#10692#10970#0" expanded="true" />
+            <element signature="e#10969#10970#0" expanded="true" />
+            <element signature="e#11047#11048#0" expanded="true" />
+            <element signature="e#11097#11830#0" expanded="true" />
+            <element signature="e#11474#11752#0" expanded="true" />
+            <element signature="e#11751#11752#0" expanded="true" />
+            <element signature="e#11829#11830#0" expanded="true" />
+            <element signature="e#12000#12183#0" expanded="true" />
+            <element signature="e#12182#12183#0" expanded="true" />
+            <element signature="e#16243#16616#0" expanded="true" />
+            <element signature="e#16615#16616#0" expanded="true" />
+            <element signature="e#19154#19506#0" expanded="true" />
+            <element signature="e#19505#19506#0" expanded="true" />
+            <element signature="e#20684#21166#0" expanded="true" />
+            <element signature="e#20887#21119#0" expanded="true" />
+            <element signature="e#21118#21119#0" expanded="true" />
+            <element signature="e#21165#21166#0" expanded="true" />
+            <element signature="e#21370#21775#0" expanded="true" />
+            <element signature="e#21774#21775#0" expanded="true" />
+            <element signature="e#21970#21993#0" expanded="true" />
+            <element signature="e#21995#22815#0" expanded="true" />
+            <element signature="e#22814#22815#0" expanded="true" />
+            <element signature="e#22852#22875#0" expanded="true" />
+            <element signature="e#22877#23232#0" expanded="true" />
+            <element signature="e#23231#23232#0" expanded="true" />
+            <element signature="e#26046#26390#0" expanded="true" />
+            <element signature="e#26389#26390#0" expanded="true" />
+            <element signature="e#27898#27915#0" expanded="true" />
+            <element signature="e#27917#28333#0" expanded="true" />
+            <element signature="e#28332#28333#0" expanded="true" />
+            <element signature="e#28374#28389#0" expanded="true" />
+            <element signature="e#28860#30632#0" expanded="true" />
+            <element signature="e#29096#29976#0" expanded="true" />
+            <element signature="e#29975#29976#0" expanded="true" />
+            <element signature="e#30631#30632#0" expanded="true" />
+            <element signature="e#30944#31696#0" expanded="true" />
+            <element signature="e#31695#31696#0" expanded="true" />
+            <element signature="e#35185#35922#0" expanded="true" />
+            <element signature="e#35638#35896#0" expanded="true" />
+            <element signature="e#35895#35896#0" expanded="true" />
+            <element signature="e#35921#35922#0" expanded="true" />
+            <element signature="e#36210#36917#0" expanded="true" />
+            <element signature="e#36633#36891#0" expanded="true" />
+            <element signature="e#36890#36891#0" expanded="true" />
+            <element signature="e#36916#36917#0" expanded="true" />
+            <element signature="e#41463#41701#0" expanded="true" />
+            <element signature="e#41700#41701#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sendbird/android/sample/user/UserUpdateProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="422" column="77" lean-forward="true" selection-start-line="422" selection-start-column="77" selection-end-line="422" selection-end-column="77" />
           <folding />
         </state>
       </provider>

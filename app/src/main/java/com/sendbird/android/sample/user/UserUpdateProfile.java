@@ -70,9 +70,10 @@ public class UserUpdateProfile extends AppCompatActivity {
     private static final int DIALOG_ID = 0;
     private String sharedUri;
     private Uri uriHolder;
-    private int depTestVar;
+    private int depTestVar, rooms_total;
     private Uri uriprofileImage;
     private String profileImageUrl, joined, server;
+    private float rating_total;
 
     private DatabaseReference databaseReference;
     @Override
@@ -402,6 +403,8 @@ public class UserUpdateProfile extends AppCompatActivity {
         final String street = txtStreet.getEditText().getText().toString().trim();
         final String city = txtCity.getEditText().getText().toString().trim();
         final String prov = txtProv.getEditText().getText().toString().trim();
+        final String rooms = String.valueOf(rooms_total);
+        final String rating = String.valueOf(rating_total);
 
         progressDialog.setTitle("Updating Information...");
         progressDialog.setMessage("Saving User Data...");
@@ -416,7 +419,7 @@ public class UserUpdateProfile extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 int depTest = 0;
-                User user = new User(fname, lname, mname, bday, selectedGen, street, city, prov, depTest, server, joined);
+                User user = new User(fname, lname, mname, bday, selectedGen, street, city, prov, depTest, server, joined, rating, rooms);
                 databaseReference.child(currentUser.getUid()).setValue(user);
                 progressDialog.dismiss();
                 finish();
@@ -440,6 +443,8 @@ public class UserUpdateProfile extends AppCompatActivity {
         final String street = txtStreet.getEditText().getText().toString().trim();
         final String city = txtCity.getEditText().getText().toString().trim();
         final String prov = txtProv.getEditText().getText().toString().trim();
+        final String rooms = String.valueOf(rooms_total);
+        final String rating = String.valueOf(rating_total);
 
         progressDialog.setTitle("Updating Information...");
         progressDialog.show();
@@ -464,7 +469,7 @@ public class UserUpdateProfile extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
-                                    User user = new User(fname,lname,mname,bday,selectedGen,street,city,prov,depTest,server,joined);
+                                    User user = new User(fname,lname,mname,bday,selectedGen,street,city,prov,depTest,server,joined,rating,rooms);
                                     FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     progressDialog.dismiss();
@@ -533,6 +538,40 @@ public class UserUpdateProfile extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 server = dataSnapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getRooms(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refProv = database.getReference(id).child("rooms_total");
+        refProv.keepSynced(true);
+        refProv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                rooms_total = Integer.parseInt(dataSnapshot.getValue(String.class));
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getRating(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refProv = database.getReference(id).child("rating_total");
+        refProv.keepSynced(true);
+        refProv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                rating_total = Float.parseFloat(dataSnapshot.getValue(String.class));
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
