@@ -70,7 +70,7 @@ public class UserUpdateProfile extends AppCompatActivity {
     private static final int DIALOG_ID = 0;
     private String sharedUri;
     private Uri uriHolder;
-    private int depTestVar, rooms_total;
+    private int depTestVar, rooms_total, reports;
     private Uri uriprofileImage;
     private String profileImageUrl, joined, server;
     private float rating_total;
@@ -90,7 +90,10 @@ public class UserUpdateProfile extends AppCompatActivity {
 
         showDialogOnClick();
         getJoined();
+        getReports();
         getServer();
+        getRating();
+        getRooms();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -405,6 +408,7 @@ public class UserUpdateProfile extends AppCompatActivity {
         final String prov = txtProv.getEditText().getText().toString().trim();
         final String rooms = String.valueOf(rooms_total);
         final String rating = String.valueOf(rating_total);
+        final String no_reports = String.valueOf(reports);
 
         progressDialog.setTitle("Updating Information...");
         progressDialog.setMessage("Saving User Data...");
@@ -419,7 +423,7 @@ public class UserUpdateProfile extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 int depTest = 0;
-                User user = new User(fname, lname, mname, bday, selectedGen, street, city, prov, depTest, server, joined, rating, rooms);
+                User user = new User(fname, lname, mname, bday, selectedGen, street, city, prov, depTest, server, joined, rating, rooms, no_reports);
                 databaseReference.child(currentUser.getUid()).setValue(user);
                 progressDialog.dismiss();
                 finish();
@@ -445,6 +449,7 @@ public class UserUpdateProfile extends AppCompatActivity {
         final String prov = txtProv.getEditText().getText().toString().trim();
         final String rooms = String.valueOf(rooms_total);
         final String rating = String.valueOf(rating_total);
+        final String no_reports = String.valueOf(reports);
 
         progressDialog.setTitle("Updating Information...");
         progressDialog.show();
@@ -469,7 +474,7 @@ public class UserUpdateProfile extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
-                                    User user = new User(fname,lname,mname,bday,selectedGen,street,city,prov,depTest,server,joined,rating,rooms);
+                                    User user = new User(fname,lname,mname,bday,selectedGen,street,city,prov,depTest,server,joined,rating,rooms,no_reports);
                                     FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     progressDialog.dismiss();
@@ -538,6 +543,23 @@ public class UserUpdateProfile extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 server = dataSnapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getReports(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refProv = database.getReference(id).child("reports");
+        refProv.keepSynced(true);
+        refProv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                reports = Integer.parseInt(dataSnapshot.getValue(String.class));
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
