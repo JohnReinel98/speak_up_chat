@@ -115,6 +115,7 @@ public class GroupChatFragment extends Fragment {
     private int mCurrentState = STATE_NORMAL;
     private BaseMessage mEditingMessage = null;
     private RatingBar chatRate;
+    private float rating_total;
 
     /**
      * To create an instance of this fragment, a Channel URL should be required.
@@ -138,6 +139,7 @@ public class GroupChatFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
 
         getJoined();
+        getRating();
 
         if (savedInstanceState != null) {
             // Get channel URL from saved state.
@@ -972,6 +974,41 @@ public class GroupChatFragment extends Fragment {
         });
     }
 
+    private void getRating(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refProv = database.getReference(id).child("rating_total");
+        refProv.keepSynced(true);
+        refProv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                rating_total = Float.parseFloat(dataSnapshot.getValue(String.class));
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void setRating(final float rating){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        final DatabaseReference refRating = database.getReference(id).child("rating_total");
+        refRating.keepSynced(true);
+        final Float rating_final = rating + rating_total;
+        refRating.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                refRating.setValue(String.valueOf(rating_final));
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     private void showRating() {
         AlertDialog.Builder bob1 = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -986,7 +1023,7 @@ public class GroupChatFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                Toast.makeText(getActivity(), String.valueOf(chatRate.getRating()), Toast.LENGTH_LONG).show();
+                setRating(chatRate.getRating());
             }
         });
 
