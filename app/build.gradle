@@ -65,6 +65,11 @@ dependencies {
     implementation 'com.dinuscxj:circleprogressbar:1.1.1'
     implementation 'com.github.stfalcon:multiimageview:0.1'
     compile 'info.hoang8f:fbutton:1.0.5'
+    compile 'com.wdullaer:materialdatetimepicker:1.2.1'
+    compile 'com.getbase:floatingactionbutton:1.9.0'
+    compile 'com.bignerdranch.android:recyclerview-multiselect:+'
+    compile 'com.wrapp.floatlabelededittext:library:0.0.6'
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
     implementation 'com.android.support:multidex:1.0.3'
 }

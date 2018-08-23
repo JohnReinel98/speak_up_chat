@@ -234,7 +234,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         final String city = txtCity.getEditText().getText().toString().trim();
         final String province = txtProv.getEditText().getText().toString().trim();
         final String birthday = txtBirthday.getEditText().getText().toString().trim();
-        final String server = "", joined = "false", rating_total = "0.0", rooms_total = "0";
+        final String server = "", joined = "false", rating_total = "0.0", rooms_total = "0", reports = "0";
 
         final StorageReference profileImage = FirebaseStorage.getInstance().getReference("profilePics/"+System.currentTimeMillis()+".jpg");
         if(uriprofileImage != null){
@@ -256,7 +256,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
-                                    User user = new User(fname,lname,mname,birthday,gender,street,city,province,depTest,server,joined,rating_total,rooms_total);
+                                    User user = new User(fname,lname,mname,birthday,gender,street,city,province,depTest,server,joined,rating_total,rooms_total,reports);
                                     FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     SharedPrefManager.getInstance(getApplicationContext()).userId(fname);

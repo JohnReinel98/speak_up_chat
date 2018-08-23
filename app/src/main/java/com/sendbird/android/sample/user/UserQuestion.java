@@ -1,6 +1,8 @@
 package com.sendbird.android.sample.user;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -141,8 +143,6 @@ public class UserQuestion extends AppCompatActivity {
         rbtnThird10 = findViewById(R.id.rbtnThird10);
         rbtnFourth10 = findViewById(R.id.rbtnFourh10);
 
-
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,6 +150,7 @@ public class UserQuestion extends AppCompatActivity {
                 if (current<layouts.length){
                     viewPager.setCurrentItem(current);
                 }else{
+
                     startActivity(new Intent(UserQuestion.this, UserHome.class));
                     finish();
                 }

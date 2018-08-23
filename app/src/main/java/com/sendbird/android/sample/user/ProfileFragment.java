@@ -29,15 +29,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
-    private TextView txtFullname, txtGender, txtStreet, txtCity, txtProvince, txtBirthday, btnUpdate;
-    private DatabaseReference firebaseDatabaseGender;
+    private TextView txtFullname, txtGender, txtStreet, txtCity, txtProvince, txtBirthday, btnUpdate, txtRating, txtRooms;
     private CircleImageView imgProfilePic;
-    private Firebase mRef;
-    public String address, street, city, province;
     private ProgressDialog progressDialog;
-    private int showed = 0;
+    private int showed = 0, rooms_total;
+    private float rating_total;
     String id;
-    private BottomNavigationView mMainNav;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -65,6 +62,8 @@ public class ProfileFragment extends Fragment {
         id = firebaseAuth.getCurrentUser().getUid();
 
         loadUserInfo();
+        getRating();
+        getRooms();
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,8 +171,43 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
         progressDialog.dismiss();
 
+    }
+
+    private void getRooms(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refProv = database.getReference(id).child("rooms_total");
+        refProv.keepSynced(true);
+        refProv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                rooms_total = Integer.parseInt(dataSnapshot.getValue(String.class));
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getRating(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refProv = database.getReference(id).child("rating_total");
+        refProv.keepSynced(true);
+        refProv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                rating_total = Float.parseFloat(dataSnapshot.getValue(String.class));
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

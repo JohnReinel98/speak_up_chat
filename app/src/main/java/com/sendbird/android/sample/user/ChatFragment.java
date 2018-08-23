@@ -46,7 +46,7 @@ public class ChatFragment extends Fragment {
     private DatabaseReference databaseReference;
     private static final String APP_ID_DEPRESSION = "3A395F38-31AD-4A58-8471-AAA7A74973CC";
     private static final String APP_ID_HAPPY = "6FFE1200-A62B-442C-BA17-BC7B1E9DC4DA";
-    String userID, nickName, server;
+    String userID, nickName, server, choose;
 
     public ChatFragment() {
         // Required empty public constructor
@@ -72,6 +72,7 @@ public class ChatFragment extends Fragment {
                 progressDialog.show();
                 SendBird.init(APP_ID_DEPRESSION, getContext());
                 setServer("depression");
+                choose = "depression";
                 connectToSendBird();
             }
         });
@@ -84,6 +85,7 @@ public class ChatFragment extends Fragment {
                 progressDialog.show();
                 SendBird.init(APP_ID_HAPPY, getContext());
                 setServer("cheerful");
+                choose = "cheerful";
                 connectToSendBird();
             }
         });
@@ -122,6 +124,7 @@ public class ChatFragment extends Fragment {
 
                 // Proceed to MainActivity
                 Intent intent = new Intent(getActivity(), GroupChannelActivity.class);
+                intent.putExtra("serverExtra1", choose);
                 startActivity(intent);
                 getActivity().finish();
                 progressDialog.dismiss();

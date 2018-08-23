@@ -1,5 +1,6 @@
 package com.sendbird.android.sample.groupchannel;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,7 +44,9 @@ import com.sendbird.android.sample.user.UserHome;
 import com.sendbird.android.sample.user.UserLogin;
 import com.sendbird.android.sample.utils.PreferenceUtils;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -66,6 +69,7 @@ public class GroupChannelListFragment extends Fragment {
     private FloatingActionButton mCreateChannelFab, btnDisconnect;
     private GroupChannelListQuery mChannelListQuery;
     private SwipeRefreshLayout mSwipeRefresh;
+    private ProgressDialog progressDialog;
     TextView emptyview;
     private String server,userFname;
 
@@ -94,7 +98,11 @@ public class GroupChannelListFragment extends Fragment {
         btnDisconnect = (FloatingActionButton) rootView.findViewById(R.id.btnDisconnect);
         mSwipeRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_layout_group_channel_list);
         emptyview = (TextView) rootView.findViewById(R.id.empty_view);
+        progressDialog = new ProgressDialog(getContext());
 
+        Bundle bundle = this.getArguments();
+
+        server = bundle.getString("serverExtra2");
 
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -119,10 +127,11 @@ public class GroupChannelListFragment extends Fragment {
         mCreateChannelFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //serverJoiner();
-                /*Intent intent = new Intent(getContext(), CreateGroupChannelActivity.class);
-                startActivityForResult(intent, INTENT_REQUEST_NEW_GROUP_CHANNEL);*/
+                progressDialog.setMessage("Searching User...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
                 serverChecker();
+                progressDialog.dismiss();
             }
         });
 
@@ -130,16 +139,9 @@ public class GroupChannelListFragment extends Fragment {
         mChannelListAdapter = new GroupChannelListAdapter(getActivity());
         mChannelListAdapter.load();
 
-        /*if(mChannelList.isEmpty()){
-            mRecyclerView.setVisibility(View.GONE);
-            emptyview.setVisibility(View.VISIBLE);
-        }else{
-            mRecyclerView.setVisibility(View.VISIBLE);
-            emptyview.setVisibility(View.GONE);
-        }*/
-
         setUpRecyclerView();
         setUpChannelListAdapter();
+
         return rootView;
     }
 
@@ -163,7 +165,7 @@ public class GroupChannelListFragment extends Fragment {
     private void serverChecker(){
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference refServer = database.getReference();
-        Query searchQuery = refServer.orderByChild("server").equalTo("depression");
+        Query searchQuery = refServer.orderByChild("server").equalTo(server);
         searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -244,6 +246,7 @@ public class GroupChannelListFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mChannelListAdapter);
+
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
         // If user scrolls to bottom of the list, loads more channels.
@@ -479,23 +482,6 @@ public class GroupChannelListFragment extends Fragment {
         });
     }
 
-    private void setServerDepression(){
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String id = firebaseAuth.getCurrentUser().getUid();
-        final DatabaseReference refServer = database.getReference(id).child("server");
-        refServer.keepSynced(true);
-        refServer.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                refServer.setValue("depression");
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
     private void setJoined(final String toggle){
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         String id = firebaseAuth.getCurrentUser().getUid();
@@ -513,26 +499,4 @@ public class GroupChannelListFragment extends Fragment {
         });
     }
 
-    private void serverJoiner(){
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference refServer = database.getReference();
-        Query searchQuery = refServer.orderByChild("server").equalTo("depression");
-        //refServer.keepSynced(true);
-        searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot answerSnapshot: dataSnapshot.getChildren()) {
-                    if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false")) {
-                        setJoined("true");
-                        Toast.makeText(getContext(), answerSnapshot.child("fname").getValue().toString(), Toast.LENGTH_LONG).show();
-
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 }

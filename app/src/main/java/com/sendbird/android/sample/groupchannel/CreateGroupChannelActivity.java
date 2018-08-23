@@ -1,5 +1,6 @@
 package com.sendbird.android.sample.groupchannel;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -41,7 +42,7 @@ public class CreateGroupChannelActivity extends AppCompatActivity
     private List<String> mSelectedIds;
     private boolean mIsDistinct = true;
     private int mCurrentState;
-
+    private ProgressDialog progressDialog;
     private Toolbar mToolbar;
     private String server,userFname;
     private FirebaseAuth firebaseAuth;
@@ -52,11 +53,11 @@ public class CreateGroupChannelActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_create_group_channel);
         firebaseAuth = FirebaseAuth.getInstance();
-
         mSelectedIds = new ArrayList<>();
+        progressDialog = new ProgressDialog(getApplicationContext());
 
         getFirstname();
-        serverJoiner();
+        getServer();
 
         if (savedInstanceState == null) {
             Fragment fragment = SelectUserFragment.newInstance();
@@ -185,7 +186,7 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         String id = firebaseAuth.getCurrentUser().getUid();
         DatabaseReference refProv = database.getReference(id).child("fname");
         refProv.keepSynced(true);
-        refProv.addValueEventListener(new ValueEventListener() {
+        refProv.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 userFname = dataSnapshot.getValue(String.class);
@@ -197,10 +198,28 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         });
     }
 
+    private void getServer(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refServer = database.getReference(id).child("server");
+        refServer.keepSynced(true);
+        refServer.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                server = dataSnapshot.getValue(String.class);
+                serverJoiner();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     private void serverJoiner(){
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference refServer = database.getReference();
-        Query searchQuery = refServer.orderByChild("server").equalTo("depression");
+        Query searchQuery = refServer.orderByChild("server").equalTo(server);
         searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -210,6 +229,7 @@ public class CreateGroupChannelActivity extends AppCompatActivity
                         mSelectedIds.add(answerSnapshot.child("fname").getValue().toString());
                         mSelectedIds.add(userFname);
                         createGroupChannel(mSelectedIds, true);
+                        break;
                     }
                 }
             }

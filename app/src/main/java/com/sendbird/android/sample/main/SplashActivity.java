@@ -12,7 +12,7 @@ import com.sendbird.android.sample.user.UserLogin;
 
 public class SplashActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
-    private static int SPLASH_TIME_OUT = 6000;
+    private static int SPLASH_TIME_OUT = 4000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
