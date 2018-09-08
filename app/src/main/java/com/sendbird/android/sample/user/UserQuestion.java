@@ -150,8 +150,9 @@ public class UserQuestion extends AppCompatActivity {
                 if (current<layouts.length){
                     viewPager.setCurrentItem(current);
                 }else{
-
-                    startActivity(new Intent(UserQuestion.this, UserHome.class));
+                    Intent i = new Intent(UserQuestion.this, UserHome.class);
+                    i.putExtra("openMeter", true);
+                    startActivity(i);
                     finish();
                 }
             }
