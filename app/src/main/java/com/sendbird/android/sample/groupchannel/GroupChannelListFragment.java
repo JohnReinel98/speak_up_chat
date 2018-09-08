@@ -127,9 +127,7 @@ public class GroupChannelListFragment extends Fragment {
         mCreateChannelFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setMessage("Searching User...");
-                progressDialog.setCancelable(false);
-                progressDialog.show();
+
                 serverChecker();
                 progressDialog.dismiss();
             }

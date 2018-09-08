@@ -44,7 +44,7 @@ public class CreateGroupChannelActivity extends AppCompatActivity
     private int mCurrentState;
     private ProgressDialog progressDialog;
     private Toolbar mToolbar;
-    private String server,userFname;
+    private String server,userFname, checkServer, checkName;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -54,7 +54,7 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         setContentView(R.layout.activity_create_group_channel);
         firebaseAuth = FirebaseAuth.getInstance();
         mSelectedIds = new ArrayList<>();
-        progressDialog = new ProgressDialog(getApplicationContext());
+        progressDialog = new ProgressDialog(this);
 
         getFirstname();
         getServer();
@@ -214,6 +214,7 @@ public class CreateGroupChannelActivity extends AppCompatActivity
 
             }
         });
+
     }
 
     private void serverJoiner(){
@@ -224,12 +225,15 @@ public class CreateGroupChannelActivity extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot answerSnapshot: dataSnapshot.getChildren()) {
-                    if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") && !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname)){
-                        setJoined("true");
-                        mSelectedIds.add(answerSnapshot.child("fname").getValue().toString());
+                    checkName = answerSnapshot.child("fname").getValue().toString();
+                    if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") &&
+                            !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname) &&
+                                answerSnapshot.child("server").getValue().toString().equalsIgnoreCase(server)){
+                        //mSelectedIds.add(answerSnapshot.child("fname").getValue().toString());
+                        mSelectedIds.add(checkName);
                         mSelectedIds.add(userFname);
+                        setJoined("true");
                         createGroupChannel(mSelectedIds, true);
-                        break;
                     }
                 }
             }
@@ -240,6 +244,4 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         });
 
     }
-
-
 }
