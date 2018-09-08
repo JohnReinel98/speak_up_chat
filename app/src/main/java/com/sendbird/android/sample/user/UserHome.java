@@ -68,13 +68,10 @@ public class UserHome extends AppCompatActivity {
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         navView = findViewById(R.id.navView);
         firebaseAuth = FirebaseAuth.getInstance();
-//        Answers answers = new Answers();
-//        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         id = firebaseAuth.getCurrentUser().getUid();
-        //Toast.makeText(this,id.toString(),Toast.LENGTH_LONG).show();
 
-
-
+        Intent intent = getIntent();
+        boolean openMeter = intent.getBooleanExtra("openMeter", false);
 
         SharedPreferences sharedPreferences = getSharedPreferences("PREFS", 0);
         int answ1 = sharedPreferences.getInt("ans1",0);
@@ -88,7 +85,6 @@ public class UserHome extends AppCompatActivity {
         int answ9 = sharedPreferences.getInt("ans9",0);
         int answ10 = sharedPreferences.getInt("ans10",0);
 
-
         totalAns = answ1 + answ2 + answ3 + answ4 + answ5 + answ6 + answ7 + answ8 + answ9 + answ10;
         result = totalAns / 10;
 
@@ -98,10 +94,6 @@ public class UserHome extends AppCompatActivity {
         DatabaseReference depResult = database.getReference(id).child("depTest");
         depResult.setValue(res);
         depResult.keepSynced(true);
-        //Toast.makeText(this,result,Toast.LENGTH_SHORT).show();
-
-
-
 
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
@@ -127,6 +119,11 @@ public class UserHome extends AppCompatActivity {
                         .into((CircleImageView) v.findViewById(R.id.imgPic));
         String name = user.getDisplayName();
         txtFullname.setText(name);
+
+        if (openMeter) {
+            mMainNav.setSelectedItemId(R.id.nav_depBar);
+            setFragment(depressionFragment);
+        }
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -168,14 +165,7 @@ public class UserHome extends AppCompatActivity {
                         mMainNav.setVisibility(View.GONE);
                         ProfileFragment profileFragment = new ProfileFragment();
                         setFragment(profileFragment);
-                        //startActivity(new Intent(UserHome.this, UserProfile.class));
                         break;
-                    /*case(R.id.nav_choose):
-                        mMainNav.setVisibility(View.GONE);
-                        //ProfileFragment profileFragment = new ProfileFragment();
-                        //setFragment(profileFragment);
-                        startActivity(new Intent(UserHome.this, ChooseActivity.class));
-                        break;*/
                     case(R.id.nav_logout):
                         Logout();
                         break;

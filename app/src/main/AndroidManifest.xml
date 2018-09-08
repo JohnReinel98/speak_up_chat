@@ -76,7 +76,7 @@
         </service>
 
         <activity android:name=".main.ChooseActivity" />
-        <activity android:name=".user.UserLogin"></activity>
+        <activity android:name=".user.UserLogin" />
         <activity android:name=".user.UserHome" />
         <activity android:name=".user.UserQuestion" />
         <activity
@@ -136,7 +136,7 @@
             android:name=".reminder.ReminderAlarmService"
             android:exported="false" />
 
-        <activity android:name=".user.TermsActivity"></activity>
+        <activity android:name=".user.TermsActivity" />
     </application>
 
 </manifest>
