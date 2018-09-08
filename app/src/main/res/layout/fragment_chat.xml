@@ -8,83 +8,127 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select Chat Server"
+            android:text="What do you feel right now?"
             android:textStyle="bold"
             android:textSize="20dp"
             android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
             />
 
-        <info.hoang8f.widget.FButton
+
+
+        <!--<info.hoang8f.widget.FButton-->
+            <!--android:id="@+id/btnDepression"-->
+            <!--fbutton:buttonColor="@color/colorPrimary"-->
+            <!--fbutton:shadowColor="@color/colorPrimaryDark"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:text="Depression">-->
+
+        <!--</info.hoang8f.widget.FButton>-->
+
+        <ImageButton
             android:id="@+id/btnDepression"
-            fbutton:buttonColor="@color/colorPrimary"
-            fbutton:shadowColor="@color/colorPrimaryDark"
-            android:layout_height="50dp"
-            android:layout_width="200dp"
-            android:text="Depression">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_depressed"
+            android:background="@color/float_transparent"
+            />
 
-        </info.hoang8f.widget.FButton>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="11sp"
             android:textStyle="bold"
-            android:text="By entering this server you will be able to chat with other depressed users."
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="50dp"
+            android:text="DEPRESSED"
             android:gravity="center"
             />
 
-        <info.hoang8f.widget.FButton
+
+        <ImageButton
             android:id="@+id/btnHappy"
-            fbutton:buttonColor="@color/colorPrimary"
-            fbutton:shadowColor="@color/colorPrimaryDark"
-            android:layout_height="50dp"
-            android:layout_width="200dp"
-            android:text="Cheerful">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_happy"
+            android:background="@color/float_transparent"
+            />
 
-        </info.hoang8f.widget.FButton>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="11sp"
             android:textStyle="bold"
-            android:text="By entering this server you will be able to chat with other cheerful users."
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="50dp"
+            android:text="HAPPY"
             android:gravity="center"
             />
 
-        <info.hoang8f.widget.FButton
+        <ImageButton
             android:id="@+id/btnHopeful"
-            fbutton:buttonColor="@color/colorPrimary"
-            fbutton:shadowColor="@color/colorPrimaryDark"
-            android:layout_height="50dp"
-            android:layout_width="200dp"
-            android:text="Hopeful">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_hopefull"
+            android:background="@color/float_transparent"
+            />
 
-        </info.hoang8f.widget.FButton>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="11sp"
             android:textStyle="bold"
-            android:text="By entering this server you will be able to chat with other hopeful users."
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="50dp"
+            android:text="HOPEFUL"
             android:gravity="center"
             />
+
+        <!--<info.hoang8f.widget.FButton-->
+            <!--android:id="@+id/btnHappy"-->
+            <!--fbutton:buttonColor="@color/colorPrimary"-->
+            <!--fbutton:shadowColor="@color/colorPrimaryDark"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:text="Cheerful">-->
+
+        <!--</info.hoang8f.widget.FButton>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="11sp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:text="By entering this server you will be able to chat with other cheerful users."-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:layout_marginBottom="50dp"-->
+            <!--android:gravity="center"-->
+            <!--/>-->
+
+        <!--<info.hoang8f.widget.FButton-->
+            <!--android:id="@+id/btnHopeful"-->
+            <!--fbutton:buttonColor="@color/colorPrimary"-->
+            <!--fbutton:shadowColor="@color/colorPrimaryDark"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:text="Hopeful">-->
+
+        <!--</info.hoang8f.widget.FButton>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="11sp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:text="By entering this server you will be able to chat with other hopeful users."-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:layout_marginBottom="50dp"-->
+            <!--android:gravity="center"-->
+            <!--/>-->
 
     </LinearLayout>
 
