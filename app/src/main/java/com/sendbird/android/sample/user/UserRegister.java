@@ -152,10 +152,6 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
     }
 
     private boolean checkToggle() {
-        if (cbTerms.isChecked()){
-            return true;
-        } else {
-            return false;
-        }
+        return cbTerms.isChecked();
     }
 }

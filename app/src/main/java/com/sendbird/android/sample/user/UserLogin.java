@@ -52,17 +52,6 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         });
     }
 
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-        //check the user if already login
-        if(firebaseAuth.getCurrentUser()!=null && firebaseAuth.getCurrentUser().getDisplayName()!=null && firebaseAuth.getCurrentUser().getPhotoUrl()!=null){
-            //profile act start
-            finish();
-            startActivity(new Intent(UserLogin.this, UserHome.class));
-        }
-    }*/
-
     public void goRegister(View v){
         Intent i = new Intent(this, UserRegister.class);
         startActivity(i);
