@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,9 +25,10 @@ import com.sendbird.android.sample.R;
 public class UserRegister extends AppCompatActivity implements View.OnClickListener{
     private Button btnRegister;
     private TextInputLayout txtemail,txtpass, txtconfirmpassw;;
-    private TextView linkSignin;
+    private TextView linkSignin, linkTerms;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    private CheckBox cbTerms;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,14 +36,27 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
         progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
-
+        cbTerms = findViewById(R.id.cbTerms);
         btnRegister = (Button)findViewById(R.id.btnReg);
         txtemail = findViewById(R.id.txtemail);
         txtpass = findViewById(R.id.txtpassw);
         txtconfirmpassw = findViewById(R.id.txtconfirmpassw);
         linkSignin = findViewById(R.id.linkSign);
+        linkTerms = findViewById(R.id.txtTerms);
 
         btnRegister.setOnClickListener(this);
+
+        linkTerms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkToggle()) {
+                    Toast.makeText(getApplicationContext(), "true", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "false", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
 
         txtpass.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
@@ -134,5 +149,13 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
         Intent i = new Intent(UserRegister.this, UserLogin.class);
         finish();
         startActivity(i);
+    }
+
+    private boolean checkToggle() {
+        if (cbTerms.isChecked()){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

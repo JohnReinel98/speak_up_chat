@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.dinuscxj:circleprogressbar-1.1.1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circleprogressbar-1.1.1.aar/4f483f1fa65110d19ad09bca47f9000c/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circleprogressbar-1.1.1.aar/4f483f1fa65110d19ad09bca47f9000c/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circleprogressbar-1.1.1.aar/883a35342169c2a93201bab8310eaa42/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circleprogressbar-1.1.1.aar/883a35342169c2a93201bab8310eaa42/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
