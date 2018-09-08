@@ -124,4 +124,8 @@
 
     <string name="reminder_title">Medicine Schedule</string>
 
+    <string name="terms_content">
+        Please read these terms and conditions of use carefully before accessing, using or obtaining any materials, information, products or services.
+    </string>
+
 </resources>

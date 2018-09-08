@@ -49,11 +49,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
         linkTerms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkToggle()) {
-                    Toast.makeText(getApplicationContext(), "true", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "false", Toast.LENGTH_LONG).show();
-                }
+                startActivity(new Intent(UserRegister.this, TermsActivity.class));
 
             }
         });
@@ -122,27 +118,28 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
             txtconfirmpassw.requestFocus();
             return;
         }
+        if (!checkToggle()) {
+            Toast.makeText(getApplicationContext(), "Please agree to the terms and conditions.", Toast.LENGTH_LONG).show();
+        } else {
+            progressDialog.setMessage("Registering user...");
+            progressDialog.show();
 
-        progressDialog.setMessage("Registering user...");
-        progressDialog.show();
-
-        firebaseAuth.createUserWithEmailAndPassword(email,passw)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            progressDialog.dismiss();
-                            Intent i = new Intent(UserRegister.this, UserRegister2.class);
-                            finish();
-                            startActivity(i);
-                        }else{
-                            progressDialog.dismiss();
-                            Toast.makeText(UserRegister.this,"Registration Failed, Please try again",Toast.LENGTH_SHORT).show();
+            firebaseAuth.createUserWithEmailAndPassword(email,passw)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                progressDialog.dismiss();
+                                Intent i = new Intent(UserRegister.this, UserRegister2.class);
+                                finish();
+                                startActivity(i);
+                            }else{
+                                progressDialog.dismiss();
+                                Toast.makeText(UserRegister.this,"Registration Failed, Please try again",Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
-
-
+                    });
+        }
 
     }
     public void Login(){

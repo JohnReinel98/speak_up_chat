@@ -7,7 +7,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -76,8 +76,7 @@
         </service>
 
         <activity android:name=".main.ChooseActivity" />
-        <activity android:name=".user.UserLogin">
-        </activity>
+        <activity android:name=".user.UserLogin"></activity>
         <activity android:name=".user.UserHome" />
         <activity android:name=".user.UserQuestion" />
         <activity
@@ -101,8 +100,9 @@
             android:label="Account Recovery"
             android:parentActivityName=".user.UserLogin" />
         <activity android:name=".user.UsersList" />
-        <activity android:name=".user.Test"></activity>
-        <activity android:name=".main.SplashActivity"
+        <activity android:name=".user.Test" />
+        <activity
+            android:name=".main.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -112,24 +112,21 @@
         </activity>
         <activity
             android:name=".user.AlarmActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".user.UserHome">
-
+            android:parentActivityName=".user.UserHome"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".user.UserHome"
-                />
+                android:value=".user.UserHome" />
         </activity>
         <activity
             android:name=".user.AddReminderActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".user.AlarmActivity">
-
+            android:parentActivityName=".user.AlarmActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".user.AlarmActivity"
-                />
+                android:value=".user.AlarmActivity" />
         </activity>
+
         <provider
             android:name=".data.AlarmReminderProvider"
             android:authorities="com.sendbird.android.sample"
@@ -138,6 +135,8 @@
         <service
             android:name=".reminder.ReminderAlarmService"
             android:exported="false" />
+
+        <activity android:name=".user.TermsActivity"></activity>
     </application>
 
 </manifest>

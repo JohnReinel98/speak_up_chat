@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.TermsActivity"
+    android:orientation="vertical"
+    android:layout_marginTop="7dp"
+    android:layout_marginLeft="7dp"
+    android:layout_marginRight="7dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/terms_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="By creating a Speak Up account or by using  whether through a mobile device, mobile application or computer (collectively, the “Service”) you agree to be bound by \n"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" (i) these Terms of Use, \n (ii) our Privacy Policy and Safety Tips, each of which is incorporated by reference into this Agreement. \n If you do not accept and agree to be bound by all of the terms of this Agreement (other than the limited one-time opt out right for certain users provided for in Section 16), you should not use the Service. \n"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Who can use Speak Up \n Use the same name that you use in everyday life. \n Provide accurate information about yourself. \n Create only one account (your own) \n Not share your password, give access to your Speak up account to others, or transfer your account to anyone else (without our permission). \n"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. Eligibility \n You must be at least 13 years of age to create an account on Speak Up and use the Service. By creating an account and using the Service, you represent and warrant that: \n You are not a person who is barred from using the Service under the laws of the Philippines or any other applicable jurisdiction–meaning that you do not appear on the PH Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition, \n You will comply with this Agreement and all applicable local, state, national and international laws, rules and regulations, and \n You have never been convicted of or pled no contest to a felony, a sex crime, or any crime involving violence, and that you are not required to register as a sex offender with any state, federal or local sex offender registry.\n"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3. Safety; Your Interactions with Other Users. \n Though Speak Up strives to encourage a respectful user experience through features like the chat module-in that only allows users to communicate if they have \n both indicated interest in one another, it is not responsible for the conduct of any user on or off of the Service. You agree to use caution in all interactions with \n other users, particularly if you decide to communicate off the Service or meet in person. In addition, you agree to review and follow Speak Up’s Safety Tips  prior \n to using the Service. You agree that you will not provide your financial information (for example, your credit card or bank account information), or wire or \n otherwise send money, to other users.
+    \n"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YOU ARE SOLELY RESPONSIBLE FOR YOUR INTERACTIONS WITH OTHER USERS. YOU UNDERSTAND THAT SPEAK UO DOES NOT CONDUCT CRIMINAL BACKGROUND \n CHECKS ON ITS USERS OR OTHERWISE INQUIRE INTO THE BACKGROUND OF ITS USERS. SPEAK UP MAKES NO REPRESENTATIONS OR WARRANTIES AS TO THE \n CONDUCT OF USERS. SPEAK UP RESERVES THE RIGHT TO CONDUCT – AND YOU AGREE THAT SPEAK UP MAY CONDUCT - ANY CRIMINAL BACKGROUND CHECK OR \n OTHER SCREENINGS (SUCH AS SEX OFFENDER REGISTER SEARCHES) AT ANY TIME USING AVAILABLE PUBLIC RECORDS.
+    \n"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YOU ARE ALSO RESPONSIBLE IF YOU TROLL OTHER USERS BECAUSE WE THE DEVELOPERS OF SPEAK UP WANTS A HEALTHY SPEAK UP COMMUNITY. \n RESPONSIBLE WITH YOUR DOINGS WHILE USING THE APP "/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DISCLAIMER - THIS SPEAK UP APPLICATION IS NOT A DIAGNOSIS OF DEPRESSION. REMEMBER DO NOT USE THIS APP AS REPLACEMENT FOR PROFESSIONAL \n TREATMENT OR GUIDANCE"/>
+</LinearLayout>
+</ScrollView>
