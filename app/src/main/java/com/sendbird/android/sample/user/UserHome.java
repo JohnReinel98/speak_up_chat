@@ -25,8 +25,11 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sendbird.android.sample.R;
 import com.sendbird.android.sample.main.ChooseActivity;
 
@@ -88,12 +91,19 @@ public class UserHome extends AppCompatActivity {
         totalAns = answ1 + answ2 + answ3 + answ4 + answ5 + answ6 + answ7 + answ8 + answ9 + answ10;
         result = totalAns / 10;
 
+
+
         String res = String.valueOf(result);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference depResult = database.getReference(id).child("depTest");
         depResult.setValue(res);
         depResult.keepSynced(true);
+<<<<<<< HEAD
+        //Toast.makeText(this,result,Toast.LENGTH_SHORT).show();
+
+=======
+>>>>>>> 308d9cf7b7f7296f4918e529af1733d99c3c7838
 
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();

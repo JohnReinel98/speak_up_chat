@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,7 +41,8 @@ import java.util.Scanner;
  * A simple {@link Fragment} subclass.
  */
 public class ChatFragment extends Fragment {
-    Button btnDepression, btnHappy, btnHopeful;
+    ImageButton btnDepression, btnHappy, btnHopeful;
+    //Button btnDepression, btnHappy, btnHopeful;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private DatabaseReference databaseReference;

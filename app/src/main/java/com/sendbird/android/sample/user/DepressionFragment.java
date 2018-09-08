@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class DepressionFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private String id;
     private TextView resContainer;
+    private ImageButton imgIcon;
     public DepressionFragment() {
         // Required empty public constructor
     }
@@ -47,6 +49,7 @@ public class DepressionFragment extends Fragment {
         depStatus = v.findViewById(R.id.depStatus);
         reTake = v.findViewById(R.id.btnRetake);
         resContainer = v.findViewById(R.id.resultContainer);
+        imgIcon = v.findViewById(R.id.imgIcons);
         firebaseAuth = FirebaseAuth.getInstance();
 //        Answers answers = new Answers();
 //        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
@@ -71,21 +74,25 @@ public class DepressionFragment extends Fragment {
                     depMeter.getIndeterminateDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
                     depMeter.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
                     depStatus.setText("SEVERE");
+                    imgIcon.setImageResource(R.mipmap.ic_severe);
                 }
                 if(depMeter.getProgress()<=75 && depMeter.getProgress()>=26){
                     depMeter.getIndeterminateDrawable().setColorFilter(Color.rgb(255,165,0), PorterDuff.Mode.SRC_IN);
                     depMeter.getProgressDrawable().setColorFilter(Color.rgb(255,165,0), PorterDuff.Mode.SRC_IN);
                     depStatus.setText("MODERATE");
+                    imgIcon.setImageResource(R.mipmap.ic_depressed);
                 }
                 if(depMeter.getProgress()<=25 && depMeter.getProgress()>=1){
                     depMeter.getIndeterminateDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
                     depMeter.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
                     depStatus.setText("MILD");
+                    imgIcon.setImageResource(R.mipmap.ic_mild);
                 }
                 if(depMeter.getProgress()==0){
                     depMeter.getIndeterminateDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
                     depMeter.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
                     depStatus.setText("NO SIGN OF DEPRESSION");
+                    imgIcon.setImageResource(R.mipmap.ic_happy);
                 }
 
             }
