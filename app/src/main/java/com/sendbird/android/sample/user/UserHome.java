@@ -99,11 +99,6 @@ public class UserHome extends AppCompatActivity {
         DatabaseReference depResult = database.getReference(id).child("depTest");
         depResult.setValue(res);
         depResult.keepSynced(true);
-<<<<<<< HEAD
-        //Toast.makeText(this,result,Toast.LENGTH_SHORT).show();
-
-=======
->>>>>>> 308d9cf7b7f7296f4918e529af1733d99c3c7838
 
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();

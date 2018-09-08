@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.stfalcon:multiimageview-0.1">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/multiimageview-0.1.aar/54e7c1df4a8db080b4f3d70f92221faf/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/multiimageview-0.1.aar/54e7c1df4a8db080b4f3d70f92221faf/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/multiimageview-0.1.aar/5e2270f058d8f6d1e71b5b8b4fbcb889/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/multiimageview-0.1.aar/5e2270f058d8f6d1e71b5b8b4fbcb889/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
