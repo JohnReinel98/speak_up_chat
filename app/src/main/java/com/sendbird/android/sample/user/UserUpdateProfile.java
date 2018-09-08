@@ -43,6 +43,7 @@ import com.sendbird.android.sample.utils.SharedPrefManager;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -209,7 +210,9 @@ public class UserUpdateProfile extends AppCompatActivity {
     @Override
     protected Dialog onCreateDialog(int id){
         if(id == DIALOG_ID){
-            return new DatePickerDialog(this, dpickerListener, year_x,month_x,day_x);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, dpickerListener, year_x,month_x,day_x);
+            datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+            return datePickerDialog;
         }else{
             return null;
         }
