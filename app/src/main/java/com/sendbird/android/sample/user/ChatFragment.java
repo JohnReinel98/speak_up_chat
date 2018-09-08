@@ -40,12 +40,13 @@ import java.util.Scanner;
  * A simple {@link Fragment} subclass.
  */
 public class ChatFragment extends Fragment {
-    Button btnDepression, btnHappy;
+    Button btnDepression, btnHappy, btnHopeful;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private DatabaseReference databaseReference;
-    private static final String APP_ID_DEPRESSION = "3A395F38-31AD-4A58-8471-AAA7A74973CC";
-    private static final String APP_ID_HAPPY = "6FFE1200-A62B-442C-BA17-BC7B1E9DC4DA";
+    private static final String APP_ID_DEPRESSION = "26C9F889-F713-4847-8C71-40BA098D3D2A";
+    private static final String APP_ID_HAPPY = "09BDD7F8-267A-4C4B-B966-77013078AA79";
+    private static final String APP_ID_HOPEFUL = "CB8FC80D-78A6-46F3-9941-CEBB93D9CE73";
     String userID, nickName, server, choose;
 
     public ChatFragment() {
@@ -60,6 +61,7 @@ public class ChatFragment extends Fragment {
         progressDialog = new ProgressDialog(getContext());
         btnDepression = rootView.findViewById(R.id.btnDepression);
         btnHappy = rootView.findViewById(R.id.btnHappy);
+        btnHopeful = rootView.findViewById(R.id.btnHopeful);
 
         getFirstname();
         getServer();
@@ -86,6 +88,19 @@ public class ChatFragment extends Fragment {
                 SendBird.init(APP_ID_HAPPY, getContext());
                 setServer("cheerful");
                 choose = "cheerful";
+                connectToSendBird();
+            }
+        });
+
+        btnHopeful.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressDialog.setMessage("Loading Server...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+                SendBird.init(APP_ID_HOPEFUL, getContext());
+                setServer("hopeful");
+                choose = "hopeful";
                 connectToSendBird();
             }
         });

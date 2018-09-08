@@ -65,6 +65,27 @@
             android:gravity="center"
             />
 
+        <info.hoang8f.widget.FButton
+            android:id="@+id/btnHopeful"
+            fbutton:buttonColor="@color/colorPrimary"
+            fbutton:shadowColor="@color/colorPrimaryDark"
+            android:layout_height="50dp"
+            android:layout_width="200dp"
+            android:text="Hopeful">
+
+        </info.hoang8f.widget.FButton>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:text="By entering this server you will be able to chat with other hopeful users."
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            />
+
     </LinearLayout>
 
 </FrameLayout>
