@@ -231,45 +231,41 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot answerSnapshot: dataSnapshot.getChildren()) {
-                    Random random = new Random();
-                    int questionCount = (int) dataSnapshot.getChildrenCount();
-                    int rand = random.nextInt(questionCount);
-                    Iterator itr = dataSnapshot.getChildren().iterator();
-                    boolean found = false;
-                    for(int i = 0; i < rand; i++) {
-                        itr.next();
-                    }
-
-                    do {
-
-                        DataSnapshot childSnapshot = (DataSnapshot) itr.next();
-                        checkName = childSnapshot.child("fname").getValue().toString();
-                        checkJoined = childSnapshot.child("joined").getValue().toString();
-
-                        if (checkName.equalsIgnoreCase(userFname) || checkJoined.equalsIgnoreCase("true")){
-                            Toast.makeText(getApplicationContext(), "Search Mismatch, Returning...", Toast.LENGTH_LONG).show();
-                        }
-                        if (checkName.equalsIgnoreCase(userFname) || checkJoined.equalsIgnoreCase("true")) {
-                            noSearch = true;
-                        }
-                        else {
-                            Toast.makeText(getApplicationContext(), "Search Successful", Toast.LENGTH_LONG).show();
-                            found = true;
-                            if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") &&
-                                    !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname) &&
-                                    answerSnapshot.child("server").getValue().toString().equalsIgnoreCase(server)){
-
-                                mSelectedIds.add(checkName);
-                                mSelectedIds.add(userFname);
-                                setJoined("true");
-                                createGroupChannel(mSelectedIds, true);
-                                break;
-                            }
-                        }
-                    }
-                    while(!found);
+                Random random = new Random();
+                int questionCount = (int) dataSnapshot.getChildrenCount();
+                int rand = random.nextInt(questionCount);
+                Iterator itr = dataSnapshot.getChildren().iterator();
+                boolean found = false;
+                for(int i = 0; i < rand; i++) {
+                    itr.next();
                 }
+
+                do {
+
+                    DataSnapshot childSnapshot = (DataSnapshot) itr.next();
+                    checkName = childSnapshot.child("fname").getValue().toString();
+                    checkJoined = childSnapshot.child("joined").getValue().toString();
+
+                    if (checkName.equalsIgnoreCase(userFname) || checkJoined.equalsIgnoreCase("true")){
+                        Toast.makeText(getApplicationContext(), "Search Mismatch, Returning...", Toast.LENGTH_LONG).show();
+                        noSearch = true;
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Search Successful", Toast.LENGTH_LONG).show();
+                        found = true;
+                        if (childSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") &&
+                                !childSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname) &&
+                                childSnapshot.child("server").getValue().toString().equalsIgnoreCase(server)){
+
+                            mSelectedIds.add(checkName);
+                            mSelectedIds.add(userFname);
+                            setJoined("true");
+                            createGroupChannel(mSelectedIds, true);
+                            break;
+                        }
+                    }
+                }
+                while(!found);
             }
 
             @Override
