@@ -230,10 +230,12 @@ public class CreateGroupChannelActivity extends AppCompatActivity
                             !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname) &&
                                 answerSnapshot.child("server").getValue().toString().equalsIgnoreCase(server)){
                         //mSelectedIds.add(answerSnapshot.child("fname").getValue().toString());
+                        Toast.makeText(getApplicationContext(), checkName, Toast.LENGTH_LONG).show();
                         mSelectedIds.add(checkName);
                         mSelectedIds.add(userFname);
                         setJoined("true");
                         createGroupChannel(mSelectedIds, true);
+                        break;
                     }
                 }
             }

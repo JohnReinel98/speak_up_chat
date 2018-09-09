@@ -171,6 +171,7 @@ public class GroupChannelListFragment extends Fragment {
                     if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") && !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname)){
                         Intent intent = new Intent(getContext(), CreateGroupChannelActivity.class);
                         startActivityForResult(intent, INTENT_REQUEST_NEW_GROUP_CHANNEL);
+                        break;
                     }
                 }
             }
