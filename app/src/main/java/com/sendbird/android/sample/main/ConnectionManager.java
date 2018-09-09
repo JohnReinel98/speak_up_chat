@@ -1,7 +1,5 @@
 package com.sendbird.android.sample.main;
 
-import android.content.Context;
-
 import com.sendbird.android.SendBird;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.User;

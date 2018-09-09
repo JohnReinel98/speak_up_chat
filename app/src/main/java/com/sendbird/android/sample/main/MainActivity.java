@@ -7,13 +7,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.sendbird.android.SendBird;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.sample.R;
 import com.sendbird.android.sample.groupchannel.GroupChannelActivity;
-import com.sendbird.android.sample.openchannel.OpenChannelActivity;
 import com.sendbird.android.sample.utils.PreferenceUtils;
 
 public class MainActivity extends AppCompatActivity {

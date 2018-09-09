@@ -1,7 +1,7 @@
 package com.sendbird.android.sample.user;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.sendbird.android.sample.R;
 

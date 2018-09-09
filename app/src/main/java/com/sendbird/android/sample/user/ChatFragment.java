@@ -4,37 +4,26 @@ package com.sendbird.android.sample.user;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.sendbird.android.SendBird;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.User;
 import com.sendbird.android.sample.R;
 import com.sendbird.android.sample.groupchannel.GroupChannelActivity;
-import com.sendbird.android.sample.main.ChooseActivity;
 import com.sendbird.android.sample.main.ConnectionManager;
 import com.sendbird.android.sample.utils.PreferenceUtils;
 import com.sendbird.android.sample.utils.PushUtils;
-import com.sendbird.android.sample.utils.SharedPrefManager;
-
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Scanner;
 
 
 /**
