@@ -27,7 +27,9 @@ import com.sendbird.android.sample.R;
 import com.sendbird.android.sample.utils.PreferenceUtils;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 public class CreateGroupChannelActivity extends AppCompatActivity
         implements SelectUserFragment.UsersSelectedListener, SelectDistinctFragment.DistinctSelectedListener {
@@ -44,8 +46,9 @@ public class CreateGroupChannelActivity extends AppCompatActivity
     private int mCurrentState;
     private ProgressDialog progressDialog;
     private Toolbar mToolbar;
-    private String server,userFname, checkServer, checkName;
+    private String server,userFname, checkJoined, checkName;
     private FirebaseAuth firebaseAuth;
+    private boolean noSearch;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +58,10 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         firebaseAuth = FirebaseAuth.getInstance();
         mSelectedIds = new ArrayList<>();
         progressDialog = new ProgressDialog(this);
+
+        if (noSearch) {
+            Toast.makeText(getApplicationContext(), "No Available Users, Please Try Again", Toast.LENGTH_LONG).show();
+        }
 
         getFirstname();
         getServer();
@@ -225,20 +232,47 @@ public class CreateGroupChannelActivity extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot answerSnapshot: dataSnapshot.getChildren()) {
-                    checkName = answerSnapshot.child("fname").getValue().toString();
-                    if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") &&
-                            !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname) &&
-                                answerSnapshot.child("server").getValue().toString().equalsIgnoreCase(server)){
-                        //mSelectedIds.add(answerSnapshot.child("fname").getValue().toString());
-                        Toast.makeText(getApplicationContext(), checkName, Toast.LENGTH_LONG).show();
-                        mSelectedIds.add(checkName);
-                        mSelectedIds.add(userFname);
-                        setJoined("true");
-                        createGroupChannel(mSelectedIds, true);
-                        break;
+                    Random random = new Random();
+                    int questionCount = (int) dataSnapshot.getChildrenCount();
+                    int rand = random.nextInt(questionCount);
+                    Iterator itr = dataSnapshot.getChildren().iterator();
+                    boolean found = false;
+                    for(int i = 0; i < rand; i++) {
+                        itr.next();
                     }
+
+                    do {
+                        DataSnapshot childSnapshot = (DataSnapshot) itr.next();
+
+                        checkName = childSnapshot.child("fname").getValue().toString();
+                        checkJoined = childSnapshot.child("joined").getValue().toString();
+
+                        Toast.makeText(getApplicationContext(), checkJoined, Toast.LENGTH_LONG).show();
+
+                        if (checkName.equalsIgnoreCase(userFname) || checkJoined.equalsIgnoreCase("true")){
+                            Toast.makeText(getApplicationContext(), "Search Mismatch, Returning...", Toast.LENGTH_LONG).show();
+                        }
+                        if (checkName.equalsIgnoreCase(userFname) || checkJoined.equalsIgnoreCase("true")) {
+                            noSearch = true;
+                        }
+                        else {
+                            found = true;
+                            if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") &&
+                                    !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname) &&
+                                    answerSnapshot.child("server").getValue().toString().equalsIgnoreCase(server)){
+
+                                mSelectedIds.add(checkName);
+                                mSelectedIds.add(userFname);
+                                setJoined("true");
+                                createGroupChannel(mSelectedIds, true);
+                                break;
+                            }
+                        }
+                    }
+                    while(!found);
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(getApplicationContext(), databaseError.toString(), Toast.LENGTH_LONG).show();
