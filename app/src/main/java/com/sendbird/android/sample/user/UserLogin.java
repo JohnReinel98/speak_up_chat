@@ -88,7 +88,6 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
                         if(task.isSuccessful()){
-                            Toast.makeText(UserLogin.this,"Succesfully Login",Toast.LENGTH_SHORT).show();
                             finish();
                             startActivity(new Intent(UserLogin.this, UserHome.class));
                         }
