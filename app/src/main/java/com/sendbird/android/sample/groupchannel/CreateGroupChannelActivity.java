@@ -3,6 +3,7 @@ package com.sendbird.android.sample.groupchannel;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -56,7 +57,7 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         setContentView(R.layout.activity_create_group_channel);
         firebaseAuth = FirebaseAuth.getInstance();
         mSelectedIds = new ArrayList<>();
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(getApplicationContext());
 
         if (noSearch) {
             Toast.makeText(getApplicationContext(), "No Available Users, Please Try Again", Toast.LENGTH_LONG).show();
@@ -251,9 +252,9 @@ public class CreateGroupChannelActivity extends AppCompatActivity
                         }
                         if (checkName.equalsIgnoreCase(userFname) || checkJoined.equalsIgnoreCase("true")) {
                             noSearch = true;
-                            Toast.makeText(getApplicationContext(), "No Available Users, Please Try Again.", Toast.LENGTH_LONG).show();
                         }
                         else {
+                            Toast.makeText(getApplicationContext(), "Search Successful", Toast.LENGTH_LONG).show();
                             found = true;
                             if (answerSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") &&
                                     !answerSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname) &&
