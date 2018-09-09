@@ -241,8 +241,8 @@ public class CreateGroupChannelActivity extends AppCompatActivity
                     }
 
                     do {
-                        DataSnapshot childSnapshot = (DataSnapshot) itr.next();
 
+                        DataSnapshot childSnapshot = (DataSnapshot) itr.next();
                         checkName = childSnapshot.child("fname").getValue().toString();
                         checkJoined = childSnapshot.child("joined").getValue().toString();
 
@@ -251,6 +251,7 @@ public class CreateGroupChannelActivity extends AppCompatActivity
                         }
                         if (checkName.equalsIgnoreCase(userFname) || checkJoined.equalsIgnoreCase("true")) {
                             noSearch = true;
+                            Toast.makeText(getApplicationContext(), "No Available Users, Please Try Again.", Toast.LENGTH_LONG).show();
                         }
                         else {
                             found = true;
