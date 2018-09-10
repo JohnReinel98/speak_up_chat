@@ -225,57 +225,62 @@ public class CreateGroupChannelActivity extends AppCompatActivity
     }
 
     private void serverJoiner(){
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference refServer = database.getReference();
-        Query searchQuery = refServer.orderByChild("server").equalTo(server);
-        searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Random random = new Random();
-                int questionCount = (int) dataSnapshot.getChildrenCount();
-                if (questionCount == 2){
-                    questionCount -= 1;
-                }
-                int rand = random.nextInt(questionCount);
-                Iterator itr = dataSnapshot.getChildren().iterator();
-                boolean found = false;
-                for(int i = 0; i < rand; i++) {
-                    itr.next();
-                }
-
-                do {
-
-                    DataSnapshot childSnapshot = (DataSnapshot) itr.next();
-                    checkName = childSnapshot.child("fname").getValue().toString();
-                    checkJoined = childSnapshot.child("joined").getValue().toString();
-
-                    if (checkName.equalsIgnoreCase(userFname) || checkJoined.equalsIgnoreCase("true")){
-                        Toast.makeText(getApplicationContext(), "Search Mismatch, Returning...", Toast.LENGTH_LONG).show();
-                        noSearch = true;
+        try{
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference refServer = database.getReference();
+            Query searchQuery = refServer.orderByChild("server").equalTo(server);
+            searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Random random = new Random();
+                    int questionCount = (int) dataSnapshot.getChildrenCount();
+                    if (questionCount == 2){
+                        questionCount -= 1;
                     }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Search Successful", Toast.LENGTH_LONG).show();
-                        found = true;
-                        if (childSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") &&
-                                !childSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname) &&
-                                childSnapshot.child("server").getValue().toString().equalsIgnoreCase(server)){
+                    int rand = random.nextInt(questionCount);
+                    Iterator itr = dataSnapshot.getChildren().iterator();
+                    boolean found = false;
+                    for(int i = 0; i < rand; i++) {
+                        itr.next();
+                    }
 
-                            mSelectedIds.add(checkName);
-                            mSelectedIds.add(userFname);
-                            setJoined("true");
-                            createGroupChannel(mSelectedIds, true);
-                            break;
+                    do {
+
+                        DataSnapshot childSnapshot = (DataSnapshot) itr.next();
+                        checkName = childSnapshot.child("fname").getValue().toString();
+                        checkJoined = childSnapshot.child("joined").getValue().toString();
+
+                        if (checkName.equalsIgnoreCase(userFname) || checkJoined.equalsIgnoreCase("true")){
+                            Toast.makeText(getApplicationContext(), "Search Mismatch, Returning...", Toast.LENGTH_LONG).show();
+                            noSearch = true;
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "Search Successful", Toast.LENGTH_LONG).show();
+                            found = true;
+                            if (childSnapshot.child("joined").getValue().toString().equalsIgnoreCase("false") &&
+                                    !childSnapshot.child("fname").getValue().toString().equalsIgnoreCase(userFname) &&
+                                    childSnapshot.child("server").getValue().toString().equalsIgnoreCase(server)){
+
+                                mSelectedIds.add(checkName);
+                                mSelectedIds.add(userFname);
+                                setJoined("true");
+                                createGroupChannel(mSelectedIds, true);
+                                break;
+                            }
                         }
                     }
+                    while(!found);
                 }
-                while(!found);
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), databaseError.toString(), Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(getApplicationContext(), databaseError.toString(), Toast.LENGTH_LONG).show();
+                }
+            });
+        } catch (Exception e){
+            Toast.makeText(getApplicationContext(), "Something went wrong, try again.", Toast.LENGTH_LONG).show();
+        }
+
 
     }
 }
