@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.sendbird.android.GroupChannel;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.sample.R;
+import com.sendbird.android.sample.user.UserHome;
 import com.sendbird.android.sample.utils.PreferenceUtils;
 
 import java.util.ArrayList;
@@ -271,6 +272,8 @@ public class CreateGroupChannelActivity extends AppCompatActivity
                     while(!found);
                 } catch (Exception e){
                     Toast.makeText(getApplicationContext(), "Something went wrong, try again.", Toast.LENGTH_LONG).show();
+                    finish();
+                    startActivity(new Intent(CreateGroupChannelActivity.this, UserHome.class));
                 }
             }
 

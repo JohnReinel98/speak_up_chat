@@ -217,7 +217,7 @@ public class GroupChatFragment extends Fragment {
                         Toast.makeText(getContext(),"You left the channel",Toast.LENGTH_LONG).show();
                         setRooms(1);
                         showRating();
-                        /*setJoined("false");
+                        setJoined("false");
                         mChannel.leave(new GroupChannel.GroupChannelLeaveHandler() {
                             @Override
                             public void onResult(SendBirdException e) {
@@ -226,7 +226,7 @@ public class GroupChatFragment extends Fragment {
 
                                 }
                             }
-                        });*/
+                        });
                     }
                 }
             }
