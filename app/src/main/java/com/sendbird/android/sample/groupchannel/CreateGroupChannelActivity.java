@@ -225,13 +225,13 @@ public class CreateGroupChannelActivity extends AppCompatActivity
     }
 
     private void serverJoiner(){
-        try{
-            final FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference refServer = database.getReference();
-            Query searchQuery = refServer.orderByChild("server").equalTo(server);
-            searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference refServer = database.getReference();
+        Query searchQuery = refServer.orderByChild("server").equalTo(server);
+        searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                try{
                     Random random = new Random();
                     int questionCount = (int) dataSnapshot.getChildrenCount();
                     if (questionCount == 2){
@@ -270,17 +270,15 @@ public class CreateGroupChannelActivity extends AppCompatActivity
                         }
                     }
                     while(!found);
+                } catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Something went wrong, try again.", Toast.LENGTH_LONG).show();
                 }
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(getApplicationContext(), databaseError.toString(), Toast.LENGTH_LONG).show();
-                }
-            });
-        } catch (Exception e){
-            Toast.makeText(getApplicationContext(), "Something went wrong, try again.", Toast.LENGTH_LONG).show();
-        }
-
-
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), databaseError.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
