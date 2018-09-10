@@ -233,6 +233,9 @@ public class CreateGroupChannelActivity extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Random random = new Random();
                 int questionCount = (int) dataSnapshot.getChildrenCount();
+                if (questionCount == 2){
+                    questionCount -= 1;
+                }
                 int rand = random.nextInt(questionCount);
                 Iterator itr = dataSnapshot.getChildren().iterator();
                 boolean found = false;
