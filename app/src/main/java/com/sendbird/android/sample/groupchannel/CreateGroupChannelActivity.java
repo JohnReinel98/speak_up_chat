@@ -251,7 +251,6 @@ public class CreateGroupChannelActivity extends AppCompatActivity
                         checkJoined = childSnapshot.child("joined").getValue().toString();
 
                         if (checkName.equalsIgnoreCase(userFname) || checkJoined.equalsIgnoreCase("true")){
-                            Toast.makeText(getApplicationContext(), "Search Mismatch, Returning...", Toast.LENGTH_LONG).show();
                             noSearch = true;
                         }
                         else {
