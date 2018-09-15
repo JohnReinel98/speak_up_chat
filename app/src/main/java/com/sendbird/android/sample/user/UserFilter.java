@@ -14,7 +14,11 @@ import android.widget.Toast;
 import com.sendbird.android.sample.R;
 
 public class UserFilter extends AppCompatActivity {
-    RadioButton rbtnFirst, rbtnSecond, rbtnThird, rbtnFourth, rbtnFifth;
+    RadioButton rbtnFirst1, rbtnFirst2,rbtnFirst3,
+                rbtnSecond1,rbtnSecond2,rbtnSecond3,
+                rbtnThird1,rbtnThird2,rbtnThird3,
+                rbtnFourth1,rbtnFourth2,rbtnFourth3,
+                rbtnFifth1,rbtnFifth2,rbtnFifth3;
     TextView btnSubmit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +27,26 @@ public class UserFilter extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        rbtnFirst = findViewById(R.id.rbtnFirst2);
-        rbtnSecond = findViewById(R.id.rbtnSecond3);
-        rbtnThird = findViewById(R.id.rbtnThird1);
-        rbtnFourth = findViewById(R.id.rbtnFourh1);
-        rbtnFifth = findViewById(R.id.rbtnFifth2);
+        rbtnFirst1 = findViewById(R.id.rbtnFirst1);
+        rbtnFirst2 = findViewById(R.id.rbtnFirst2);
+        rbtnFirst3 = findViewById(R.id.rbtnFirst3);
+
+        rbtnSecond1 = findViewById(R.id.rbtnSecond1);
+        rbtnSecond2 = findViewById(R.id.rbtnSecond2);
+        rbtnSecond3 = findViewById(R.id.rbtnSecond3);
+
+        rbtnThird1 = findViewById(R.id.rbtnThird1);
+        rbtnThird2 = findViewById(R.id.rbtnThird2);
+        rbtnThird3 = findViewById(R.id.rbtnThird3);
+
+        rbtnFourth1 = findViewById(R.id.rbtnFourh1);
+        rbtnFourth2 = findViewById(R.id.rbtnFourh2);
+        rbtnFourth3 = findViewById(R.id.rbtnFourh3);
+
+        rbtnFifth1 = findViewById(R.id.rbtnFifth1);
+        rbtnFifth2 = findViewById(R.id.rbtnFifth2);
+        rbtnFifth3 = findViewById(R.id.rbtnFifth3);
+
         btnSubmit = findViewById(R.id.btnSubmit);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +58,7 @@ public class UserFilter extends AppCompatActivity {
     }
 
     private void checkAnswers() {
-        if(rbtnFirst.isChecked() && rbtnSecond.isChecked() && rbtnThird.isChecked() && rbtnFourth.isChecked() && rbtnFifth.isChecked()){
+        if(rbtnFirst2.isChecked() && rbtnSecond3.isChecked() && rbtnThird1.isChecked() && rbtnFourth1.isChecked() && rbtnFifth2.isChecked()){
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
             alertDialog.setMessage("Congratulations! You may now register on this App!")
                     .setTitle("Success")
@@ -52,6 +71,23 @@ public class UserFilter extends AppCompatActivity {
                         }
                     });
             alertDialog.show();
+        }
+        else if(!rbtnFirst1.isChecked() &&
+                !rbtnFirst2.isChecked() &&
+                !rbtnFirst3.isChecked() ||
+                !rbtnSecond1.isChecked() &&
+                !rbtnSecond2.isChecked() &&
+                !rbtnSecond3.isChecked() ||
+                !rbtnThird1.isChecked() &&
+                !rbtnThird2.isChecked() &&
+                !rbtnThird3.isChecked() ||
+                !rbtnFourth1.isChecked() &&
+                !rbtnFourth2.isChecked() &&
+                !rbtnFourth3.isChecked() ||
+                !rbtnFifth1.isChecked() &&
+                !rbtnFifth2.isChecked() &&
+                !rbtnFifth3.isChecked()){
+            Toast.makeText(this,"Please answer all the questions", Toast.LENGTH_SHORT).show();
         }else{
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
             alertDialog.setMessage("Sorry but you are not fit to use this App, this app will now close")
