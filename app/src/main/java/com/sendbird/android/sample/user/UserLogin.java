@@ -44,6 +44,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         txtforgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(new Intent(UserLogin.this, UserForgotPass.class));
             }
         });
@@ -51,6 +52,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
 
     public void goRegister(View v){
         Intent i = new Intent(this, UserRegister.class);
+        finish();
         startActivity(i);
     }
 

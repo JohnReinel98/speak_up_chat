@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Instructions"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20sp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40sp"
+            android:textColor="#000"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:text="For each item select the one “cue” which best characterizes you. Be sure to record the answers in the appropriate spaces. Please take the test seriously for this will be the one that will identify your depression level"
+            android:textStyle="italic"
+            android:id="@+id/dailyQuotes"
+
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

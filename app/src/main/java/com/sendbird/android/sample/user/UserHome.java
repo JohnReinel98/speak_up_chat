@@ -110,6 +110,9 @@ public class UserHome extends AppCompatActivity {
         imgProfile = v.findViewById(R.id.imgPic);
         txtFullname = v.findViewById(R.id.txtUsername);
 
+
+
+
         FirebaseUser user = firebaseAuth.getCurrentUser();
         Glide.with(this)
                         .load(user.getPhotoUrl().toString())
@@ -252,8 +255,8 @@ public class UserHome extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        firebaseAuth.signOut();
                         finish();
+                        firebaseAuth.signOut();
                         startActivity(new Intent(UserHome.this, UserLogin.class));
                     }
                 })

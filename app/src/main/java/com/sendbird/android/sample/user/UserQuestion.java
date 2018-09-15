@@ -1,6 +1,7 @@
 package com.sendbird.android.sample.user;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -50,6 +52,7 @@ public class UserQuestion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         questionManager = new QuestionManager(this);
+
         getSupportActionBar().hide();
         if(!questionManager.checked()){
             questionManager.setFirst(false);
@@ -65,6 +68,10 @@ public class UserQuestion extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager);
         dotsLayout=findViewById(R.id.layoutDots);
         btnNext=findViewById(R.id.btnNext);
+
+
+
+
 
         int first = R.layout.activity_question_1;
 
@@ -151,6 +158,7 @@ public class UserQuestion extends AppCompatActivity {
             }
         });
     }
+
 
     public void answerClick(View view) {
         Answers answers = new Answers();

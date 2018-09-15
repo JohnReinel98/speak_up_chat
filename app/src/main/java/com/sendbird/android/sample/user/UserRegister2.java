@@ -3,6 +3,7 @@ package com.sendbird.android.sample.user;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,8 +11,10 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -248,7 +251,8 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                                     .setDisplayName(lname+", "+fname+" "+mname+".")
                                     .setPhotoUri(downloadUrl)
                                     .build();
-                            currentUser.updateProfile(profileChangeRequest).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            currentUser.updateProfile(profileChangeRequest)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
@@ -258,8 +262,24 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                                     SharedPrefManager.getInstance(getApplicationContext()).userId(fname);
                                     SharedPrefManager.getInstance(getApplicationContext()).userNickname(fname);
                                     //Toast.makeText(UserRegister2.this,"Information Saved",Toast.LENGTH_SHORT).show();
-                                    finish();
-                                    startActivity(new Intent(UserRegister2.this, UserQuestion.class));
+
+
+                                    //show instructions
+                                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserRegister2.this);
+                                    View view = LayoutInflater.from(UserRegister2.this).inflate(R.layout.question_instructions_layout,null);
+                                    alertDialog
+                                            .setCancelable(false)
+                                            .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog.cancel();
+                                                    finish();
+                                                    startActivity(new Intent(UserRegister2.this, UserQuestion.class));
+                                                }
+                                            });
+                                    alertDialog.setView(view);
+                                    alertDialog.show();
+
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override

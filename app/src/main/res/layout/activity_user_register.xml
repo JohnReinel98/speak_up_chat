@@ -31,7 +31,9 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
+        android:layout_below="@+id/picLayout"
         >
 
 
@@ -80,6 +82,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
             <CheckBox
                 android:id="@+id/cbTerms"
@@ -88,12 +91,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="12sp"
                 android:text="I agree to the terms and conditions."/>
             <TextView
                 android:id="@+id/txtTerms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:textSize="12sp"
                 android:textColor="@color/colorPrimary"
                 android:text=" View Terms Here"/>
         </LinearLayout>
