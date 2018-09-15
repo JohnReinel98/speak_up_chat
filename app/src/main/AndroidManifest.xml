@@ -75,6 +75,10 @@
             </intent-filter>
         </service>
 
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".user.UserLogin" />
+
         <activity android:name=".main.ChooseActivity" />
         <activity android:name=".user.UserLogin" />
         <activity android:name=".user.UserHome" />
@@ -85,6 +89,7 @@
             android:parentActivityName=".user.UserProfile" />
         <activity
             android:name=".user.UserRegister"
+            android:parentActivityName=".user.UserLogin"
             android:label="Email Registration" />
         <activity
             android:name=".user.UserRegister2"
@@ -137,6 +142,8 @@
             android:exported="false" />
 
         <activity android:name=".user.TermsActivity" />
+        <activity android:name=".user.UserFilter"
+            android:parentActivityName=".user.UserLogin"></activity>
     </application>
 
 </manifest>

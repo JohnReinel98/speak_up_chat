@@ -27,6 +27,9 @@ public class UserForgotPass extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_forgot_pass);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         btnPassReset = findViewById(R.id.btnPassReset);
         txtEmail = findViewById(R.id.txtemail);
         firebaseAuth = FirebaseAuth.getInstance();

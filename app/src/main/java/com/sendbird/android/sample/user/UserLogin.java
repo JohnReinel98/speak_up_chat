@@ -51,7 +51,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
     }
 
     public void goRegister(View v){
-        Intent i = new Intent(this, UserRegister.class);
+        Intent i = new Intent(this, UserFilter.class);
         finish();
         startActivity(i);
     }

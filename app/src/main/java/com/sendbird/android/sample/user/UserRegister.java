@@ -1,5 +1,6 @@
 package com.sendbird.android.sample.user;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -33,8 +35,10 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_register);
+
         progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
+
 
         cbTerms = findViewById(R.id.cbTerms);
         btnRegister = (Button)findViewById(R.id.btnReg);
@@ -82,6 +86,8 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
             Login();
         }
     }
+
+
     private void registerUser(){
         String email = txtemail.getEditText().getText().toString().trim();
         String passw = txtpass.getEditText().getText().toString().trim();
