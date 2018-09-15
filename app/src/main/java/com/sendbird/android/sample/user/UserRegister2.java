@@ -256,7 +256,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
-                                    User user = new User(fname,lname,mname,birthday,gender,street,city,province,depTest,server,joined,rating_total,rooms_total,reports);
+                                    User user = new User(fname,lname,mname,birthday,gender,street,city,province,String.valueOf(depTest),server,joined,rating_total,rooms_total,reports);
                                     FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     SharedPrefManager.getInstance(getApplicationContext()).userId(fname);
