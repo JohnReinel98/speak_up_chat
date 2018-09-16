@@ -199,7 +199,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
-                android:layout_marginBottom="50sp"
                 >
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
@@ -208,19 +207,36 @@
                     android:hint="Enter Province" />
             </android.support.design.widget.TextInputLayout>
 
-            <!--<EditText-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/txtProv"-->
-            <!--android:hint="Enter Province"-->
-            <!--android:inputType="textCapWords"-->
-            <!--/>-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select User Type"
+                android:textStyle="bold"
+                android:layout_marginBottom="5sp"
+                />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:id="@+id/rbtnUser"
+                    android:onClick="userClick"
 
-            <!--<Button-->
-            <!--android:id="@+id/btnSave"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Upload Information" />-->
+                    />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:id="@+id/rbtnDoctor"
+                    android:onClick="userClick"
+                    />
+            </RadioGroup>
 
         </LinearLayout>
 

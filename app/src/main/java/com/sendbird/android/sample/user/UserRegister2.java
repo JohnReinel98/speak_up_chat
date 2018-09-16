@@ -51,7 +51,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
     private TextInputLayout txtusern, txtpassw, txtFname, txtLname, txtMI, txtemail, txtScrtAns, txtStreet, txtCity, txtProv, txtBirthday;
     private RadioButton rbtnMale, rbtnFemale;
     private ProgressDialog progressDialog;
-    private String gender;
+    private String gender, userType;
     private CircleImageView imgView;
     private StorageReference storageReference;
     private int year_x,month_x,day_x;
@@ -200,11 +200,26 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         switch(view.getId()) {
             case R.id.rbtnMale:
                 if (checked)
-                    gender="Male";
+                    gender = "Male";
                 break;
             case R.id.rbtnFemale:
                 if (checked)
-                    gender="Female";
+                    gender = "Female";
+                break;
+        }
+    }
+
+    public void userClick(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.rbtnUser:
+                if (checked)
+                    userType = "User";
+                break;
+            case R.id.rbtnDoctor:
+                if (checked)
+                    userType = "Doctor";
                 break;
         }
     }
@@ -256,7 +271,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
-                                    User user = new User(fname,lname,mname,birthday,gender,street,city,province,String.valueOf(depTest),server,joined,rating_total,rooms_total,reports);
+                                    User user = new User(fname,lname,mname,birthday,gender,street,city,province,userType,String.valueOf(depTest),server,joined,rating_total,rooms_total,reports);
                                     FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     SharedPrefManager.getInstance(getApplicationContext()).userId(fname);
