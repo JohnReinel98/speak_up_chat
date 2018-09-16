@@ -94,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="Dont mind them let them cry in the corner"
+                android:text="Don't mind them let them cry in the corner"
                 android:id="@+id/rbtnSecond1"
                 />
             <RadioButton
@@ -119,7 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20sp"
-            android:text="2. What are you going to do once you have an Speak Up Accunt?"
+            android:text="3. What are you going to do once you have an Speak Up Account?"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             />
 

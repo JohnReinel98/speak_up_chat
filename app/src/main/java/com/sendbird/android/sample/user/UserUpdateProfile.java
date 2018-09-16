@@ -496,7 +496,6 @@ public class UserUpdateProfile extends AppCompatActivity {
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     progressDialog.dismiss();
                                     finish();
-                                    //startActivity(new Intent(UserUpdateProfile.this, UserProfile.class));
                                     startActivity(new Intent(UserUpdateProfile.this, UserHome.class));
                                 }
                             }).addOnFailureListener(new OnFailureListener() {

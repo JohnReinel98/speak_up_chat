@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:orientation="vertical">
@@ -218,12 +218,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:layout_marginBottom="50dp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_weight="0.5"
                     android:layout_height="wrap_content"
-                    android:text="Male"
+                    android:text="User"
                     android:id="@+id/rbtnUser"
                     android:onClick="userClick"
 
@@ -232,16 +233,13 @@
                     android:layout_width="wrap_content"
                     android:layout_weight="0.5"
                     android:layout_height="wrap_content"
-                    android:text="Female"
+                    android:text="Doctor"
                     android:id="@+id/rbtnDoctor"
                     android:onClick="userClick"
                     />
             </RadioGroup>
 
         </LinearLayout>
-
-
-
 
     </ScrollView>
     <TextView
