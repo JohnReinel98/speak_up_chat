@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/screen4"
+    android:background="@color/screen12"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:text="INSOMNIA: EARLY IN THE NIGHT"
+            android:text="SOMATIC SYMPTOMS GASTRO-INTESTINAL"
             android:textStyle="bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textAlignment="center"
@@ -38,8 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="No difficulty falling asleep"
-                android:id="@+id/rbtnFirst4"
+                android:text="None"
+                android:id="@+id/rbtnFirst12"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white" />
@@ -48,8 +48,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="Complains of occasional difficulty falling asleep, i.e.more than 1⁄2 hour."
-                android:id="@+id/rbtnSecond4"
+                android:text="Loss of appetite but eating without staff encouragement. Heavy feelings in abdomen"
+                android:id="@+id/rbtnSecond12"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white"
@@ -59,14 +59,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="Complains of nightly difficulty falling asleep"
-                android:id="@+id/rbtnThird4"
+                android:text="Difficulty eating without staff urging. Requests or requires laxatives or medication for bowels or medication for gastro-intestinal symptoms"
+                android:id="@+id/rbtnThird12"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white"
                 android:layout_marginTop="10sp"
                 />
-
         </RadioGroup>
 
 

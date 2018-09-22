@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:text="Moving or speaking so slowly that other people could have noticed. Or, the opposite - being so fidgety or restless that you have been moving around a lot more than usual"
+            android:text="RETARDATION (slowness of thought and speech, impaired
+ability to concentrate, decreased motor activity)"
             android:textStyle="bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textAlignment="center"
@@ -32,48 +33,63 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10sp"
             android:padding="20sp"
+
             >
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="@string/firstopt"
+                android:text="Normal speech and thought"
                 android:id="@+id/rbtnFirst8"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
-                android:buttonTint="@android:color/white"
-                />
+                android:buttonTint="@android:color/white" />
+
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="@string/secondopt"
+                android:text="Slight retardation during the interview"
                 android:id="@+id/rbtnSecond8"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white"
+                android:layout_marginTop="10sp"
                 />
-
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="@string/thirdopt"
+                android:text="Obvious retardation during the interview"
                 android:id="@+id/rbtnThird8"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white"
+                android:layout_marginTop="10sp"
                 />
 
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="@string/fourthopt"
+                android:text="Interview difficult"
                 android:id="@+id/rbtnFourh8"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white"
+                android:layout_marginTop="10sp"
+                />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:text="Complete stupor"
+                android:id="@+id/rbtnFifth8"
+                android:onClick="answerClick"
+                android:textColor="@android:color/white"
+                android:buttonTint="@android:color/white"
+                android:layout_marginTop="10sp"
                 />
         </RadioGroup>
 

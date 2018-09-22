@@ -53,6 +53,7 @@
             android:minHeight="20dp"
             android:maxHeight="20dp"
             android:progressTint="@color/red_btn_bg_color"
+            android:max="29"
             android:scaleY="7"
             />
 

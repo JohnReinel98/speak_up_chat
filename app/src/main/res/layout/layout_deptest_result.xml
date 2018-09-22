@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.DepressionFragment">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_happy"
+            android:id="@+id/imgIcons"
+            android:background="@color/float_transparent"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/depStatus"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:text="Your Depression Test is done"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:textAlignment="center"
+            />
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

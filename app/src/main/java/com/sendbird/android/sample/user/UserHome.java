@@ -65,8 +65,8 @@ public class UserHome extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         id = firebaseAuth.getCurrentUser().getUid();
 
-        Intent intent = getIntent();
-        boolean openMeter = intent.getBooleanExtra("openMeter", false);
+//        Intent intent = getIntent();
+//        boolean openMeter = intent.getBooleanExtra("openMeter", false);
 
         SharedPreferences sharedPreferences = getSharedPreferences("PREFS", 0);
         int answ1 = sharedPreferences.getInt("ans1",0);
@@ -79,18 +79,52 @@ public class UserHome extends AppCompatActivity {
         int answ8 = sharedPreferences.getInt("ans8",0);
         int answ9 = sharedPreferences.getInt("ans9",0);
         int answ10 = sharedPreferences.getInt("ans10",0);
+        int answ11 = sharedPreferences.getInt("ans11",0);
+        int answ12 = sharedPreferences.getInt("ans12",0);
+        int answ13 = sharedPreferences.getInt("ans13",0);
+        int answ14 = sharedPreferences.getInt("ans14",0);
+        int answ15 = sharedPreferences.getInt("ans15",0);
+        int answ16 = sharedPreferences.getInt("ans16",0);
+        int answ17 = sharedPreferences.getInt("ans17",0);
 
-        totalAns = answ1 + answ2 + answ3 + answ4 + answ5 + answ6 + answ7 + answ8 + answ9 + answ10;
-        result = totalAns / 10;
+        totalAns = answ1 + answ2 + answ3 + answ4 + answ5 + answ6 + answ7 + answ8 + answ9 + answ10 + answ11 + answ12 + answ13 + answ14 + answ15 + answ16 + answ17;
+        //result = totalAns / 10;
 
 
 
-        String res = String.valueOf(result);
+        String res = String.valueOf(totalAns);
+
+
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference depResult = database.getReference(id).child("depTest");
         depResult.setValue(res);
         depResult.keepSynced(true);
+
+        Intent intent = getIntent();
+        boolean tested = intent.getBooleanExtra("openMeter", false);
+
+        if(tested){
+            AlertDialog.Builder builder = new AlertDialog.Builder(UserHome.this);
+            View view = LayoutInflater.from(UserHome.this).inflate(R.layout.layout_deptest_result,null);
+            builder
+                    .setCancelable(false)
+                    .setNeutralButton("Stay Here", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    })
+                    .setPositiveButton("View Results", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                            setFragment(depressionFragment);
+                        }
+                    });
+            builder.setView(view);
+            builder.show();
+        }
 
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
@@ -120,10 +154,10 @@ public class UserHome extends AppCompatActivity {
         String name = user.getDisplayName();
         txtFullname.setText(name);
 
-        if (openMeter) {
-            mMainNav.setSelectedItemId(R.id.nav_depBar);
-            setFragment(depressionFragment);
-        }
+//        if (openMeter) {
+//            mMainNav.setSelectedItemId(R.id.nav_depBar);
+//            setFragment(depressionFragment);
+//        }
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -175,6 +209,7 @@ public class UserHome extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     protected void onStart() {

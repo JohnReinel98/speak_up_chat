@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:text="Feeling down, depressed or hopeless"
+            android:text="FEELINGS OF GUILT"
             android:textStyle="bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textAlignment="center"
@@ -32,48 +32,63 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10sp"
             android:padding="20sp"
+
             >
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="@string/firstopt"
+                android:text="Absent"
                 android:id="@+id/rbtnFirst2"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
-                android:buttonTint="@android:color/white"
-                />
+                android:buttonTint="@android:color/white" />
+
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="@string/secondopt"
+                android:text="Self reproach when he/she has let people down"
                 android:id="@+id/rbtnSecond2"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white"
+                android:layout_marginTop="10sp"
                 />
-
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="@string/thirdopt"
+                android:text="Ideas of guilt or rumination over past errors or sinful deeds"
                 android:id="@+id/rbtnThird2"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white"
+                android:layout_marginTop="10sp"
                 />
 
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="@string/fourthopt"
+                android:text="Present illness is a punishment. Delusions of guilt"
                 android:id="@+id/rbtnFourh2"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white"
+                android:layout_marginTop="10sp"
+                />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:text="Hears accusatory or denunciatory voices and/or experiences threatening visual hallucinations"
+                android:id="@+id/rbtnFifth2"
+                android:onClick="answerClick"
+                android:textColor="@android:color/white"
+                android:buttonTint="@android:color/white"
+                android:layout_marginTop="10sp"
                 />
         </RadioGroup>
 

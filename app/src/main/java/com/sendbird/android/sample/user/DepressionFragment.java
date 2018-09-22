@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -71,28 +72,34 @@ public class DepressionFragment extends Fragment {
 
                 depMeter.setProgress(Integer.parseInt(finalres));
                 int color = 0xFF00FF00;
-                if(depMeter.getProgress()<=100 && depMeter.getProgress()>=76){
+                if(depMeter.getProgress()>=23){
                     depMeter.getIndeterminateDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
                     depMeter.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-                    depStatus.setText("SEVERE");
+                    depStatus.setText("VERY SEVERE DEPRESSION");
                     imgIcon.setImageResource(R.mipmap.ic_severe);
                 }
-                if(depMeter.getProgress()<=75 && depMeter.getProgress()>=26){
+                if(depMeter.getProgress()>=19 && depMeter.getProgress()<=22){
+                    depMeter.getIndeterminateDrawable().setColorFilter(Color.rgb(165,42,42), PorterDuff.Mode.SRC_IN);
+                    depMeter.getProgressDrawable().setColorFilter(Color.rgb(165,42,42), PorterDuff.Mode.SRC_IN);
+                    depStatus.setText("SEVERE DEPRESSION");
+                    imgIcon.setImageResource(R.mipmap.ic_severe);
+                }
+                if(depMeter.getProgress()>=14 && depMeter.getProgress()<=18){
                     depMeter.getIndeterminateDrawable().setColorFilter(Color.rgb(255,165,0), PorterDuff.Mode.SRC_IN);
                     depMeter.getProgressDrawable().setColorFilter(Color.rgb(255,165,0), PorterDuff.Mode.SRC_IN);
-                    depStatus.setText("MODERATE");
+                    depStatus.setText("MODERATE DEPRESSION");
                     imgIcon.setImageResource(R.mipmap.ic_depressed);
                 }
-                if(depMeter.getProgress()<=25 && depMeter.getProgress()>=1){
+                if(depMeter.getProgress()>=8 && depMeter.getProgress()<=13){
                     depMeter.getIndeterminateDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
                     depMeter.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
-                    depStatus.setText("MILD");
+                    depStatus.setText("MILD DEPRESSION");
                     imgIcon.setImageResource(R.mipmap.ic_mild);
                 }
-                if(depMeter.getProgress()==0){
+                if(depMeter.getProgress()<=7){
                     depMeter.getIndeterminateDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
                     depMeter.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
-                    depStatus.setText("NO SIGN OF DEPRESSION");
+                    depStatus.setText("NORMAL");
                     imgIcon.setImageResource(R.mipmap.ic_happy);
                 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/screen4"
+    android:background="@color/screen16"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:text="INSOMNIA: EARLY IN THE NIGHT"
+            android:text="INSIGHT"
             android:textStyle="bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textAlignment="center"
@@ -38,8 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="No difficulty falling asleep"
-                android:id="@+id/rbtnFirst4"
+                android:text="Acknowledges being depressed and ill"
+                android:id="@+id/rbtnFirst17"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white" />
@@ -48,8 +48,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="Complains of occasional difficulty falling asleep, i.e.more than 1⁄2 hour."
-                android:id="@+id/rbtnSecond4"
+                android:text="Acknowledges illness but attributes cause to bad food, climate, overwork, virus, need for rest, etc"
+                android:id="@+id/rbtnSecond17"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white"
@@ -59,13 +59,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:text="Complains of nightly difficulty falling asleep"
-                android:id="@+id/rbtnThird4"
+                android:text="Denies being ill at all"
+                android:id="@+id/rbtnThird17"
                 android:onClick="answerClick"
                 android:textColor="@android:color/white"
                 android:buttonTint="@android:color/white"
                 android:layout_marginTop="10sp"
                 />
+
 
         </RadioGroup>
 
