@@ -65,8 +65,8 @@
     <string name="nav_chat">Chat</string>
     <string name="nav_alarm">Alarm</string>
     <string name="nav_depBar">Depression Bar</string>
-    <string name="nav_medSched">Medical Schedule</string>
-    <string name="nav_medAlarm">Medicine Schedule</string>
+    <string name="nav_medSched">Reminder</string>
+    <string name="nav_medAlarm">Reminder</string>
 
     <string name="open">Open</string>
     <string name="close">Close</string>
@@ -122,7 +122,7 @@
 
     <string name="editor_update_reminder_failed">Error with updating reminder</string>
 
-    <string name="reminder_title">Medicine Schedule</string>
+    <string name="reminder_title">Reminder</string>
 
     <string name="terms_content">
         Please read these terms and conditions of use carefully before accessing, using or obtaining any materials, information, products or services.
