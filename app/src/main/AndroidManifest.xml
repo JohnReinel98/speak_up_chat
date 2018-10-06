@@ -89,8 +89,8 @@
             android:parentActivityName=".user.UserProfile" />
         <activity
             android:name=".user.UserRegister"
-            android:parentActivityName=".user.UserLogin"
-            android:label="Email Registration" />
+            android:label="Email Registration"
+            android:parentActivityName=".user.UserLogin" />
         <activity
             android:name=".user.UserRegister2"
             android:label="Personal Information" />
@@ -142,8 +142,10 @@
             android:exported="false" />
 
         <activity android:name=".user.TermsActivity" />
-        <activity android:name=".user.UserFilter"
-            android:parentActivityName=".user.UserLogin"></activity>
+        <activity
+            android:name=".user.UserFilter"
+            android:parentActivityName=".user.UserLogin" />
+        <activity android:name=".user.ContactDoctorActivity"></activity>
     </application>
 
 </manifest>
