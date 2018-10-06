@@ -209,21 +209,6 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void userClick(View view) {
-        boolean checked = ((RadioButton) view).isChecked();
-
-        switch(view.getId()) {
-            case R.id.rbtnUser:
-                if (checked)
-                    userType = "User";
-                break;
-            case R.id.rbtnDoctor:
-                if (checked)
-                    userType = "Doctor";
-                break;
-        }
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -271,7 +256,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
-                                    User user = new User(fname,lname,mname,birthday,gender,street,city,province,userType,String.valueOf(depTest),server,joined,rating_total,rooms_total,reports);
+                                    User user = new User(fname,lname,mname,birthday,gender,street,city,province,String.valueOf(depTest),server,joined,rating_total,rooms_total,reports);
                                     FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     SharedPrefManager.getInstance(getApplicationContext()).userId(fname);

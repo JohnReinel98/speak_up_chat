@@ -1,12 +1,15 @@
 package com.sendbird.android.sample.groupchannel;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,7 +32,7 @@ public class MemberInfoActivity extends AppCompatActivity{
     private String mUserId;
     private GroupChannel mChannel;
     private Member mMember;
-
+    private Button btnBlock;
     private ImageView mImageViewProfile;
     private TextView mTextViewNickname;
     private RelativeLayout mRelativeLayoutBlockedByMe;
@@ -43,6 +46,7 @@ public class MemberInfoActivity extends AppCompatActivity{
 
         mChannelUrl = getIntent().getStringExtra(MemberListActivity.EXTRA_CHANNEL_URL);
         mUserId = getIntent().getStringExtra(MemberListActivity.EXTRA_USER_ID);
+
         String profileUrl = getIntent().getStringExtra(MemberListActivity.EXTRA_USER_PROFILE_URL);
         String nickname = getIntent().getStringExtra(MemberListActivity.EXTRA_USER_NICKNAME);
         boolean blockedByMe = getIntent().getBooleanExtra(MemberListActivity.EXTRA_USER_BLOCKED_BY_ME, false);
@@ -56,6 +60,7 @@ public class MemberInfoActivity extends AppCompatActivity{
 
         mImageViewProfile = findViewById(R.id.image_view_profile);
         mTextViewNickname = findViewById(R.id.text_view_nickname);
+        btnBlock = findViewById(R.id.btnBlock);
 
         mRelativeLayoutBlockedByMe = findViewById(R.id.relative_layout_blocked_by_me);
         if (mUserId != null && mUserId.equals(SendBird.getCurrentUser().getUserId())) {
@@ -93,6 +98,13 @@ public class MemberInfoActivity extends AppCompatActivity{
         });
 
         refreshUser(profileUrl, nickname, blockedByMe);
+
+        btnBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogBlocked();
+            }
+        });
     }
 
     @Override
@@ -167,5 +179,23 @@ public class MemberInfoActivity extends AppCompatActivity{
         ImageUtils.displayRoundImageFromUrl(this, profileUrl, mImageViewProfile);
         mTextViewNickname.setText(nickname);
         mSwitchBlockedByMe.setChecked(isBlockedByMe);
+    }
+
+    private void dialogBlocked() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Success");
+        builder.setMessage("User has been blocked.");
+        builder.setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked the "Keep editing" button, so dismiss the dialog
+                // and continue editing the reminder.
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        // Create and show the AlertDialog
+       builder.create().show();
     }
 }

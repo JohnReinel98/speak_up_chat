@@ -398,21 +398,6 @@ public class UserUpdateProfile extends AppCompatActivity {
 
             }
         });
-
-        DatabaseReference refUserType = database.getReference(id).child("user");
-
-        refUserType.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-            @Override
-            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-                String updateUser = dataSnapshot.getValue(String.class);
-                userType = updateUser;
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }
 
     private void updateUserProfile(){
@@ -440,7 +425,7 @@ public class UserUpdateProfile extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 int depTest = 0;
-                User user = new User(fname, lname, mname, bday, selectedGen, street, city, prov, userType, String.valueOf(depTest), server, joined, rating, rooms, no_reports);
+                User user = new User(fname, lname, mname, bday, selectedGen, street, city, prov, String.valueOf(depTest), server, joined, rating, rooms, no_reports);
                 databaseReference.child(currentUser.getUid()).setValue(user);
                 progressDialog.dismiss();
                 finish();
@@ -491,7 +476,7 @@ public class UserUpdateProfile extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
-                                    User user = new User(fname,lname,mname,bday,selectedGen,street,city,prov,userType,String.valueOf(depTest),server,joined,rating,rooms,no_reports);
+                                    User user = new User(fname,lname,mname,bday,selectedGen,street,city,prov,String.valueOf(depTest),server,joined,rating,rooms,no_reports);
                                     FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     progressDialog.dismiss();
