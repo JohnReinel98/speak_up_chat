@@ -39,7 +39,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ContactDoctorActivity extends AppCompatActivity {
-    private String selectedGen;
+    private String selectedGen, doctor;
     private static final int DIALOG_ID = 0;
     private TextInputLayout txtContactName, txtContactPhone, txtContactRelationship, txtFname, txtLname, txtMI, txtemail, txtScrtAns, txtStreet, txtCity, txtProv, txtBirthday;
     private String[] monthStr = {"January","February","March","April","May","June","July","August","September","October","November","December"};
@@ -59,6 +59,9 @@ public class ContactDoctorActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Doctors");
         progressDialog = new ProgressDialog(this);
+
+        Intent i = getIntent();
+        doctor = i.getStringExtra("doctor");
 
         txtLname = findViewById(R.id.txtLname);
         txtFname = findViewById(R.id.txtFname);
@@ -201,16 +204,16 @@ public class ContactDoctorActivity extends AppCompatActivity {
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        saveUser(fname, lname, mname, street, city, province, birthday, contact_name, contact_phone, contact_relationship);
+        saveUser(fname, lname, mname, street, city, province, birthday, selectedGen, contact_name, contact_phone, contact_relationship);
 
     }
 
     private void saveUser(final String fname, final String lname, final String mname, final String street, final String city, final String province,
-                          final String birthday, final String contact_name, final String contact_phone, final String contact_relationship) {
+                          final String birthday, final String gender, final String contact_name, final String contact_phone, final String contact_relationship) {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         String sender = currentUser.getDisplayName().replace(".", "");
 
-        final DatabaseReference refLname = databaseReference.child("Messages").child("Doctor1").child(sender).child("lname");
+        final DatabaseReference refLname = databaseReference.child("Messages").child(doctor).child(sender).child("lname");
         refLname.keepSynced(true);
         refLname.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -223,7 +226,7 @@ public class ContactDoctorActivity extends AppCompatActivity {
             }
         });
 
-        final DatabaseReference refFname = databaseReference.child("Messages").child("Doctor1").child(sender).child("fname");
+        final DatabaseReference refFname = databaseReference.child("Messages").child(doctor).child(sender).child("fname");
         refFname.keepSynced(true);
         refFname.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -236,7 +239,7 @@ public class ContactDoctorActivity extends AppCompatActivity {
             }
         });
 
-        final DatabaseReference refMI = databaseReference.child("Messages").child("Doctor1").child(sender).child("mi");
+        final DatabaseReference refMI = databaseReference.child("Messages").child(doctor).child(sender).child("mi");
         refMI.keepSynced(true);
         refMI.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -249,7 +252,7 @@ public class ContactDoctorActivity extends AppCompatActivity {
             }
         });
 
-        final DatabaseReference refBday = databaseReference.child("Messages").child("Doctor1").child(sender).child("bday");
+        final DatabaseReference refBday = databaseReference.child("Messages").child(doctor).child(sender).child("bday");
         refBday.keepSynced(true);
         refBday.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -261,19 +264,19 @@ public class ContactDoctorActivity extends AppCompatActivity {
 
             }
         });
-        final DatabaseReference refGender = databaseReference.child("Messages").child("Doctor1").child(sender).child("gender");
+        final DatabaseReference refGender = databaseReference.child("Messages").child(doctor).child(sender).child("gender");
         refGender.keepSynced(true);
         refGender.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                refGender.setValue(selectedGen);
+                refGender.setValue(gender);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
-        final DatabaseReference refStreet = databaseReference.child("Messages").child("Doctor1").child(sender).child("street");
+        final DatabaseReference refStreet = databaseReference.child("Messages").child(doctor).child(sender).child("street");
         refStreet.keepSynced(true);
         refStreet.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -285,7 +288,7 @@ public class ContactDoctorActivity extends AppCompatActivity {
 
             }
         });
-        final DatabaseReference refCity = databaseReference.child("Messages").child("Doctor1").child(sender).child("city");
+        final DatabaseReference refCity = databaseReference.child("Messages").child(doctor).child(sender).child("city");
         refCity.keepSynced(true);
         refCity.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -297,7 +300,7 @@ public class ContactDoctorActivity extends AppCompatActivity {
 
             }
         });
-        final DatabaseReference refProv = databaseReference.child("Messages").child("Doctor1").child(sender).child("province");
+        final DatabaseReference refProv = databaseReference.child("Messages").child(doctor).child(sender).child("province");
         refProv.keepSynced(true);
         refProv.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -309,7 +312,7 @@ public class ContactDoctorActivity extends AppCompatActivity {
 
             }
         });
-        final DatabaseReference refCName = databaseReference.child("Messages").child("Doctor1").child(sender).child("contact_name");
+        final DatabaseReference refCName = databaseReference.child("Messages").child(doctor).child(sender).child("contact_name");
         refCName.keepSynced(true);
         refCName.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -321,7 +324,7 @@ public class ContactDoctorActivity extends AppCompatActivity {
 
             }
         });
-        final DatabaseReference refCPhone = databaseReference.child("Messages").child("Doctor1").child(sender).child("contact_phone");
+        final DatabaseReference refCPhone = databaseReference.child("Messages").child(doctor).child(sender).child("contact_phone");
         refCPhone.keepSynced(true);
         refCName.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -333,7 +336,7 @@ public class ContactDoctorActivity extends AppCompatActivity {
 
             }
         });
-        final DatabaseReference refCRelationShip = databaseReference.child("Messages").child("Doctor1").child(sender).child("contact_relationship");
+        final DatabaseReference refCRelationShip = databaseReference.child("Messages").child(doctor).child(sender).child("contact_relationship");
         refCRelationShip.keepSynced(true);
         refCRelationShip.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -355,6 +358,7 @@ public class ContactDoctorActivity extends AppCompatActivity {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setMessage("Information Sent, Please wait for your doctor to message you.")
                 .setTitle("Success")
+                .setCancelable(false)
                 .setPositiveButton("Done", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

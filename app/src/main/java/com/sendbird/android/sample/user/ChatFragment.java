@@ -112,7 +112,7 @@ public class ChatFragment extends Fragment {
         btnDoctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ContactDoctorActivity.class));
+                startActivity(new Intent(getActivity(), ChooseDoctorActivity.class));
             }
         });
 
@@ -210,6 +210,7 @@ public class ChatFragment extends Fragment {
         DatabaseReference refisDoctor = database.getReference(id).child("isDoctor");
 
         progressDialog.setMessage("Checking user...");
+        progressDialog.setCancelable(false);
         progressDialog.show();
         refisDoctor.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
             @Override

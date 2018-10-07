@@ -148,6 +148,10 @@
         <activity
             android:name=".user.ContactDoctorActivity"
             android:label="Contact Doctor"
+            android:parentActivityName=".user.ChooseDoctorActivity"></activity>
+        <activity
+            android:name=".user.ChooseDoctorActivity"
+            android:label="Choose Doctor"
             android:parentActivityName=".user.UserHome">
         </activity>
     </application>
