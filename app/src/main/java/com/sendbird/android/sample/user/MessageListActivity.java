@@ -45,6 +45,7 @@ public class MessageListActivity extends AppCompatActivity {
                 String items = item + ":" + doctor;
                 intent.putExtra("patient", items);
                 startActivity(intent);
+                finish();
             }
         });
 
