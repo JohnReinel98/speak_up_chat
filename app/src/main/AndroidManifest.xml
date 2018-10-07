@@ -145,7 +145,11 @@
         <activity
             android:name=".user.UserFilter"
             android:parentActivityName=".user.UserLogin" />
-        <activity android:name=".user.ContactDoctorActivity"></activity>
+        <activity
+            android:name=".user.ContactDoctorActivity"
+            android:label="Contact Doctor"
+            android:parentActivityName=".user.UserHome">
+        </activity>
     </application>
 
 </manifest>

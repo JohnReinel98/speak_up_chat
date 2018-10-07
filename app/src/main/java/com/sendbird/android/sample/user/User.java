@@ -2,18 +2,19 @@ package com.sendbird.android.sample.user;
 
 public class User {
     public String fname,lname,mname,birthday,gender,street,city,province,server,joined,rating_total,rooms_total,reports;
-    public String depTest;
+    public String depTest, isDoctor;
     //public Uri filepath;
 
 
 
-    public User(String fname, String lname, String mname,String birthday, String gender, String street, String city, String province,
+    public User(String fname, String lname, String mname,String birthday, String gender, String isDoctor, String street, String city, String province,
                 String depTest, String server, String joined, String rating_total, String rooms_total, String reports) {
         this.fname = fname;
         this.lname = lname;
         this.mname = mname;
         this.birthday = birthday;
         this.gender = gender;
+        this.isDoctor = isDoctor;
         this.street = street;
         this.city = city;
         this.province = province;
@@ -42,6 +43,10 @@ public class User {
 
     public String getGender() {
         return gender;
+    }
+
+    public String getIsDoctor() {
+        return isDoctor;
     }
 
     public String getStreet() {

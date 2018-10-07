@@ -72,7 +72,7 @@ public class UserUpdateProfile extends AppCompatActivity {
     private Uri uriHolder;
     private int depTestVar, rooms_total, reports;
     private Uri uriprofileImage;
-    private String profileImageUrl, joined, server;
+    private String profileImageUrl, joined, server, isDoctor;
     private float rating_total;
 
     private DatabaseReference databaseReference;
@@ -94,6 +94,7 @@ public class UserUpdateProfile extends AppCompatActivity {
         getServer();
         getRating();
         getRooms();
+        getisDoctor();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -425,7 +426,7 @@ public class UserUpdateProfile extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 int depTest = 0;
-                User user = new User(fname, lname, mname, bday, selectedGen, street, city, prov, String.valueOf(depTest), server, joined, rating, rooms, no_reports);
+                User user = new User(fname, lname, mname, bday, selectedGen, isDoctor, street, city, prov, String.valueOf(depTest), server, joined, rating, rooms, no_reports);
                 databaseReference.child(currentUser.getUid()).setValue(user);
                 progressDialog.dismiss();
                 finish();
@@ -476,7 +477,7 @@ public class UserUpdateProfile extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
-                                    User user = new User(fname,lname,mname,bday,selectedGen,street,city,prov,String.valueOf(depTest),server,joined,rating,rooms,no_reports);
+                                    User user = new User(fname,lname,mname,bday,selectedGen,isDoctor,street,city,prov,String.valueOf(depTest),server,joined,rating,rooms,no_reports);
                                     FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     progressDialog.dismiss();
@@ -612,6 +613,23 @@ public class UserUpdateProfile extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 joined = dataSnapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getisDoctor(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refisDoctor = database.getReference(id).child("isDoctor");
+        refisDoctor.keepSynced(true);
+        refisDoctor.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                isDoctor = dataSnapshot.getValue(String.class);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

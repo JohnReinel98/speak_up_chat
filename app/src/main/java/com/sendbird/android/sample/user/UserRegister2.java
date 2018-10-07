@@ -49,7 +49,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
     private TextView useremail, btnSave;
     private FirebaseAuth firebaseAuth;
     private TextInputLayout txtusern, txtpassw, txtFname, txtLname, txtMI, txtemail, txtScrtAns, txtStreet, txtCity, txtProv, txtBirthday;
-    private RadioButton rbtnMale, rbtnFemale;
+    private RadioButton rbtnMale, rbtnFemale, rbtnUser, rbtnDoctor;
     private ProgressDialog progressDialog;
     private String gender, userType;
     private CircleImageView imgView;
@@ -99,6 +99,9 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         rbtnMale = findViewById(R.id.rbtnMale);
         rbtnFemale = findViewById(R.id.rbtnFemale);
 
+        /*rbtnUser = findViewById(R.id.rbtnUser);
+        rbtnDoctor = findViewById(R.id.rbtnDoctor);*/
+
         rbtnMale.setChecked(true);
         gender="Male";
 
@@ -117,12 +120,12 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         final String server = "", joined = "false";
 
         if (TextUtils.isEmpty(lname)) {
-            txtLname.setError("Please enter first name");
+            txtLname.setError("Please enter last name");
             txtLname.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(fname)) {
-            txtFname.setError("Please enter last name");
+            txtFname.setError("Please enter first name");
             txtFname.requestFocus();
             return;
         }
@@ -209,6 +212,20 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    /*public void userClick(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
+            case R.id.rbtnUser:
+                if (checked)
+                    userType = "false";
+                break;
+            case R.id.rbtnDoctor:
+                if (checked)
+                    userType = "true";
+                break;
+        }
+    }*/
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -246,7 +263,6 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                             final Uri downloadUrl = uri;
                             profileImageUrl = downloadUrl.toString();
                             FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-
                             UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
                                     .setDisplayName(lname+", "+fname+" "+mname+".")
                                     .setPhotoUri(downloadUrl)
@@ -256,7 +272,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
-                                    User user = new User(fname,lname,mname,birthday,gender,street,city,province,String.valueOf(depTest),server,joined,rating_total,rooms_total,reports);
+                                    User user = new User(fname,lname,mname,birthday,gender,"false",street,city,province,String.valueOf(depTest),server,joined,rating_total,rooms_total,reports);
                                     FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     SharedPrefManager.getInstance(getApplicationContext()).userId(fname);
