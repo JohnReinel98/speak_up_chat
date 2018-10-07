@@ -35,6 +35,8 @@ import com.sendbird.android.sample.utils.SharedPrefManager;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -213,6 +215,11 @@ public class ContactDoctorActivity extends AppCompatActivity {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         String sender = currentUser.getDisplayName().replace(".", "");
 
+        Date date = new Date();
+        String strDateFormat = "MMMM-dd-YYYY hh:mm:ss a";
+        DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
+        final String formattedDate = dateFormat.format(date);
+
         final DatabaseReference refLname = databaseReference.child("Messages").child(doctor).child(sender).child("lname");
         refLname.keepSynced(true);
         refLname.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -342,6 +349,18 @@ public class ContactDoctorActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 refCRelationShip.setValue(contact_relationship);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        final DatabaseReference refDateTime = databaseReference.child("Messages").child(doctor).child(sender).child("dateTime");
+        refDateTime.keepSynced(true);
+        refDateTime.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                refDateTime.setValue(formattedDate);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
