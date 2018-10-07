@@ -153,7 +153,7 @@
             android:parentActivityName=".user.UserLogin" />
         <activity
             android:name=".user.ContactDoctorActivity"
-            android:label="Contact Doctor"
+            android:label="Professional List"
             android:parentActivityName=".user.ChooseDoctorActivity" />
         <activity
             android:name=".user.ChooseDoctorActivity"
