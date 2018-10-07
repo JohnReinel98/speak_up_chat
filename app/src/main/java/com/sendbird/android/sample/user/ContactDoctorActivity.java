@@ -151,9 +151,10 @@ public class ContactDoctorActivity extends AppCompatActivity {
     }
 
     private void validateInfo(){
-        final String fname = txtFname.getEditText().getText().toString().trim();
+        final String name = firebaseAuth.getCurrentUser().getDisplayName();
+        /*final String fname = txtFname.getEditText().getText().toString().trim();
         final String lname = txtLname.getEditText().getText().toString().trim();
-        final String mname = txtMI.getEditText().getText().toString().trim();
+        final String mname = txtMI.getEditText().getText().toString().trim();*/
         final String street = txtStreet.getEditText().getText().toString().trim();
         final String city = txtCity.getEditText().getText().toString().trim();
         final String province = txtProv.getEditText().getText().toString().trim();
@@ -162,21 +163,6 @@ public class ContactDoctorActivity extends AppCompatActivity {
         final String contact_phone = txtContactPhone.getEditText().getText().toString().trim();
         final String contact_relationship = txtContactRelationship.getEditText().getText().toString().trim();
 
-        if (TextUtils.isEmpty(fname)) {
-            txtLname.setError("Please enter first name");
-            txtLname.requestFocus();
-            return;
-        }
-        if (TextUtils.isEmpty(lname)) {
-            txtFname.setError("Please enter last name");
-            txtFname.requestFocus();
-            return;
-        }
-        if (TextUtils.isEmpty(mname)) {
-            txtMI.setError("Please enter middle initial");
-            txtMI.requestFocus();
-            return;
-        }
         if (TextUtils.isEmpty(street)) {
             txtStreet.setError("Please enter street address");
             txtStreet.requestFocus();
@@ -206,11 +192,11 @@ public class ContactDoctorActivity extends AppCompatActivity {
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        saveUser(fname, lname, mname, street, city, province, birthday, selectedGen, contact_name, contact_phone, contact_relationship);
+        saveUser(name, street, city, province, birthday, selectedGen, contact_name, contact_phone, contact_relationship);
 
     }
 
-    private void saveUser(final String fname, final String lname, final String mname, final String street, final String city, final String province,
+    private void saveUser(final String name,  final String street, final String city, final String province,
                           final String birthday, final String gender, final String contact_name, final String contact_phone, final String contact_relationship) {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         String sender = currentUser.getDisplayName().replace(".", "");
@@ -220,7 +206,7 @@ public class ContactDoctorActivity extends AppCompatActivity {
         DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
         final String formattedDate = dateFormat.format(date);
 
-        final DatabaseReference refLname = databaseReference.child("Messages").child(doctor).child(sender).child("lname");
+        /*final DatabaseReference refLname = databaseReference.child("Messages").child(doctor).child(sender).child("lname");
         refLname.keepSynced(true);
         refLname.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -244,14 +230,14 @@ public class ContactDoctorActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
-        final DatabaseReference refMI = databaseReference.child("Messages").child(doctor).child(sender).child("mi");
-        refMI.keepSynced(true);
-        refMI.addListenerForSingleValueEvent(new ValueEventListener() {
+        final DatabaseReference refName = databaseReference.child("Messages").child(doctor).child(sender).child("name");
+        refName.keepSynced(true);
+        refName.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                refMI.setValue(mname);
+                refName.setValue(name);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -312,7 +298,7 @@ public class ContactDoctorActivity extends AppCompatActivity {
         refProv.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                refCity.setValue(province);
+                refProv.setValue(province);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

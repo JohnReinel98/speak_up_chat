@@ -52,7 +52,13 @@
         <activity
             android:name=".groupchannel.CreateGroupChannelActivity"
             android:label="@string/create_group_channel"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
         <activity
             android:name=".openchannel.ParticipantListActivity"
             android:label="@string/participant_list" />
@@ -153,9 +159,20 @@
             android:name=".user.ChooseDoctorActivity"
             android:label="Choose Doctor"
             android:parentActivityName=".user.UserHome" />
-        <activity android:name=".user.PatientMessageActivity">
+        <activity
+            android:name=".user.PatientMessageActivity"
+            android:label="Patient's Message"
+            android:parentActivityName=".user.MessageListActivity">
         </activity>
-        <activity android:name=".user.MessageListActivity">
+        <activity
+            android:name=".user.MessageListActivity"
+            android:label="Message List"
+            android:parentActivityName=".user.UserHome">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
     </application>
 

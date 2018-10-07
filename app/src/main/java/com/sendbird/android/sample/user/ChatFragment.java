@@ -116,6 +116,15 @@ public class ChatFragment extends Fragment {
             }
         });
 
+        btnPatients.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MessageListActivity.class);
+                intent.putExtra("doctor", "Doctor2");
+                startActivity(intent);
+            }
+        });
+
         return rootView;
     }
 
