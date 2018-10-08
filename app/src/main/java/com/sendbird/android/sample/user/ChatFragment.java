@@ -43,7 +43,7 @@ public class ChatFragment extends Fragment {
     private static final String APP_ID_HAPPY = "09BDD7F8-267A-4C4B-B966-77013078AA79";
     private static final String APP_ID_HOPEFUL = "CB8FC80D-78A6-46F3-9941-CEBB93D9CE73";
     private static final String APP_ID_DOCTOR = "C78BA867-A68E-497D-8959-C2EDD9BD42D9";
-    String userID, nickName, server, choose, isDoctor;
+    String userID, nickName, server, choose, isDoctor, doctor;
     private LinearLayout linearLayoutUser, linearLayoutDoctor;
 
     public ChatFragment() {
@@ -71,6 +71,13 @@ public class ChatFragment extends Fragment {
         getServer();
         getisDoctor();
 
+        String doctorName = firebaseAuth.getCurrentUser().getDisplayName().replace(".","");
+
+        if (doctorName.equalsIgnoreCase("Catacutan, Karl Lemuel A")) {
+            doctor = "Doctor1";
+        } else {
+            doctor = "Doctor2";
+        }
 
         btnDepression.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +129,8 @@ public class ChatFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MessageListActivity.class);
-                intent.putExtra("doctor", "Doctor2");
+                //intent.putExtra("doctor", "Doctor2");
+                intent.putExtra("doctor", doctor);
                 startActivity(intent);
             }
         });
