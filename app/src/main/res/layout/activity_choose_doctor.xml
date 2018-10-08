@@ -31,7 +31,7 @@
             fbutton:shadowColor="@color/colorPrimaryDark"
             android:layout_height="50dp"
             android:layout_width="230dp"
-            android:text="Juan S. Dela Cruz">
+            android:text="Karl Lemuel Catacutan">
         </info.hoang8f.widget.FButton>
 
         <!--<TextView
