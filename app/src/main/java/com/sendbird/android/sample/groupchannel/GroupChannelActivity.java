@@ -8,12 +8,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.sendbird.android.sample.R;
 
 
 public class GroupChannelActivity extends AppCompatActivity{
-    private String server;
+    private String server, patientName;
+    private boolean isDoctorMsg;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,16 +23,20 @@ public class GroupChannelActivity extends AppCompatActivity{
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_group_channel);
         setSupportActionBar(toolbar);
-        Intent iin= getIntent();
+        Intent iin = getIntent();
         Bundle b = iin.getExtras();
 
         server = b.getString("serverExtra1");
+        patientName = b.getString("patientName");
+        isDoctorMsg = b.getBoolean("isDoctorMsg");
 
         if (savedInstanceState == null) {
             // Load list of Group Channels
             Fragment fragment = GroupChannelListFragment.newInstance();
             Bundle bundle = new Bundle();
             bundle.putString("serverExtra2", server);
+            bundle.putString("patientName2", patientName);
+            bundle.putBoolean("isDoctorMsg2", isDoctorMsg);
             fragment.setArguments(bundle);
 
             FragmentManager manager = getSupportFragmentManager();

@@ -63,7 +63,8 @@ public class GroupChannelListFragment extends Fragment {
     private SwipeRefreshLayout mSwipeRefresh;
     private ProgressDialog progressDialog;
     TextView emptyview;
-    private String server,userFname;
+    private String server,userFname,patientName;
+    private boolean isDoctorMsg;
 
     public static GroupChannelListFragment newInstance() {
         GroupChannelListFragment fragment = new GroupChannelListFragment();
@@ -95,6 +96,8 @@ public class GroupChannelListFragment extends Fragment {
         Bundle bundle = this.getArguments();
 
         server = bundle.getString("serverExtra2");
+        patientName = bundle.getString("patientName2");
+        isDoctorMsg = bundle.getBoolean("isDoctorMsg2");
 
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -119,8 +122,16 @@ public class GroupChannelListFragment extends Fragment {
         mCreateChannelFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Searching...", Toast.LENGTH_LONG).show();
-                serverChecker();
+                if (isDoctorMsg) {
+                    Toast.makeText(getContext(), "Loading...", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), CreateGroupChannelActivity.class);
+                    intent.putExtra("patientName3", patientName);
+                    intent.putExtra("isDoctorMsg3", isDoctorMsg);
+                    startActivityForResult(intent, INTENT_REQUEST_NEW_GROUP_CHANNEL);
+                } else {
+                    Toast.makeText(getContext(), "Searching...", Toast.LENGTH_LONG).show();
+                    serverChecker();
+                }
                 progressDialog.dismiss();
             }
         });

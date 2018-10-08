@@ -32,7 +32,7 @@ public class MemberInfoActivity extends AppCompatActivity{
     private String mUserId;
     private GroupChannel mChannel;
     private Member mMember;
-    private Button btnBlock;
+    private Button btnReport;
     private ImageView mImageViewProfile;
     private TextView mTextViewNickname;
     private RelativeLayout mRelativeLayoutBlockedByMe;
@@ -60,7 +60,7 @@ public class MemberInfoActivity extends AppCompatActivity{
 
         mImageViewProfile = findViewById(R.id.image_view_profile);
         mTextViewNickname = findViewById(R.id.text_view_nickname);
-        btnBlock = findViewById(R.id.btnBlock);
+        btnReport = findViewById(R.id.btnReport);
 
         mRelativeLayoutBlockedByMe = findViewById(R.id.relative_layout_blocked_by_me);
         if (mUserId != null && mUserId.equals(SendBird.getCurrentUser().getUserId())) {
@@ -99,7 +99,7 @@ public class MemberInfoActivity extends AppCompatActivity{
 
         refreshUser(profileUrl, nickname, blockedByMe);
 
-        btnBlock.setOnClickListener(new View.OnClickListener() {
+        btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialogBlocked();
@@ -184,7 +184,7 @@ public class MemberInfoActivity extends AppCompatActivity{
     private void dialogBlocked() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Success");
-        builder.setMessage("User has been blocked.");
+        builder.setMessage("User has been reported.");
         builder.setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked the "Keep editing" button, so dismiss the dialog

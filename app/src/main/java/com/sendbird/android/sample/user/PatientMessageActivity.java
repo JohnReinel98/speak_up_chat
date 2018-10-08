@@ -33,6 +33,7 @@ import java.util.Date;
 public class PatientMessageActivity extends AppCompatActivity {
     private Button btnMessagePatient;
     private String name, gender, city, street, province, date, bday, contact_name, contact_phone, contact_relationship, data, doctor, patient;
+    String userID, nickName, server, choose;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
@@ -76,25 +77,33 @@ public class PatientMessageActivity extends AppCompatActivity {
         getContactPhone();
         getContactRelationship();
         getDate();
+        getServer();
 
         btnMessagePatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Create Channel here
+                progressDialog.setMessage("Loading Server...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+                SendBird.init(APP_ID_DOCTOR, getApplicationContext());
+                setServer("doctor");
+                choose = "doctor";
+                connectToSendBirdDoctor();
             }
         });
     }
 
-    /*@Override
+    @Override
     public void onStart() {
         super.onStart();
         if(PreferenceUtils.getConnected()) {
-            connectToSendBird();
+            connectToSendBirdDoctor();
         }
     }
 
-    private void connectToSendBird() {
-        ConnectionManager.login(userID, new SendBird.ConnectHandler() {
+    private void connectToSendBirdDoctor() {
+        final String userName = firebaseAuth.getCurrentUser().getDisplayName().replace(".","");
+        ConnectionManager.login(userName, new SendBird.ConnectHandler() {
             @Override
             public void onConnected(User user, SendBirdException e) {
                 // Callback received; hide the progress bar.
@@ -106,23 +115,25 @@ public class PatientMessageActivity extends AppCompatActivity {
                     return;
                 }
 
-                PreferenceUtils.setNickname(nickName);
+                PreferenceUtils.setNickname(userName);
                 PreferenceUtils.setProfileUrl(user.getProfileUrl());
                 PreferenceUtils.setConnected(true);
 
                 // Update the user's nickname
-                updateCurrentUserInfo(nickName);
+                updateCurrentUserInfo(userName);
                 updateCurrentUserPushToken();
 
                 // Proceed to MainActivity
                 Intent intent = new Intent(PatientMessageActivity.this, GroupChannelActivity.class);
                 intent.putExtra("serverExtra1", choose);
+                intent.putExtra("patientName", name);
+                intent.putExtra("isDoctorMsg", true);
                 startActivity(intent);
                 finish();
                 progressDialog.dismiss();
             }
         });
-    }*/
+    }
 
     private void updateCurrentUserPushToken() {
         PushUtils.registerPushTokenForCurrentUser(PatientMessageActivity.this, null);
@@ -145,6 +156,41 @@ public class PatientMessageActivity extends AppCompatActivity {
                 }
 
                 PreferenceUtils.setNickname(userNickname);
+            }
+        });
+    }
+
+    private String getServer(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refServer = database.getReference(id).child("server");
+        refServer.keepSynced(true);
+        refServer.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                server = dataSnapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return server;
+    }
+
+    private void setServer(final String server){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        final DatabaseReference refServer = database.getReference(id).child("server");
+        refServer.keepSynced(true);
+        refServer.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                refServer.setValue(server);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

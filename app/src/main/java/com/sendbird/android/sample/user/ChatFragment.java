@@ -34,7 +34,7 @@ import com.sendbird.android.sample.utils.PushUtils;
  */
 public class ChatFragment extends Fragment {
     ImageButton btnDepression, btnHappy, btnHopeful;
-    Button btnDoctor, btnPatients;
+    Button btnDoctor, btnPatients, btnDoctorMessage;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private TextView txtPatientDetails, txtDoctorDetails;
@@ -42,6 +42,7 @@ public class ChatFragment extends Fragment {
     private static final String APP_ID_DEPRESSION = "26C9F889-F713-4847-8C71-40BA098D3D2A";
     private static final String APP_ID_HAPPY = "09BDD7F8-267A-4C4B-B966-77013078AA79";
     private static final String APP_ID_HOPEFUL = "CB8FC80D-78A6-46F3-9941-CEBB93D9CE73";
+    private static final String APP_ID_DOCTOR = "C78BA867-A68E-497D-8959-C2EDD9BD42D9";
     String userID, nickName, server, choose, isDoctor;
     private LinearLayout linearLayoutUser, linearLayoutDoctor;
 
@@ -59,6 +60,7 @@ public class ChatFragment extends Fragment {
         btnHappy = rootView.findViewById(R.id.btnHappy);
         btnHopeful = rootView.findViewById(R.id.btnHopeful);
         btnDoctor = rootView.findViewById(R.id.btnDoctor);
+        btnDoctorMessage = rootView.findViewById(R.id.btnDoctorMessage);
         btnPatients = rootView.findViewById(R.id.btnPatients);
         txtPatientDetails = rootView.findViewById(R.id.txtPatientDetails);
         txtDoctorDetails = rootView.findViewById(R.id.txtDoctorDetails);
@@ -125,6 +127,19 @@ public class ChatFragment extends Fragment {
             }
         });
 
+        btnDoctorMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressDialog.setMessage("Loading Server...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+                SendBird.init(APP_ID_DOCTOR, getContext());
+                setServer("doctor");
+                choose = "doctor";
+                connectToSendBirdDoctor();
+            }
+        });
+
         return rootView;
     }
 
@@ -155,6 +170,38 @@ public class ChatFragment extends Fragment {
 
                 // Update the user's nickname
                 updateCurrentUserInfo(nickName);
+                updateCurrentUserPushToken();
+
+                // Proceed to MainActivity
+                Intent intent = new Intent(getActivity(), GroupChannelActivity.class);
+                intent.putExtra("serverExtra1", choose);
+                startActivity(intent);
+                getActivity().finish();
+                progressDialog.dismiss();
+            }
+        });
+    }
+
+    private void connectToSendBirdDoctor() {
+        final String userName = firebaseAuth.getCurrentUser().getDisplayName().replace(".","");
+        ConnectionManager.login(userName, new SendBird.ConnectHandler() {
+            @Override
+            public void onConnected(User user, SendBirdException e) {
+                // Callback received; hide the progress bar.
+
+                if (e != null) {
+                    // Error!
+                    // Show login failure snackbar
+                    PreferenceUtils.setConnected(false);
+                    return;
+                }
+
+                PreferenceUtils.setNickname(userName);
+                PreferenceUtils.setProfileUrl(user.getProfileUrl());
+                PreferenceUtils.setConnected(true);
+
+                // Update the user's nickname
+                updateCurrentUserInfo(userName);
                 updateCurrentUserPushToken();
 
                 // Proceed to MainActivity
@@ -231,6 +278,7 @@ public class ChatFragment extends Fragment {
                     linearLayoutUser.setVisibility(View.VISIBLE);
                     txtDoctorDetails.setVisibility(View.VISIBLE);
                     btnDoctor.setVisibility(View.VISIBLE);
+                    btnDoctorMessage.setVisibility(View.VISIBLE);
                 } else {
                     linearLayoutDoctor.setVisibility(View.VISIBLE);
                     txtPatientDetails.setVisibility(View.VISIBLE);
@@ -271,11 +319,8 @@ public class ChatFragment extends Fragment {
         refProv.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                progressDialog.setMessage("Loading Server...");
-                progressDialog.show();
                 userID = dataSnapshot.getValue(String.class);
                 nickName = dataSnapshot.getValue(String.class);
-                progressDialog.dismiss();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

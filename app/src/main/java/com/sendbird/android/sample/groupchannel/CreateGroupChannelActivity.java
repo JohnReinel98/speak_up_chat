@@ -60,12 +60,24 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         mSelectedIds = new ArrayList<>();
         progressDialog = new ProgressDialog(getApplicationContext());
 
-        if (noSearch) {
-            Toast.makeText(getApplicationContext(), "No Available Users, Please Try Again", Toast.LENGTH_LONG).show();
+        Intent intent = getIntent();
+        boolean isDoctorMsg = intent.getBooleanExtra("isDoctorMsg3", false);
+        String patientName = intent.getStringExtra("patientName3");
+        String doctorName = firebaseAuth.getCurrentUser().getDisplayName().replace(".","");
+
+        if (isDoctorMsg) {
+            mSelectedIds.add(doctorName);
+            mSelectedIds.add(patientName.replace(".",""));
+            setJoined("true");
+            createGroupChannel(mSelectedIds, true);
         }
 
         getFirstname();
         getServer();
+
+        if (noSearch) {
+            Toast.makeText(getApplicationContext(), "No Available Users, Please Try Again", Toast.LENGTH_LONG).show();
+        }
 
         if (savedInstanceState == null) {
             Fragment fragment = SelectUserFragment.newInstance();

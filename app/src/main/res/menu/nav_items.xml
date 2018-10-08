@@ -14,4 +14,8 @@
         android:id="@+id/nav_depBar"
         android:icon="@drawable/baseline_insert_chart_outlined_black_24dp"
         android:title="@string/nav_depBar" />
+    <!--<item
+        android:id="@+id/nav_doctor"
+        android:icon="@drawable/ic_assignment_ind_black_24dp"
+        android:title="Doctor" />-->
 </menu>

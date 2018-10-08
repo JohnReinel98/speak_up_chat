@@ -42,6 +42,7 @@ public class UserHome extends AppCompatActivity {
     private ChatFragment chatFragment;
     private AlarmFragment alarmFragment;
     private DepressionFragment depressionFragment;
+    private DoctorFragment doctorFragment;
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
     private NavigationView navView;
@@ -65,6 +66,8 @@ public class UserHome extends AppCompatActivity {
         navView = findViewById(R.id.navView);
         firebaseAuth = FirebaseAuth.getInstance();
         id = firebaseAuth.getCurrentUser().getUid();
+
+        /*getisDoctor();*/
 
 //        Intent intent = getIntent();
 //        boolean openMeter = intent.getBooleanExtra("openMeter", false);
@@ -135,6 +138,8 @@ public class UserHome extends AppCompatActivity {
         chatFragment = new ChatFragment();
         alarmFragment = new AlarmFragment();
         depressionFragment = new DepressionFragment();
+        doctorFragment = new DoctorFragment();
+
 
         //when device rotated!=load again
         if(savedInstanceState==null){
@@ -218,7 +223,7 @@ public class UserHome extends AppCompatActivity {
         if(firebaseAuth.getCurrentUser()!=null && firebaseAuth.getCurrentUser().getDisplayName()==null&&firebaseAuth.getCurrentUser().getPhotoUrl()==null){
             finish();
             startActivity(new Intent(UserHome.this, UserRegister2.class));
-            Toast.makeText(this,"Please finish registraion first", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please finish registration first", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -306,4 +311,78 @@ public class UserHome extends AppCompatActivity {
         alert.setTitle("Log out");
         alert.show();
     }
+
+    /*private void getisDoctor() {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference refisDoctor = database.getReference(id).child("isDoctor");
+
+        refisDoctor.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                isDoctor = value;
+                if (isDoctor.equalsIgnoreCase("true")) {
+                    mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                        @Override
+                        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                            switch (item.getItemId()){
+
+                                case R.id.nav_chat:
+                                    setFragment(chatFragment);
+                                    return true;
+
+                                case R.id.nav_medSched:
+                                    setFragment(alarmFragment);
+                                    return true;
+
+                                case R.id.nav_depBar:
+                                    setFragment(depressionFragment);
+                                    return true;
+
+                                default:
+                                    return false;
+
+                            }
+                        }
+                    });
+                } else {
+                    mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                        @Override
+                        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                            switch (item.getItemId()){
+
+                                case R.id.nav_chat:
+                                    setFragment(chatFragment);
+                                    return true;
+
+                                case R.id.nav_medSched:
+                                    setFragment(alarmFragment);
+                                    return true;
+
+                                case R.id.nav_depBar:
+                                    setFragment(depressionFragment);
+                                    return true;
+
+                                case R.id.nav_doctor:
+                                    setFragment(doctorFragment);
+                                    return true;
+
+                                default:
+                                    return false;
+
+                            }
+                        }
+                    });
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }*/
 }

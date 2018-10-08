@@ -161,7 +161,7 @@
             android:parentActivityName=".user.UserHome" />
         <activity
             android:name=".user.PatientMessageActivity"
-            android:label="Patient's Message">
+            android:label="Patient's Details">
         </activity>
         <activity
             android:name=".user.MessageListActivity"
