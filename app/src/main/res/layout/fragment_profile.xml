@@ -125,7 +125,15 @@
             android:layout_gravity="center_horizontal"
             android:text="Verify Email Address"
             android:id="@+id/btnVerify"
-            android:layout_marginBottom="30sp"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Request Change Password"
+            android:id="@+id/btnRequestChangePassword"
+            android:layout_marginBottom="40sp"
             />
     </LinearLayout>
     <TextView
