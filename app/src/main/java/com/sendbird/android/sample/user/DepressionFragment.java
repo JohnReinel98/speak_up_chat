@@ -31,7 +31,7 @@ import com.sendbird.android.sample.R;
  */
 public class DepressionFragment extends Fragment {
     private ProgressBar depMeter;
-    private TextView depStatus, reTake;
+    private TextView depStatus, reTake, txtDepression;
     private String depTest;
     private FirebaseAuth firebaseAuth;
     private String id;
@@ -47,6 +47,7 @@ public class DepressionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_depression, container, false);
+        txtDepression = v.findViewById(R.id.txtDepressionQuestion);
         depMeter = v.findViewById(R.id.depMeter);
         depStatus = v.findViewById(R.id.depStatus);
         reTake = v.findViewById(R.id.btnRetake);
@@ -72,7 +73,7 @@ public class DepressionFragment extends Fragment {
 
                 depMeter.setProgress(Integer.parseInt(finalres));
                 int color = 0xFF00FF00;
-                if(depMeter.getProgress()>=23){
+                /*if(depMeter.getProgress()>=23){
                     depMeter.getIndeterminateDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
                     depMeter.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
                     depStatus.setText("VERY SEVERE DEPRESSION");
@@ -83,6 +84,12 @@ public class DepressionFragment extends Fragment {
                     depMeter.getProgressDrawable().setColorFilter(Color.rgb(165,42,42), PorterDuff.Mode.SRC_IN);
                     depStatus.setText("SEVERE DEPRESSION");
                     imgIcon.setImageResource(R.mipmap.ic_severe);
+                }*/
+                if(depMeter.getProgress()>=23 || depMeter.getProgress()>=19 && depMeter.getProgress()<=22){
+                    txtDepression.setVisibility(View.GONE);
+                    depMeter.setVisibility(View.GONE);
+                    depStatus.setVisibility(View.GONE);
+                    imgIcon.setVisibility(View.GONE);
                 }
                 if(depMeter.getProgress()>=14 && depMeter.getProgress()<=18){
                     depMeter.getIndeterminateDrawable().setColorFilter(Color.rgb(255,165,0), PorterDuff.Mode.SRC_IN);
