@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     tools:context=".user.UserRegister2">
 
     <ScrollView
@@ -239,7 +240,6 @@
                     android:onClick="userClick"
                     />
             </RadioGroup>-->
-
         </LinearLayout>
 
     </ScrollView>

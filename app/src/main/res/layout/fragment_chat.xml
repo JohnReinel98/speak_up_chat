@@ -104,13 +104,13 @@
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:text="Need strict guidance? Contact a professional now."
+                    android:text="View messages and chat with your Doctor/s."
                     android:gravity="center"
                     android:visibility="gone"
                     android:layout_marginBottom="20dp"
                     />
 
-                <info.hoang8f.widget.FButton
+                <!--<info.hoang8f.widget.FButton
                     android:id="@+id/btnDoctor"
                     fbutton:buttonColor="@color/colorPrimary"
                     fbutton:shadowColor="@color/colorPrimaryDark"
@@ -119,7 +119,7 @@
                     android:visibility="gone"
                     android:text="Contact a Professional">
 
-                </info.hoang8f.widget.FButton>
+                </info.hoang8f.widget.FButton>-->
 
                 <info.hoang8f.widget.FButton
                     android:id="@+id/btnDoctorMessage"

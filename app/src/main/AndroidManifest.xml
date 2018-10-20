@@ -157,8 +157,7 @@
             android:parentActivityName=".user.ChooseDoctorActivity" />
         <activity
             android:name=".user.ChooseDoctorActivity"
-            android:label="Professional List"
-            android:parentActivityName=".user.UserHome" />
+            android:label="Professional List" />
         <activity
             android:name=".user.PatientMessageActivity"
             android:label="Patient's Details">

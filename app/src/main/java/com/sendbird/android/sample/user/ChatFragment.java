@@ -118,12 +118,12 @@ public class ChatFragment extends Fragment {
             }
         });
 
-        btnDoctor.setOnClickListener(new View.OnClickListener() {
+        /*btnDoctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), ChooseDoctorActivity.class));
             }
-        });
+        });*/
 
         btnPatients.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -285,7 +285,7 @@ public class ChatFragment extends Fragment {
                 if (value.equalsIgnoreCase("false")) {
                     linearLayoutUser.setVisibility(View.VISIBLE);
                     txtDoctorDetails.setVisibility(View.VISIBLE);
-                    btnDoctor.setVisibility(View.VISIBLE);
+                    //btnDoctor.setVisibility(View.VISIBLE);
                     btnDoctorMessage.setVisibility(View.VISIBLE);
                 } else {
                     linearLayoutDoctor.setVisibility(View.VISIBLE);

@@ -14,7 +14,7 @@ public class ChooseDoctorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_doctor);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        /*getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
         btnDoctor1 = findViewById(R.id.btnDoctor1);
         btnDoctor2 = findViewById(R.id.btnDoctor2);

@@ -355,12 +355,28 @@ public class ContactDoctorActivity extends AppCompatActivity {
         });
 
         progressDialog.dismiss();
+        Toast.makeText(getApplicationContext(), "Information Sent, Please wait for your doctor to message you.", Toast.LENGTH_LONG).show();
         showSuccessDialog();
 
     }
 
     private void showSuccessDialog() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        //show instructions
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(ContactDoctorActivity.this);
+        View view = LayoutInflater.from(ContactDoctorActivity.this).inflate(R.layout.question_instructions_layout,null);
+        alertDialog
+                .setCancelable(false)
+                .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        finish();
+                        startActivity(new Intent(ContactDoctorActivity.this, UserQuestion.class));
+                    }
+                });
+        alertDialog.setView(view);
+        alertDialog.show();
+        /*AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setMessage("Information Sent, Please wait for your doctor to message you.")
                 .setTitle("Success")
                 .setCancelable(false)
@@ -369,8 +385,9 @@ public class ContactDoctorActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         finish();
+                        startActivity(new Intent(ContactDoctorActivity.this, UserQuestion.class));
                     }
                 });
-        alertDialog.show();
+        alertDialog.show();*/
     }
 }

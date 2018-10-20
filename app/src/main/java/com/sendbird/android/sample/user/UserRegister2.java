@@ -281,7 +281,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
 
 
                                     //show instructions
-                                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserRegister2.this);
+                                    /*AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserRegister2.this);
                                     View view = LayoutInflater.from(UserRegister2.this).inflate(R.layout.question_instructions_layout,null);
                                     alertDialog
                                             .setCancelable(false)
@@ -290,11 +290,15 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     dialog.cancel();
                                                     finish();
-                                                    startActivity(new Intent(UserRegister2.this, UserQuestion.class));
+                                                    //startActivity(new Intent(UserRegister2.this, UserQuestion.class));
+                                                    startActivity(new Intent(UserRegister2.this, ChooseDoctorActivity.class));
                                                 }
                                             });
                                     alertDialog.setView(view);
-                                    alertDialog.show();
+                                    alertDialog.show();*/
+                                    finish();
+                                    //startActivity(new Intent(UserRegister2.this, UserQuestion.class));
+                                    startActivity(new Intent(UserRegister2.this, ChooseDoctorActivity.class));
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
