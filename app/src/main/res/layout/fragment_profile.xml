@@ -28,6 +28,7 @@
             app:civ_border_color="@color/cardview_light_background"/>
 
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,10 +39,34 @@
             android:textAlignment="center"
             />
 
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtEmail"
+            android:layout_gravity="center_horizontal"
+            android:text="loading..."
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtChecker"
+            android:layout_gravity="center_horizontal"
+            android:text="Email not verified"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:textAlignment="center"
+            />
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtGender"
+            android:layout_marginTop="10sp"
             android:layout_gravity="center_horizontal"
             android:text="loading..."
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -81,6 +106,7 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textAlignment="center"
                 />
+
         </LinearLayout>
 
         <TextView
@@ -93,6 +119,14 @@
             android:textAlignment="center"
             />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Verify Email Address"
+            android:id="@+id/btnVerify"
+            android:layout_marginBottom="30sp"
+            />
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
