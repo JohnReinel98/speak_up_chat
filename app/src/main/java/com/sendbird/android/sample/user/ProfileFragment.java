@@ -1,16 +1,21 @@
 package com.sendbird.android.sample.user;
 
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,15 +24,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sendbird.android.sample.R;
+import com.sendbird.android.sample.main.LoginActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
-    private TextView txtFullname, txtGender, txtStreet, txtCity, txtProvince, txtBirthday, btnUpdate, txtRating, txtRooms;
+    private TextView txtFullname, txtGender, txtStreet, txtCity, txtProvince, txtBirthday, btnUpdate, txtEmail, txtChecker;
     private CircleImageView imgProfilePic;
     private ProgressDialog progressDialog;
+    private Button btnVerify;
     private int showed = 0, rooms_total;
     private float rating_total;
     String id;
@@ -52,10 +59,15 @@ public class ProfileFragment extends Fragment {
         txtBirthday = v.findViewById(R.id.txtBirthday);
         btnUpdate = v.findViewById(R.id.btnUpdate);
         imgProfilePic = v.findViewById(R.id.imgProfilePic);
+        btnVerify = v.findViewById(R.id.btnVerify);
+        txtEmail = v.findViewById(R.id.txtEmail);
+        txtChecker = v.findViewById(R.id.txtChecker);
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         id = firebaseAuth.getCurrentUser().getUid();
+
+
 
         loadUserInfo();
         getRating();
@@ -67,6 +79,43 @@ public class ProfileFragment extends Fragment {
                 startActivity(new Intent(getContext(), UserUpdateProfile.class));
             }
         });
+
+        if(user.isEmailVerified()){
+            txtChecker.setText("Email Verified");
+            btnVerify.setVisibility(View.GONE);
+        } else {
+            progressDialog.setTitle("Email Verification");
+            progressDialog.setMessage("Sending... \n\n Note: You need to login again after verifying");
+            progressDialog.setCancelable(false);
+            btnVerify.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(getContext(), "Email Verification sent", Toast.LENGTH_SHORT).show();
+                            final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            builder.setTitle("Redirect");
+                            builder.setMessage("Check your email \nYou need to Login again");
+                            builder.setNeutralButton("Okay", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    getActivity().finish();
+                                    firebaseAuth.signOut();
+                                    startActivity(new Intent(getContext(), UserLogin.class));
+                                }
+
+                            });
+
+                            builder.show();
+                        }
+                    });
+                }
+            });
+        }
+
+
         return v;
     }
 
@@ -94,6 +143,9 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        txtEmail.setText(user.getEmail());
 
         DatabaseReference refStreet = database.getReference(id).child("street");
         refStreet.keepSynced(true);

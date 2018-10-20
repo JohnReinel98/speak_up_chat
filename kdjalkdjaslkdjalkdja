@@ -1,0 +1,398 @@
+[33mcommit 1ef2e7052d505eb889324b1262d43af0cc44cbe7[m[33m ([m[1;36mHEAD -> [m[1;32mfeature-MinimumAge[m[33m, [m[1;31morigin/feature-NewDepressionQuestions[m[33m, [m[1;32mfeature-NewDepressionQuestions[m[33m)[m
+Author: wabevu <31796531+wabevu@users.noreply.github.com>
+Date:   Sat Sep 22 21:22:47 2018 +0800
+
+    New Depression Questions
+
+[33mcommit fcffe0f8d2555724ba1a4e7fa33be71bb7e7352e[m[33m ([m[1;32mfeature-filterQuestions[m[33m)[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sun Sep 16 20:58:20 2018 +0800
+
+    Minor UI Fixes
+
+[33mcommit 4c99e0ebca7820549b073bd08ababf7af9977cbf[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sun Sep 16 09:59:40 2018 +0800
+
+    Added User Types in Registration and Update Profile
+
+[33mcommit 329ceb2e5f7cf219be67808f4d151253a4401a9d[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sat Sep 15 20:30:30 2018 +0800
+
+    Fixed crash after updating profile details
+
+[33mcommit af0884b27e7496d160eef4f3be148f65638fabec[m[33m ([m[1;31morigin/feature-filterQuestions[m[33m)[m
+Author: wabevu <31796531+wabevu@users.noreply.github.com>
+Date:   Sat Sep 15 15:25:09 2018 +0800
+
+    Added Filter Questions and enhance Error Handlings
+
+[33mcommit 92a1162dce3131cbdf120ece26b9dd1050fdd4a8[m
+Author: wabevu <31796531+wabevu@users.noreply.github.com>
+Date:   Sat Sep 15 14:57:52 2018 +0800
+
+    Added Filter Questions
+
+[33mcommit d2f47e0555e81753ca8578511999f60f8f8a2388[m[33m ([m[1;31morigin/feature-Instructions[m[33m, [m[1;32mfeature-Instructions[m[33m)[m
+Author: wabevu <31796531+wabevu@users.noreply.github.com>
+Date:   Sat Sep 15 12:36:14 2018 +0800
+
+    Instrctions Added
+
+[33mcommit a4f29a09e0ce77f268e807fdc18f0cae423f4817[m
+Author: wabevu <31796531+wabevu@users.noreply.github.com>
+Date:   Sat Sep 15 12:33:00 2018 +0800
+
+    Instructions Added
+
+[33mcommit 9cb106a2be9df12a6c46e9a3c96f53a4a5006fce[m[33m ([m[1;32mmaster[m[33m)[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Mon Sep 10 21:59:39 2018 +0800
+
+    Added Redirect to Home when a crash happened, Added back Leave Channel in Chat
+
+[33mcommit 45c97a100a4d880e0e48da9ee3fe6f8ed1befa04[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Mon Sep 10 14:49:05 2018 +0800
+
+    Fixes for search
+
+[33mcommit 537f0c79518d1a081d8686ae4b5bf0b028442b55[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Mon Sep 10 14:28:49 2018 +0800
+
+    Fixed error/crash catcher in finding user
+
+[33mcommit 117c65686fad97f1bfb6d89ebe98af24d7631be6[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Mon Sep 10 13:40:37 2018 +0800
+
+    Added error/crash catcher for user search
+
+[33mcommit def6d0f52c3b5f9a6737c30a0c0618404edb775e[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Mon Sep 10 12:41:37 2018 +0800
+
+    Fixed crash, if users in firebase is only 2
+
+[33mcommit dc52de750855db95aa7308f81e6a197d021f6098[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Mon Sep 10 12:12:17 2018 +0800
+
+    Hide Users List
+
+[33mcommit 16641afef30a941838d8432fe4cea2d34f4da893[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sun Sep 9 23:58:47 2018 +0800
+
+    Fixed search where it creates group channel
+
+[33mcommit 80f1a0e54cba46e29fb20e897bebdf187d939299[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sun Sep 9 21:47:58 2018 +0800
+
+    Added Toasts while searching
+
+[33mcommit 4f61bdf925480bfbb10563115b3c2b1a2bbec3d2[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sun Sep 9 17:19:41 2018 +0800
+
+    Toast for no available user
+
+[33mcommit f4bb6210950252d5e2b4d6d66e65d1cbdb9e7841[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Sep 9 17:12:03 2018 +0800
+
+    Added and Fixed some stuff
+
+[33mcommit e38e67feeba2b87f480297703de8d7117f4a0c0b[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Sep 9 17:09:54 2018 +0800
+
+    Removed some unused files
+
+[33mcommit 286e38494c40df3fc508d0a418ac30a9879d5efb[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Sep 9 17:02:11 2018 +0800
+
+    Removed check joined toast
+
+[33mcommit 60822d9df80e359850e2df1981abbc4f2d91d5de[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Sep 9 15:36:03 2018 +0800
+
+    Removed some conflicting files
+
+[33mcommit 01412ea55557becab5cc8266dbf2da21fa689d07[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Sep 9 15:33:09 2018 +0800
+
+    Removed build folder
+
+[33mcommit aa3e7cfb8c6dadcdade2e46d688197f7a9c5f7e3[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Sep 9 15:32:10 2018 +0800
+
+    Removed .gradle
+
+[33mcommit 04c32f91b92eb2e14bbd408b8e18f57c04b90bcb[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Sep 9 15:31:10 2018 +0800
+
+    Removed .idea
+
+[33mcommit 1fdc6dbda042779e6af15369ecf7ed277a983bb7[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Sep 9 15:26:07 2018 +0800
+
+    Fixes and stuff
+
+[33mcommit a9406dc108d4b04adf4ac74a9cc670c33fde22c8[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sun Sep 9 12:38:39 2018 +0800
+
+    Fixed User Search
+
+[33mcommit 81d78ecb2988e4c1044eea45bf45f9278eeefdc7[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sun Sep 9 10:00:31 2018 +0800
+
+    Changed chat notification icon
+
+[33mcommit 2b8455e49ecd07b15fc8fd89196e5828f6a5ad5c[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sun Sep 9 09:02:51 2018 +0800
+
+    Fixed creating multiple fragments, while searching
+
+[33mcommit 1775f9eacfff77a083d6a7563c706de104de5b11[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sun Sep 9 08:22:31 2018 +0800
+
+    Removed Successfully Login Toast
+
+[33mcommit 6778e45ad719256770c2b07bf9a5d97dec491abe[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sun Sep 9 08:13:13 2018 +0800
+
+    Minor Fixes in User Registration Screen
+
+[33mcommit 43696fea35fdda5591c4310de5df466b1d57ed58[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sat Sep 8 22:56:19 2018 +0800
+
+    Fixed App Icon
+
+[33mcommit 9503398ac0ce371070461c6b295344fa633b72e6[m
+Merge: 089355d db6ab7d
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sat Sep 8 22:12:04 2018 +0800
+
+    Merge branch 'master' of https://github.com/JohnReinel98/speak_up_chat
+
+[33mcommit 089355dba82f3eba5acff7be9579b4a64a7fbb14[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sat Sep 8 22:06:54 2018 +0800
+
+    Changed Search Icon
+
+[33mcommit db6ab7d78352caa6a30089b414055c8a41aea7a3[m
+Merge: 1410170 308d9cf
+Author: wabevu <31796531+wabevu@users.noreply.github.com>
+Date:   Sat Sep 8 21:45:44 2018 +0800
+
+    Added Emoji
+
+[33mcommit 14101700f8d35991fdd18b511abd5a446c1296e0[m
+Author: wabevu <31796531+wabevu@users.noreply.github.com>
+Date:   Sat Sep 8 21:33:34 2018 +0800
+
+    Added Emoji
+
+[33mcommit 308d9cf7b7f7296f4918e529af1733d99c3c7838[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sat Sep 8 19:51:19 2018 +0800
+
+    Fixed calendar widget accepting future dates
+
+[33mcommit f71055d9d131d9de8c760c88da354a2fd8a71420[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sat Sep 8 18:27:08 2018 +0800
+
+    Added navigate directly to depression meter after questions
+
+[33mcommit 492955d0f949babaeff19e5bf22ed910d5b1636b[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sat Sep 8 16:30:00 2018 +0800
+
+    Added Hopeful Server Button
+
+[33mcommit dd1e06ff68255e2ab122c183a6d2dbf4264e10f5[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sat Sep 8 14:07:30 2018 +0800
+
+    Added Terms and Conditions Activity
+
+[33mcommit 1876e259b240cbf0568f36449b7cc66ba6fe8377[m
+Author: JohnReinel98 <johnrenielcaluag@yahoo.com>
+Date:   Sat Sep 8 11:02:15 2018 +0800
+
+    Fixed Large Image Size
+
+[33mcommit 9306267c61b5d4f388914c11b5929c7127aa8fee[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sat Sep 8 09:53:17 2018 +0800
+
+    Added Checkbox and Terms link
+
+[33mcommit a9ca74c567a8941fea419ab02cf4d944a22f82d4[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Fri Aug 31 20:55:43 2018 +0800
+
+    Cumulative Updates
+
+[33mcommit 6943721bf4f7c07497c7220b308a97c3725ec45f[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Thu Aug 23 09:21:31 2018 +0800
+
+    Various Fixes
+
+[33mcommit 92dfada77488656d368d852f3acb13b6f469fef3[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Aug 19 09:20:10 2018 +0800
+
+    Initial Setup for Reports
+
+[33mcommit 26c165b4cace8421e6e56bcf3308bd501b34831c[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Aug 19 08:56:31 2018 +0800
+
+    Added Set Rooms in Firebase
+
+[33mcommit 3ef18f035ce8a9231a2e1b34253c2620c14cc996[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Aug 19 08:33:34 2018 +0800
+
+    Added Set Rating in Firebase (2/2)
+
+[33mcommit f7ab4182bbf3cc6e5e07180df6302a659b4cf8d8[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Aug 19 08:22:55 2018 +0800
+
+    Added Set Rating in Firebase (1/2)
+
+[33mcommit 147466126b08a24bcc0168ec406d8decabc78c32[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sun Aug 19 07:52:51 2018 +0800
+
+    Fixed Rating Bar Layout
+
+[33mcommit 8520551c63be80dac9f426b268d9e289548a376b[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sat Aug 18 21:28:04 2018 +0800
+
+    Some prep for tomorrow
+
+[33mcommit d292a43637acf5625bf2fec45a7c9e462c6332de[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sat Aug 18 20:42:36 2018 +0800
+
+    Set joined after a message sent
+
+[33mcommit 18f1be7b58d3dc48d09fe95be40fc4783e0500c6[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sat Aug 18 20:16:25 2018 +0800
+
+    Reworked Server Checker
+
+[33mcommit bb50981da4e674afae6e5e10fcbb259fc985df15[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sat Aug 18 18:20:58 2018 +0800
+
+    Fixed Crash in No Available Users
+
+[33mcommit 8e5360c30e4ca5794fa45f276a3e9f5c2c2bb14d[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sat Aug 18 09:17:20 2018 +0800
+
+    Removed Unnecessary Handler thread
+
+[33mcommit f7f986bd923989429ec8188c43dd501e08baa744[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Fri Aug 17 09:27:41 2018 +0800
+
+    Enlarge profile photo in nav header
+
+[33mcommit 696dbfcaafe45461ac4ca1cca9e5ebb4445d4b93[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Fri Aug 17 09:07:07 2018 +0800
+
+    Fixed Auto Show Details on Edit Profile
+
+[33mcommit 0762f44471949fd93156a6901fa2f6063afaa0ad[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Thu Aug 16 22:16:21 2018 +0800
+
+    Fixed Edit Profile
+
+[33mcommit 588b67246f80859f93203cdb35c81f92af7d854e[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Thu Aug 16 20:19:30 2018 +0800
+
+    Added Splash Screen
+
+[33mcommit e6aab53bb57727c3a5ef42fdfa97830d7152405c[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Thu Aug 16 14:05:26 2018 +0800
+
+    Removed unused codes
+
+[33mcommit 11bc0db57d075b8ef59c76a5da528472d5e513cd[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Wed Aug 15 21:47:41 2018 +0800
+
+    Fixed User Profile Pictures
+
+[33mcommit 6f925c08e9274e87a8cd2e976eeb08bef117d520[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Wed Aug 15 18:41:22 2018 +0800
+
+    Added Placeholder for Empty Channel List
+
+[33mcommit 929da3837525988217ed3a23ff8d034a15ec32ac[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Wed Aug 15 17:34:26 2018 +0800
+
+    Added ProgressDialog in Channel button, Added new button for disconnect, Fixed errors in chat
+
+[33mcommit e6a21e18772332fc7c20bb0618052effcadc58da[m
+Author: wabevu <31796531+wabevu@users.noreply.github.com>
+Date:   Sat Aug 11 15:39:04 2018 +0800
+
+    Depression Test Complete
+
+[33mcommit cf07c998491835c9c859bb686027c0bb5c8fb5f1[m
+Merge: 5f129a3 8958085
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sat Aug 4 21:57:09 2018 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 5f129a38301142dea5a14fdde8a9dfb7fc704ee3[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sat Aug 4 21:56:25 2018 +0800
+
+    Added Search User 1/2
+
+[33mcommit 8958085a76e5357eb32e42320bff3419c5260291[m
+Author: John Reinel Caluag <johnrenielcaluag@yahoo.com>
+Date:   Sat Jul 28 18:11:12 2018 +0800
+
+    Delete README.md
+
+[33mcommit 2122229876449c76c1c33a4f824c79424b63c255[m
+Author: John Reinel S. Caluag <johnrenielcaluag1009@gmail.com>
+Date:   Sat Jul 21 19:08:35 2018 +0800
+
+    Initial Commit

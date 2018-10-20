@@ -19,9 +19,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.sendbird.android.sample.R;
 
 public class UserRegister extends AppCompatActivity implements View.OnClickListener{
@@ -50,6 +52,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
 
         btnRegister.setOnClickListener(this);
 
+
         linkTerms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +79,10 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
         });
         linkSignin.setOnClickListener(this);
     }
+
+
+
+
 
     @Override
     public void onClick(View v) {
@@ -129,6 +136,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
         } else {
             progressDialog.setMessage("Registering user...");
             progressDialog.show();
+            progressDialog.setCancelable(false);
 
             firebaseAuth.createUserWithEmailAndPassword(email,passw)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -148,6 +156,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
     public void Login(){
         Intent i = new Intent(UserRegister.this, UserLogin.class);
         finish();
