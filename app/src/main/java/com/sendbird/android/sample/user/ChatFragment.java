@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,13 +38,14 @@ public class ChatFragment extends Fragment {
     Button btnDoctor, btnPatients, btnDoctorMessage;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
-    private TextView txtPatientDetails, txtDoctorDetails;
+    private TextView txtPatientDetails, txtDoctorDetails, txtNotVerified, txtPleaseVerify;
     private DatabaseReference databaseReference;
     private static final String APP_ID_DEPRESSION = "26C9F889-F713-4847-8C71-40BA098D3D2A";
     private static final String APP_ID_HAPPY = "09BDD7F8-267A-4C4B-B966-77013078AA79";
     private static final String APP_ID_HOPEFUL = "CB8FC80D-78A6-46F3-9941-CEBB93D9CE73";
     private static final String APP_ID_DOCTOR = "C78BA867-A68E-497D-8959-C2EDD9BD42D9";
     String userID, nickName, server, choose, isDoctor, doctor;
+    FirebaseUser user;
     private LinearLayout linearLayoutUser, linearLayoutDoctor;
 
     public ChatFragment() {
@@ -55,6 +57,7 @@ public class ChatFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_chat, container, false);
         firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
         progressDialog = new ProgressDialog(getContext());
         btnDepression = rootView.findViewById(R.id.btnDepression);
         btnHappy = rootView.findViewById(R.id.btnHappy);
@@ -64,6 +67,8 @@ public class ChatFragment extends Fragment {
         btnPatients = rootView.findViewById(R.id.btnPatients);
         txtPatientDetails = rootView.findViewById(R.id.txtPatientDetails);
         txtDoctorDetails = rootView.findViewById(R.id.txtDoctorDetails);
+        txtNotVerified = rootView.findViewById(R.id.txtNotVerified);
+        txtPleaseVerify = rootView.findViewById(R.id.txtPleaseVerify);
         linearLayoutUser = rootView.findViewById(R.id.linearLayoutUser);
         linearLayoutDoctor = rootView.findViewById(R.id.linearLayoutDoctor);
 
@@ -282,7 +287,13 @@ public class ChatFragment extends Fragment {
                 String value = dataSnapshot.getValue(String.class);
                 isDoctor = value;
 
-                if (value.equalsIgnoreCase("false")) {
+                if (!user.isEmailVerified() && value.equalsIgnoreCase("false")) {
+                    txtNotVerified.setVisibility(View.VISIBLE);
+                    txtPleaseVerify.setVisibility(View.VISIBLE);
+                    linearLayoutUser.setVisibility(View.GONE);
+                    txtDoctorDetails.setVisibility(View.GONE);
+                    btnDoctorMessage.setVisibility(View.GONE);
+                } else if (value.equalsIgnoreCase("false")) {
                     linearLayoutUser.setVisibility(View.VISIBLE);
                     txtDoctorDetails.setVisibility(View.VISIBLE);
                     //btnDoctor.setVisibility(View.VISIBLE);

@@ -70,8 +70,8 @@ public class PatientMessageActivity extends AppCompatActivity {
         getGender();
         getBday();
         getStreet();
-        getCity();
         getProv();
+        getCity();
         getGender();
         getContactName();
         getContactPhone();
@@ -259,22 +259,6 @@ public class PatientMessageActivity extends AppCompatActivity {
         });
     }
 
-    private void getCity(){
-        DatabaseReference refServer = databaseReference.child("Messages").child(doctor).child(patient).child("city");
-        refServer.keepSynced(true);
-        refServer.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                city = dataSnapshot.getValue(String.class);
-                txtAddress.setText(street + " " + city + " " + province);
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
     private void getProv(){
         DatabaseReference refServer = databaseReference.child("Messages").child(doctor).child(patient).child("province");
         refServer.keepSynced(true);
@@ -297,6 +281,22 @@ public class PatientMessageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 street = dataSnapshot.getValue(String.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getCity(){
+        DatabaseReference refServer = databaseReference.child("Messages").child(doctor).child(patient).child("city");
+        refServer.keepSynced(true);
+        refServer.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                city = dataSnapshot.getValue(String.class);
+                txtAddress.setText(street + " " + city + " " + province);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

@@ -72,7 +72,7 @@ public class UserUpdateProfile extends AppCompatActivity {
     private Uri uriHolder;
     private int depTestVar, rooms_total, reports;
     private Uri uriprofileImage;
-    private String profileImageUrl, joined, server, isDoctor;
+    private String profileImageUrl, joined, server, isDoctor, contact_name, contact_phone, contact_relationship;
     private float rating_total;
 
     private DatabaseReference databaseReference;
@@ -95,6 +95,9 @@ public class UserUpdateProfile extends AppCompatActivity {
         getRating();
         getRooms();
         getisDoctor();
+        getCName();
+        getCPhone();
+        getCRelationship();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -426,7 +429,7 @@ public class UserUpdateProfile extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 int depTest = 0;
-                User user = new User(fname, lname, mname, bday, selectedGen, isDoctor, street, city, prov, String.valueOf(depTest), server, joined, rating, rooms, no_reports);
+                User user = new User(fname, lname, mname, bday, selectedGen, isDoctor, street, city, prov, String.valueOf(depTest), server, joined, rating, rooms, no_reports, contact_name, contact_phone, contact_relationship);
                 databaseReference.child(currentUser.getUid()).setValue(user);
                 progressDialog.dismiss();
                 finish();
@@ -477,7 +480,7 @@ public class UserUpdateProfile extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
-                                    User user = new User(fname,lname,mname,bday,selectedGen,isDoctor,street,city,prov,String.valueOf(depTest),server,joined,rating,rooms,no_reports);
+                                    User user = new User(fname,lname,mname,bday,selectedGen,isDoctor,street,city,prov,String.valueOf(depTest),server,joined,rating,rooms,no_reports, contact_name, contact_phone, contact_relationship);
                                     FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     progressDialog.dismiss();
@@ -631,6 +634,60 @@ public class UserUpdateProfile extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 isDoctor = dataSnapshot.getValue(String.class);
             }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getCName () {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refCName = database.getReference(id).child("contact_name");
+        refCName.keepSynced(true);
+        refCName.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                contact_name = dataSnapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getCPhone () {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refCPhone = database.getReference(id).child("contact_phone");
+        refCPhone.keepSynced(true);
+        refCPhone.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                contact_phone = dataSnapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getCRelationship () {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference refCRelationShip = database.getReference(id).child("contact_relationship");
+        refCRelationShip.keepSynced(true);
+        refCRelationShip.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                contact_relationship = dataSnapshot.getValue(String.class);
+            }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

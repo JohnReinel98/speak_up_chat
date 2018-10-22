@@ -132,13 +132,14 @@
                 android:layout_height="wrap_content"
                 android:text="Select Gender"
                 android:textStyle="bold"
-                android:layout_marginBottom="5sp"
+                android:layout_marginTop="10dp"
                 />
             <!--gender-->
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -200,7 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="10dp"
                 >
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
@@ -240,6 +241,50 @@
                     android:onClick="userClick"
                     />
             </RadioGroup>-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Emergency Contact"
+                android:textStyle="bold"
+                android:layout_marginBottom="5sp"
+                />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txtContactName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contact Name"
+                    android:inputType="textPersonName" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txtContactPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contact Phone"
+                    android:inputType="phone" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txtContactRelationShip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                >
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contact Relationship"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
     </ScrollView>

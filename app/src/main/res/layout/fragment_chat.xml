@@ -12,6 +12,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/txtNotVerified"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Email not verified."
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/txtPleaseVerify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Please verify your email address."
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
             <LinearLayout
                 android:id="@+id/linearLayoutUser"
                 android:layout_width="match_parent"

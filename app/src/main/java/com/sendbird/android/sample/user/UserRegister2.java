@@ -56,6 +56,7 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
     private StorageReference storageReference;
     private int year_x,month_x,day_x;
     private String[] monthStr = {"January","February","March","April","May","June","July","August","September","October","November","December"};
+    private TextInputLayout txtContactName, txtContactPhone, txtContactRelationship;
     private static final int DIALOG_ID = 0;
     private Uri uriprofileImage;
     private String profileImageUrl;
@@ -91,6 +92,9 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         txtStreet = findViewById(R.id.txtStreet);
         txtCity = findViewById(R.id.txtCity);
         txtProv = findViewById(R.id.txtProv);
+        txtContactName = findViewById(R.id.txtContactName);
+        txtContactPhone = findViewById(R.id.txtContactPhone);
+        txtContactRelationship = findViewById(R.id.txtContactRelationShip);
 
         btnSave = findViewById(R.id.btnSave);
 
@@ -118,6 +122,10 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         final String province = txtProv.getEditText().getText().toString().trim();
         final String birthday = txtBirthday.getEditText().getText().toString().trim();
         final String server = "", joined = "false";
+        final String contact_name = txtContactName.getEditText().getText().toString().trim();
+        final String contact_phone = txtContactPhone.getEditText().getText().toString().trim();
+        final String contact_relationship = txtContactRelationship.getEditText().getText().toString().trim();
+
 
         if (TextUtils.isEmpty(lname)) {
             txtLname.setError("Please enter last name");
@@ -154,7 +162,22 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
             txtBirthday.requestFocus();
             return;
         }
-        if(uriprofileImage==null){
+        if (TextUtils.isEmpty(contact_name)) {
+            txtContactName.setError("Please enter a contact name");
+            txtContactName.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(contact_phone)) {
+            txtContactPhone.setError("Please enter a contact phone");
+            txtContactPhone.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(contact_relationship)) {
+            txtContactRelationship.setError("Please enter a contact relationship");
+            txtContactRelationship.requestFocus();
+            return;
+        }
+        if(uriprofileImage == null){
             Toast.makeText(UserRegister2.this,"Please enter an image",Toast.LENGTH_SHORT).show();
             return;
         }
@@ -251,6 +274,9 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
         final String province = txtProv.getEditText().getText().toString().trim();
         final String birthday = txtBirthday.getEditText().getText().toString().trim();
         final String server = "", joined = "false", rating_total = "0.0", rooms_total = "0", reports = "0";
+        final String contact_name = txtContactName.getEditText().getText().toString().trim();
+        final String contact_phone = txtContactPhone.getEditText().getText().toString().trim();
+        final String contact_relationship = txtContactRelationship.getEditText().getText().toString().trim();
 
         final StorageReference profileImage = FirebaseStorage.getInstance().getReference("profilePics/"+System.currentTimeMillis()+".jpg");
         if(uriprofileImage != null){
@@ -272,13 +298,11 @@ public class UserRegister2 extends AppCompatActivity implements View.OnClickList
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     int depTest = 0;
-                                    User user = new User(fname,lname,mname,birthday,gender,"false",street,city,province,String.valueOf(depTest),server,joined,rating_total,rooms_total,reports);
+                                    User user = new User(fname,lname,mname,birthday,gender,"false",street,city,province,String.valueOf(depTest),server,joined,rating_total,rooms_total,reports,contact_name,contact_phone,contact_relationship);
                                     FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                     databaseReference.child(currentUser.getUid()).setValue(user);
                                     SharedPrefManager.getInstance(getApplicationContext()).userId(fname);
                                     SharedPrefManager.getInstance(getApplicationContext()).userNickname(fname);
-                                    //Toast.makeText(UserRegister2.this,"Information Saved",Toast.LENGTH_SHORT).show();
-
 
                                     //show instructions
                                     /*AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserRegister2.this);
